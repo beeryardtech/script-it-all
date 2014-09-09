@@ -1,0 +1,77 @@
+10
+
+dir
+183
+svn+ssh://hancock/srv/svn/repos/dk_test/branches/tgoldie/utilites
+svn+ssh://hancock/srv/svn/repos/dk_test
+
+
+
+2013-05-29T20:36:50.575183Z
+133
+tgoldie
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+062865eb-27ca-0410-8b84-0b2f17e91749
+
+settings
+dir
+
+scripts
+dir
+
+bin
+dir
+
+jeffs
+dir
+
+sikuli-develop.zip
+file
+
+
+
+
+2013-05-29T21:01:39.000000Z
+b29df1bf226c1acc5d7aab1698b9ebe8
+2013-05-29T20:36:50.575183Z
+133
+tgoldie
+has-props
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+54661634
+
+scotts
+dir
+

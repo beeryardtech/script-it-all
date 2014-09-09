@@ -1,0 +1,109 @@
+#-------------------------------------------------------------------------------
+# Name:        emcmd_createmirror.ini
+# Author:      Travis Goldie
+# Created:     11/03/2012
+# Copyright:   (c) SIOS Technology Corp 2012
+#-------------------------------------------------------------------------------
+[settings]
+;companion="emcmd_createmirror.py"
+;commands="scenarios\emcmdapi\emcmd_commands.ini"
+repeat=1
+scenarioName="emcmd_createmirror"
+sleep=3.0
+
+[defaults/createmirror]
+expectedRetCode=${returnCodes:success}
+expectedOutput="emcmd_returncode"
+postrun="verifymirror"
+app=${apps:emcmd}
+system=${node0:ip0}
+cmd="CREATEMIRROR"
+volume=${node0:volume0}
+target=${node1:ip0}
+type=s
+options=
+
+[defaults/deletemirror]
+expectedRetCode=${returnCodes:success}
+expectedOutput="emcmd_success
+postrun="verifydelete"
+postrunTarget=${node1:ip0}
+app=${apps:emcmd}
+system=${node0:ip0}
+cmd="DELETEMIRROR"
+volume=${node0:volume0}
+target=
+
+[emcmd_fail_missingparam1_local_ip]
+## Test Assertion:
+## Successfully create an async mirror and successfully delete it
+##
+## Test Strategy:
+## -- Create async mirror on remote system
+## -- Check output and %errorlevel% and verify mirror
+## -- Delete mirror
+## -- Check output and %errorlevel% and verify there is no mirror.
+
+[emcmd_fail_missingparam1_local_ip/createmirror]
+expectedRetCode=${returnCodes:missing_param}
+expectedOutput="emcmd_missing_param"
+postrun=
+system=${node0:ip0}
+cmd="CREATEMIRROR
+volume=${node0:volume0}
+target=${node1:ip0}
+type=
+
+[emcmd_fail_missingparam1_local_ip/deletemirror]
+expectedRetCode=${returnCodes:success}
+expectedOutput="emcmd_success"
+postrun=
+
+[emcmd_success_async_local_ip0]
+## Test Assertion:
+## Shall successfully create an async mirror and successfully delete it
+##
+## Test Strategy:
+## -- Create async mirror on remote system
+## -- Check output and %errorlevel% and verify mirror
+## -- Delete mirror
+## -- Check output and %errorlevel% and verify there is no mirror
+
+[emcmd_success_async_local_ip0/createmirror]
+type=a
+
+[emcmd_success_async_local_ip0/deletemirror]
+
+
+[emcmd_success_sync_local_ip0]
+## Test Assertion:
+## Shall successfully create an async mirror and successfully delete it
+##
+## Test Strategy:
+## -- Execute "emcmd.exe <system> CREATEMIRROR vol1 target 's'"
+## -- Check output and %errorlevel%
+## -- Verify mirror
+
+[emcmd_success_sync_local_ip0/createmirror]
+type=s
+
+[emcmd_success_sync_local_ip0/deletemirror]
+
+
+[emcmd_success_sync_remote_ip0]
+## Test Assertion:
+## Shall successfully create an async mirror and successfully delete it on
+## the target node
+##
+## Test Strategy:
+## -- Create sync mirror on remote system
+## -- Check output and %errorlevel% and verify mirror
+## -- Delete mirror
+## -- Check output and %errorlevel% and verify there is no mirror
+
+[emcmd_success_sync_remote_ip0/createmirror]
+system=${node1:ip0}
+target=${node0:ip0}
+
+[emcmd_success_sync_remote_ip0/deletemirror]
+system=${node1:ip0}

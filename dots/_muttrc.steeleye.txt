@@ -1,0 +1,5 @@
+# Account details for Steeleye.com account
+set imap_user = "travis.goldie@steeleye.com"
+set smtp_url = "smtp://travis.goldie@steeleye.com@smtp.gmail.com:587/"
+set from = "travis.goldie@steeleye.com"
+set realname = "Travis Goldie"

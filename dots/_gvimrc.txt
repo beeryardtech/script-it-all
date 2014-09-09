@@ -1,0 +1,9 @@
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+"
+" Name: .gvimrc (see _gvimrc for Windows)
+" Author: Travis Goldie
+" Purpose: Config file for gvim
+"
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+" Change default color scheme
+colorscheme koehler

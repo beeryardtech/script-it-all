@@ -1,0 +1,340 @@
+
+<html>
+   <head>
+      <style type="text/css">
+         .sikuli-code {
+            font-size: 20px;
+            font-family: "Osaka-mono", Monospace;
+            line-height: 1.5em;
+            display:table-cell;
+            white-space: pre-wrap;       /* css-3 */
+            white-space: -moz-pre-wrap !important;  /* Mozilla, since 1999 */
+            white-space: -pre-wrap;      /* Opera 4-6 */
+            white-space: -o-pre-wrap;    /* Opera 7 */
+            word-wrap: break-word;       /* Internet Explorer 5.5+ */
+            width: 99%;   /* remove horizontal scroll-bar when viewing in IE7 */
+         }
+         .sikuli-code img {
+            vertical-align: middle;
+            margin: 2px;
+            border: 1px solid #ccc;
+            padding: 2px;
+            -moz-border-radius: 5px;
+            -webkit-border-radius: 5px;
+            -moz-box-shadow: 1px 1px 1px gray;
+            -webkit-box-shadow: 1px 1px 2px gray;
+         }
+         .kw {
+            color: blue;
+         }
+         .skw {
+            color: rgb(63, 127, 127);
+         }
+
+         .str {
+            color: rgb(128, 0, 0);
+         }
+
+         .dig {
+            color: rgb(128, 64, 0);
+         }
+
+         .cmt {
+            color: rgb(200, 0, 200);
+         }
+
+         h2 {
+            display: inline;
+            font-weight: normal;
+         }  
+         
+         .info {
+            border-bottom: 1px solid #ddd;
+            padding-bottom: 5px;
+            margin-bottom: 20px;
+            display: none;
+         }
+
+         a {
+            color: #9D2900;
+         }
+
+         body {
+            font-family: "Trebuchet MS", Arial, Sans-Serif;
+         }
+
+      </style>
+   </head>
+<body>
+<div class="info">
+<h2>dksikuli.sikuli\dksikuli.sikuli</h2> <a href="dksikuli.sikuli\dksikuli.zip">(Download this script)</a>
+</div>
+<pre class="sikuli-code">
+<span class="cmt">#-------------------------------------------------------------------------------
+</span><span class="cmt"># Name:             dksikuli
+</span><span class="cmt">#-------------------------------------------------------------------------------
+</span><span class="kw">from</span> __future__ <span class="kw">import</span> with_statement
+
+__author__                      = <span class="str">"Travis Goldie"</span>
+__email__                       = <span class="str">"test_automation@us.sios.com"</span>
+__date__                        = <span class="str">"11/14/12"</span>
+__copyright__           = <span class="str">"(c) SIOS Technology Corp 2012"</span>
+
+<span class="kw">import</span> inspect
+<span class="kw">import</span> logging
+<span class="kw">import</span> os
+<span class="kw">import</span> subprocess
+<span class="kw">import</span> sys
+<span class="kw">from</span> time <span class="kw">import</span> <span class="skw">sleep</span>
+
+
+<span class="cmt">#The try statements are needed when using different versions of Python.
+</span><span class="cmt">#For Example using both Cpython 3.2 and IronPython 2.7
+</span><span class="kw">try</span>:
+        <span class="kw">from</span> configparser <span class="kw">import</span> ConfigParser
+        <span class="kw">from</span> xmlrpc.server <span class="kw">import</span> SimpleXMLRPCServer
+<span class="kw">except</span> ImportError:
+        <span class="kw">from</span> ConfigParser <span class="kw">import</span> ConfigParser
+        <span class="kw">from</span> SimpleXMLRPCServer <span class="kw">import</span> SimpleXMLRPCServer
+
+
+<span class="kw">def</span> start_server(obj):
+        <span class="str">"""
+                Purpose:
+                Create the XML-RPC Server to allow CPython (and other tools) to interact with
+                the dksikuli instance and its Sikuli functions.
+
+                Similar to remotesrv.py's "start_server" function.
+        """</span>
+        guiServer = SimpleXMLRPCServer((<span class="str">''</span>, <span class="dig">8080</span>), allow_none=True)
+
+        guiServer.register_introspection_functions()
+        guiServer.register_instance(obj)
+
+        <span class="cmt">#Now keep the server alive till the end of the run
+</span>        guiServer.serve_forever()
+
+<span class="kw">def</span> test_dksikuli():
+        <span class="str">"""
+                Purpose:
+                Unit test dksikuli.
+        """</span>
+        params  = {<span class="str">'expectedretcode'</span> : <span class="dig">0</span>,
+                        <span class="str">'guiTarget'</span> : <span class="str">'172.17.105.149'</span>,
+                        <span class="str">'app'</span> : <span class="str">'sikuli'</span>,
+                        <span class="str">'cmd'</span> : <span class="str">'connectservers'</span>,
+                        <span class="str">'servers'</span> : <span class="str">'cae-qa-v82,cae-qa-v83'</span> }
+        cmds = <span class="str">"connectservers"</span>
+
+        dks = dksikuli()
+        dks.runSetup(<span class="str">r"C:\Programs\dk_test"</span>,
+                                        <span class="str">r"C:\Programs\dk_test\tmp\cluster.ini.tmp"</span>)
+        dks.runCmds(cmds, params)
+
+
+<span class="kw">class</span> dksikuli(object):
+        <span class="kw">def</span> __init__(self):
+                <span class="str">"""
+                        Purpose:
+                        Uses predefined functions to interact DataKeeper GUI using the
+                        Sikuli libs.
+                """</span>
+                <span class="cmt">#Generic sleep timers
+</span>                self.sleep_short                = <span class="dig">5.0</span>
+                self.sleep_long                 = <span class="dig">10.0</span>
+                self.sleep_xl                   = <span class="dig">20.0</span>
+                self.sleep_xxl                  = <span class="dig">45.0</span>
+
+        <span class="kw">def</span> runSetup(self, basedir, clusterini):
+                <span class="str">"""
+                        Purpose:
+                        Setup the class based on config from client process
+                """</span>
+                <span class="cmt">#Set the sys path
+</span>                sys.path.insert(<span class="dig">0</span>, basedir)
+                sys.path.insert(<span class="dig">0</span>, os.path.join(basedir, <span class="str">"libs"</span>))
+
+                <span class="cmt">#Get the config info
+</span>                <span class="kw">from</span> dkconfig <span class="kw">import</span> dkconfig
+
+                self.clusterini                 = clusterini
+                self.config                             = dkconfig(clusterini)
+
+                self.imagesdir                  = self.config.paths[<span class="str">"guiimagesdir"</span>]
+                self.guipath                    = self.config.paths[<span class="str">"dkgui"</span>]
+                self.mmcpath                    = self.config.paths[<span class="str">"mmc"</span>]
+
+                <span class="cmt">#Open the gui. Need to use quotes to handle spaces.
+</span><span class="cmt">##              self.dkgui = App.open("\"" + self.mmcpath + "\" \"" +
+</span><span class="cmt">##                                                              self.guipath + "\"")
+</span>
+        <span class="kw">def</span> runCmds(self, cmdsString, params):
+                <span class="str">"""
+                        Purpose:
+                        Execute command. (Build to handle several commands, but only expect
+                        one at a time for now).
+                """</span>
+                <span class="kw">from</span> dkutils <span class="kw">import</span> cleanValue, normjoin
+                cmdsResult = {}
+
+                self.params                             = params
+                self.cmds                               = self.config.splitAndLower(cmdsString)
+
+
+                <span class="cmt">#self.logger.info("Starting gui commands {}".format(self.cmds))
+</span>                <span class="kw">for</span> cmd <span class="kw">in</span> self.cmds:
+                        cmdsResults[cmd] = eval(cleanValue(<span class="str">"self._"</span> + cmd.lower() + <span class="str">"()"</span>))
+
+
+                <span class="cmt">#self.logger.info("Ending gui commands")
+</span>
+                <span class="kw">return</span> cmdsResults
+
+
+        <span class="kw">def</span> tearDown(self):
+                <span class="str">"""
+                        Purpose:
+                        Final cleanup
+                """</span>
+                <span class="kw">pass</span>
+
+
+        <span class="kw">def</span> _connectservers(self):
+                <span class="str">"""
+                        Purpose:
+                        Connect to a server using the supplied list of server names/addresses.
+                        Either opens the dialog box on the action pane or from the new mirror
+                        dialog box.
+                """</span>
+                self.dkgui.focus()
+
+                <span class="cmt">#Get parameters
+</span>                serverList = self.config.splitAndLower(self.params.get(<span class="str">"servers"</span>))
+
+                <span class="kw">for</span> server <span class="kw">in</span> serverList:
+                        <span class="cmt">#Depending on where you are: Either as part of creating a
+</span>                        <span class="cmt">#new mirror or from the main GUI screen
+</span>                        <span class="skw">sleep</span>(self.sleep_short)
+                        <span class="kw">if</span> exists(<img src="newMirror_choose_source.png" />):
+                                <span class="skw">click</span>(<img src="newMirror_ConnectToServer.png" />)
+                        <span class="kw">else</span>:
+                                <span class="skw">click</span>(<img src="connectToServer_button_action_pane.png" />)
+                                <span class="cmt">#wait("connectToServer_Input_old.png")
+</span>                                <span class="skw">wait</span>(<img src="connectToServer_Input.png" />)
+
+                        <span class="cmt">#Input the value of the server
+</span>                        <span class="skw">type</span>(<img src="connectToServer_server_field.png" />, server)
+                        <span class="skw">click</span>(<img src="connectToServer_connect_button.png" />)
+                        <span class="skw">sleep</span>(self.sleep_short)
+                        <span class="skw">wait</span>(<img src="connectToServer_wait_complete.png" />)
+
+                        <span class="cmt">#Connection is complete, now hit "OK"
+</span>                        <span class="skw">wait</span>(<img src="general_button_ok.png" />, self.sleep_long)
+                        <span class="skw">click</span>(<img src="general_button_ok.png" />)
+
+                <span class="kw">return</span> True
+
+
+        <span class="kw">def</span> _createmirror(self):
+                <span class="str">"""
+                        Purpose:
+                        Create a mirror using the volumes
+                """</span>
+                self.dkgui.focus()
+
+                <span class="cmt">#Get parameters
+</span>                volume = self.params.get(<span class="str">"volume"</span>)
+
+                <span class="kw">return</span> True
+
+        <span class="kw">def</span> _createjob(self, title, description):
+                <span class="str">"""
+                        Purpose:
+                        Open Job window and insert title and description.
+                """</span>
+                self.dkgui.focus()
+
+                <span class="cmt">#Get parameters
+</span>                title = self.params.get(<span class="str">"title"</span>)
+                description = self.params.get(<span class="str">"description"</span>)
+
+                <span class="cmt">#Open the create job panel
+</span>                <span class="skw">wait</span>(<img src="actions_pane.png" />, self.sleep_long )
+                <span class="skw">click</span>(<img src="createjob_actions_button.png" />)
+                <span class="skw">wait</span>(<img src="createjob_dialog.png" />, self.sleep_long)
+
+                <span class="cmt">#Input the information
+</span>                <span class="skw">type</span>(<img src="jobname_field.png" />, title)
+                <span class="skw">type</span>(<img src="job_description_field.png" />, description)
+
+                <span class="cmt">#Click "Create Job"
+</span>                <span class="skw">click</span>(<img src="createjob_button.png" />)
+
+                <span class="kw">return</span> True
+
+        <span class="kw">def</span> _deletemirror(self):
+                <span class="str">"""
+                        Purpose:
+                        Delete one mirror
+                """</span>
+                self.dkgui.focus()
+
+                <span class="cmt">#Get parameters
+</span>                volume = self.params.get(<span class="str">"volume"</span>)
+
+                <span class="kw">return</span> True
+
+        <span class="kw">def</span> _disconnectservers(self):
+                <span class="str">"""
+                        Purpose:
+                        Disconnects from all servers.
+                """</span>
+                self.dkgui.focus()
+
+                <span class="cmt">#Open the disconnect dialog
+</span>                <span class="skw">wait</span>(<img src="actions_pane.png" />, self.sleep_long )
+                <span class="skw">click</span>(<img src="disconnectServer_action_pane.png" />)
+                <span class="skw">wait</span>(<img src="disconnectServer_dialog.png" />, self.sleep_short)
+
+                <span class="cmt">#Click all check boxes in dialog box
+</span>                <span class="kw">for</span> server <span class="kw">in</span> findAll(<img src="disconnectServer_checkbox.png" />):
+                        <span class="skw">click</span>(<img src="disconnectServer_checkbox.png" />)
+
+                <span class="cmt">#Click confirm and end
+</span>                <span class="skw">sleep</span>(self.sleep_short)
+                <span class="skw">wait</span>(<img src="disconnectServer_disconnect_button.png" />, self.sleep_long)
+                <span class="skw">click</span>(<img src="disconnectServer_disconnect_button.png" />)
+
+                <span class="kw">return</span> True
+
+        <span class="kw">def</span> _switchovermirror():
+                <span class="str">"""
+                        Purpose:
+                        Switchover a mirror using the gui
+                """</span>
+                self.dkgui.focus()
+
+                <span class="cmt">#Get parameters
+</span>
+                <span class="kw">return</span> True
+
+<span class="cmt">#-------------------------------------------------------------------------------
+</span><span class="cmt"># Used to initialize the server
+</span><span class="cmt">#-------------------------------------------------------------------------------
+</span>dks = dksikuli()
+start_server(dks)
+
+<span class="cmt">#-------------------------------------------------------------------------------
+</span><span class="cmt"># Use this function for unit testing -- Comment out RPC server first
+</span><span class="cmt">#-------------------------------------------------------------------------------
+</span><span class="cmt">#test_dksikuli()
+</span>
+<span class="cmt">#This code will only be run when using CPython
+</span><span class="kw">if</span> __name__ == <span class="str">'__main__'</span>:
+<span class="cmt">##      dks = dksikuli()
+</span><span class="cmt">##      dks.runSetup("dkconfig", r"C:\Programs\dk_test\libs\dkconfig.py",
+</span><span class="cmt">##                                      r"C:\Programs\dk_test\scenarios\cluster.ini", "default")
+</span>        <span class="kw">pass</span>
+</pre>
+</body>
+</html>

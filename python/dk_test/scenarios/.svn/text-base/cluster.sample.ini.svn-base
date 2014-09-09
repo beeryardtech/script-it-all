@@ -1,0 +1,163 @@
+#-------------------------------------------------------------------------------
+# Name:        cluster.ini
+# Author:      Travis Goldie
+# Created:     09/21/2012
+# Copyright:   (c) SIOS Technology Corp 2012
+#-------------------------------------------------------------------------------
+[DEFAULT]
+;This is where keys that need to be in every section
+
+[apps]
+bang=${paths:bindir}\osrbang2008x64.exe
+bangscript=${paths:bindir}\bangscript.py
+blat=${paths:bindir}\blat.exe
+emcmd=${paths:ExtMirrBase}\emcmd.exe
+iometer=C:\Programs\iometer
+winfuncs=${paths:basedir}\libs\winfuncs.py
+verifyactions=${paths:basedir}\libs\verifyactions.py
+writefile=${paths:bindir}\WriteFile.exe
+
+
+[node0]
+hostname=cae-qa-v82
+; fqdn=cae-qa-v82.qagroup.com
+; volume0="E"
+; ip0='172.17.105.148'
+; ip0mask='255.255.252.0'
+; ip1='10.100.200.82'
+; ip1mask='255.255.255.0'
+; clusterName='v82-84cluster'
+
+[node1]
+hostname=cae-qa-v82
+fqdn=cae-qa-v82.qagroup.com
+volume0="E"
+volume1='S'
+ip0='172.17.105.148'
+ip0mask='255.255.252.0'
+ip1='10.250.100.82'
+ip1mask='255.255.255.0'
+clusterName='v82-84cluster'
+
+[node2]
+hostname=cae-qa-v83
+fqdn=cae-qa-v83.qagroup.com
+volume0='E'
+ip0='172.17.105.149'
+ip0mask='255.255.252.0'
+ip1='10.250.100.83'
+ip1mask='255.255.255.0'
+volume1='S'
+clustername='v82-84cluster'
+
+[node3]
+hostname=cae-qa-v84
+fqdn=cae-qa-v84.qagroup.com
+volume0='E'
+volume1='S'
+ip0='172.17.105.150'
+ip0mask='255.255.252.0'
+ip1='10.250.100.84'
+ip1mask='255.255.255.0'
+clustername='v82-84cluster'
+
+[node4]
+hostname=cae-qa-v85
+fqdn=cae-qa-v85.qagroup.com
+volume0='E'
+volume1='S'
+ip0='172.17.105.151'
+ip0mask='255.255.252.0'
+ip1='10.250.100.85'
+ip1mask='255.255.255.0'
+clustername='v82-84cluster'
+
+
+[node5]
+hostname=cae-qa-v86
+fqdn=cae-qa-v86.qagroup.com
+volume0='E'
+volume1='S'
+ip0='172.17.105.152'
+ip0mask='255.255.252.0'
+ip1='10.250.100.86'
+ip1mask='255.255.255.0'
+clustername='v82-84cluster'
+
+
+[node6]
+hostname=cae-qa-v87
+fqdn=cae-qa-v87.qagroup.com
+volume0='E'
+volume1='S'
+ip0='172.17.105.152'
+ip0mask='255.255.252.0'
+ip1='10.250.100.87'
+ip1mask='255.255.255.0'
+clustername='v82-84cluster'
+
+
+[node7]
+hostname=cae-qa-v88
+fqdn=cae-qa-v88.qagroup.com
+volume0='E'
+volume1='S'
+ip0='172.17.105.153'
+ip0mask='255.255.252.0'
+ip1='10.250.100.88'
+ip1mask='255.255.255.0'
+clustername='v82-84cluster'
+
+
+; These are Win2012 machines
+[node10]
+hostname=cae-qa-v103
+fqdn=cae-qa-v103.qagroup.com
+volume0='E'
+volume1='S'
+ip0='172.17.105.169'
+ip0mask='255.255.252.0'
+ip1='10.250.100.103'
+ip1mask='255.255.255.0'
+clustername='twgWin2012Cl
+
+
+[node11]
+hostname=cae-qa-v104
+fqdn=cae-qa-v104.qagroup.com
+volume0='E'
+volume1='S'
+ip0='172.17.105.170'
+ip0mask='255.255.252.0'
+ip1='10.250.100.104'
+ip1mask='255.255.255.0'
+clustername='twgWin2012Cl
+
+
+[node12]
+hostname=cae-qa-v105
+fqdn=cae-qa-v105.qagroup.com
+volume0='E'
+volume1='S'
+volume2=U
+ip0='172.17.105.171'
+ip0mask='255.255.252.0'
+ip1='10.250.100.105'
+ip1mask='255.255.255.0'
+clustername='twgWin2012Cl
+
+
+[paths]
+;###############################################################################
+; There are overrides for constants.ini.
+; Make any additions here.
+;###############################################################################
+;Internal Paths
+basedir=C:\Programs\dk_test
+
+
+[settings]
+;You can override the username and password settings for all nodes here
+;nodeDomain=
+;nodeUsername=
+;nodePassword=

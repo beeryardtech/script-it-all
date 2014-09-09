@@ -1,0 +1,3 @@
+# Config file for finch. See `man finch`
+[general]
+mouse=1

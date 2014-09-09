@@ -1,0 +1,20 @@
+#-------------------------------------------------------------------------------
+# Name:        cleanup.ini
+# Author:      Travis Goldie
+# Created:     06/19/2013
+# Copyright:   (c) SIOS Technology Corp 2012
+#-------------------------------------------------------------------------------
+[DEFAULT]
+;This is where keys that need to be in every secion
+
+[deleteallmirrors]
+expectedRetCode=${returnCodes:success}
+app=${apps:winfuncs}
+function=deleteallmirrors
+hostnames=cae-qa-v83
+
+[deletealljobs]
+expectedRetCode=${returnCodes:success}
+app=${apps:winfuncs}
+function=deletealljobs
+hostnames=cae-qa-v83

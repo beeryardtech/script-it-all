@@ -1,0 +1,24 @@
+#-------------------------------------------------------------------------------
+# Name:        simple.ini
+# Author:      Travis Goldie
+# Email:       test_automation@us.sios.com
+# Copyright:   (c) SIOS Technology Corp 2013
+#-------------------------------------------------------------------------------
+[settings]
+;companion="emcmd_createmirror.py"
+repeat=1
+
+[defaults/createmirror]
+expectedRetCode=${returnCodes:success}
+expectedOutput="emcmd_returncode"
+app=${apps:emcmd}
+system=${node1:ip0}
+cmd="CREATEMIRROR"
+volume=${node1:volume0}
+target=${node2:ip0}
+type=s
+options=
+
+#Async mirror
+[simple/createmirror]
+type=a

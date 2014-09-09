@@ -1,0 +1,114 @@
+
+<html>
+   <head>
+      <style type="text/css">
+         .sikuli-code {
+            font-size: 20px;
+            font-family: "Osaka-mono", Monospace;
+            line-height: 1.5em;
+            display:table-cell;
+            white-space: pre-wrap;       /* css-3 */
+            white-space: -moz-pre-wrap !important;  /* Mozilla, since 1999 */
+            white-space: -pre-wrap;      /* Opera 4-6 */
+            white-space: -o-pre-wrap;    /* Opera 7 */
+            word-wrap: break-word;       /* Internet Explorer 5.5+ */
+            width: 99%;   /* remove horizontal scroll-bar when viewing in IE7 */
+         }
+         .sikuli-code img {
+            vertical-align: middle;
+            margin: 2px;
+            border: 1px solid #ccc;
+            padding: 2px;
+            -moz-border-radius: 5px;
+            -webkit-border-radius: 5px;
+            -moz-box-shadow: 1px 1px 1px gray;
+            -webkit-box-shadow: 1px 1px 2px gray;
+         }
+         .kw {
+            color: blue;
+         }
+         .skw {
+            color: rgb(63, 127, 127);
+         }
+
+         .str {
+            color: rgb(128, 0, 0);
+         }
+
+         .dig {
+            color: rgb(128, 64, 0);
+         }
+
+         .cmt {
+            color: rgb(200, 0, 200);
+         }
+
+         h2 {
+            display: inline;
+            font-weight: normal;
+         }  
+         
+         .info {
+            border-bottom: 1px solid #ddd;
+            padding-bottom: 5px;
+            margin-bottom: 20px;
+            display: none;
+         }
+
+         a {
+            color: #9D2900;
+         }
+
+         body {
+            font-family: "Trebuchet MS", Arial, Sans-Serif;
+         }
+
+      </style>
+   </head>
+<body>
+<div class="info">
+<h2>DKInstall.sikuli\DKInstall.sikuli</h2> <a href="DKInstall.sikuli\DKInstall.zip">(Download this script)</a>
+</div>
+<pre class="sikuli-code">
+<span class="skw">click</span>(<img src="1339091128377.png" />)
+<span class="skw">click</span>(<img src="L0cdDidC.png" />)
+<span class="skw">doubleClick</span>(<img src="DKBdds.png" />)
+<span class="skw">doubleClick</span>(<img src="DK741Sei1pex.png" />)
+<span class="skw">wait</span>(<img src="SteelyeDataI.png" />)
+<span class="skw">click</span>(<img src="A.png" />)
+<span class="skw">click</span>(<img src="Next.png" />)
+<span class="skw">click</span>(<img src="1339091283601.png" />)
+<span class="skw">click</span>(<img src="1339091329326.png" />)
+<span class="skw">click</span>(<img src="1339091347704.png" />)
+<span class="skw">wait</span>(<img src="Systemconfig.png" />,<span class="dig">120</span>)
+<span class="skw">click</span>(<img src="1339181263221.png" />)
+<span class="skw">wait</span>(<img src="SteelyeDataI-1.png" />,<span class="dig">120</span>)
+<span class="skw">click</span>(<img src="GDomainorSer.png" />)
+<span class="skw">click</span>(<img src="1339091480406.png" />)
+<span class="skw">wait</span>(<img src="SteelyeDataI-2.png" />)
+<span class="skw">click</span>(Pattern(<img src="SteelyeDataI-3.png" />).targetOffset(-<span class="dig">95</span>,-<span class="dig">21</span>))
+<span class="skw">type</span>(Key.BACKSPACE + Key.BACKSPACE + Key.BACKSPACE + Key.BACKSPACE + Key.BACKSPACE + Key.BACKSPACE + Key.BACKSPACE + Key.BACKSPACE + Key.BACKSPACE + Key.BACKSPACE + Key.BACKSPACE + Key.BACKSPACE + Key.BACKSPACE + Key.BACKSPACE + Key.BACKSPACE + Key.BACKSPACE + Key.BACKSPACE + Key.BACKSPACE + Key.BACKSPACE + <span class="str">"Administrator"</span>)
+<span class="skw">type</span>(Key.TAB + <span class="str">"frs.123"</span> + Key.TAB + <span class="str">"frs.123"</span>)
+<span class="skw">click</span>(<img src="1339092170008.png" />)
+<span class="skw">wait</span>(<img src="SteeiyeIicen.png" />,<span class="dig">300</span>)
+<span class="skw">click</span>(<img src="Fxif.png" />)
+<span class="skw">wait</span>(<img src="Yeslwanttore.png" />)
+<span class="skw">click</span>(<img src="NoIwillresta.png" />)
+<span class="skw">click</span>(<img src="1339092358916.png" />)
+<span class="skw">click</span>(<img src="ml.png" />)
+<span class="skw">rightClick</span>(<img src="I741SetLpexe.png" />)
+<span class="skw">click</span>(<img src="CreateshorDe.png" />)
+<span class="skw">wait</span>(<span class="dig">20</span>)
+<span class="skw">click</span>(<img src="1339094116424.png" />)
+<span class="skw">click</span>(Pattern(<img src="A21.png" />).targetOffset(<span class="dig">26</span>,-<span class="dig">1</span>))
+<span class="skw">click</span>(<img src="fjstan-1.png" />)
+<span class="skw">click</span>(<img src="Run-1.png" />)
+<span class="skw">wait</span>(<img src="IRunXTypethe.png" />,<span class="dig">10</span>)
+<span class="skw">type</span>(<span class="str">"cmd"</span> + Key.ENTER)
+<span class="skw">wait</span>(<img src="Admhishaton.png" />,<span class="dig">30</span>)
+<span class="skw">type</span>(<span class="str">"copy /y NUL C:\Sikuli\InstallFlag.xyz"</span> + Key.ENTER)
+<span class="skw">type</span>(<span class="str">"copy /y NUL C:\DK_Builds\InProgress.xyz"</span> + Key.ENTER)
+<span class="skw">type</span>(<span class="str">"Shutdown /r /t 0"</span> + Key.ENTER)
+</pre>
+</body>
+</html>

@@ -1,0 +1,5 @@
+# Account details for personal gmail account
+set imap_user = "tgoldie@gmail.com"
+set smtp_url = "smtp://tgoldie@gmail.com:587/"
+set from = "tgoldie@gmail.com"
+set realname = "Travis Goldie"

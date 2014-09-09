@@ -1,0 +1,331 @@
+#-------------------------------------------------------------------------------
+# Name:        bug2910_2x1_locking.ini
+# Author:      Travis Goldie
+# Created:     04/24/2013
+# Copyright:   (c) SIOS Technology Corp 2013
+#-------------------------------------------------------------------------------
+[settings]
+repeat=1
+sleep=5.0
+filesize=600M
+; In seconds
+panicdelay=2
+timeout=10
+
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+; Bug 2910:
+; Prevent corruption on shared buddies.
+;
+; Node1 - Source
+; Node2 - Buddy
+; Node3 - Target
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+[defaults/createmirror]
+expectedRetCode=${returnCodes:success}
+expectedOutput="emcmd_returncode"
+app=${apps:emcmd}
+system=${node1:ip1}
+cmd="CREATEMIRROR"
+volume=${node1:volume1}
+target=${node2:ip1}
+type=a
+options=
+
+
+[defaults/createjob]
+expectedRetCode=${returnCodes:success}
+;expectedOutput="emcmd_returncode"
+app=${apps:emcmd}
+system=${node1:ip1}
+cmd="CREATEJOB"
+jobname=switchover-job
+description="test"
+
+; Source to Buddy
+sysname1=${node1:fqdn}
+drvletter1=${node1:volume1}
+ip1=0.0.0.0
+sysname2=${node2:fqdn}
+drvletter2=${node2:volume1}
+ip2=0.0.0.0
+type1=D
+
+; Source to Target
+sysname3=${node1:fqdn}
+drvletter3=${node1:volume1}
+ip3=${node1:ip1}
+sysname4=${node3:fqdn}
+drvletter4=${node3:volume1}
+ip4=${node3:ip1}
+type2=a
+
+; Buddy to Source
+sysname5=${node2:fqdn}
+drvletter5=${node2:volume1}
+ip5=${node2:ip1}
+sysname6=${node3:fqdn}
+drvletter6=${node3:volume1}
+ip6=${node3:ip1}
+type3=a
+
+[defaults/verifymirror]
+expectedRetCode=${returnCodes:success}
+app=${apps:verifyactions}
+function=verifymirror
+source=${node1:ip1}
+target=${node3:ip1}
+sourceVol=${node1:volume1}
+targetVol=${node3:volume1}
+
+[defaults/switchovervolume]
+expectedRetCode=${returnCodes:success}
+expectedOutput="emcmd_returncode"
+app=${apps:emcmd}
+system=${node1:ip1}
+cmd="SWITCHOVERVOLUME"
+volume=${node1:volume1}
+target=${node2:ip1}
+options=-f
+
+[defaults/verifylock]
+expectedRetCode=${returnCodes:success}
+app=${apps:verifyactions}
+function=verifylock
+source=${node1:ip1}
+target=${node2:volume1}
+delay=
+timeout=${settings:timeout}
+
+[defaults/verifyunlock]
+expectedRetCode=${returnCodes:success}
+app=${apps:verifyactions}
+function=verifyunlock
+target=${node2:ip1}
+targetVol=${node2:volume1}
+delay=
+timeout=${settings:timeout}
+
+[defaults/writefile]
+expectedRetCode=${returnCodes:success}
+app=${apps:verifyactions}
+function=writefile
+target=${node1:ip1}
+targetvol=${node1:volume1}
+filesize=${settings:filesize}
+count=3
+backgroud=1
+
+[defaults/panic]
+expectedRetCode=${returnCodes:success}
+app=${apps:verifyactions}
+function=panic
+target=${node1:ip1}
+delay=${settings:panicdelay}
+
+
+[defaults/deletemirror]
+expectedRetCode=${returnCodes:success}
+expectedOutput="emcmd_returncode"
+app=${apps:emcmd}
+system=${node1:ip1}
+cmd="DELETEMIRROR"
+volume=${node1:volume1}
+target=
+
+[defaults/verifydelete]
+expectedRetCode=${returnCodes:success}
+app=${apps:verifyactions}
+function=verifydelete
+source=${node1:ip1}
+target=${node2:ip1}
+sourceVol=${node1:volume1}
+targetVol=${node2:volume1}
+
+[defaults/deletealljobs]
+expectedRetCode=${returnCodes:success}
+app=${apps:winfuncs}
+function=deletealljobs
+hostnames=${node1:hostname},${node2:hostname},${node3:hostname}
+
+
+[async_verify_mirror/createmirror]
+;; Test Assertion:
+;; Create an ASYNC mirror, and verify it on the target side. This
+;; will pause/unlock volume and verify checksums.
+
+[async_verify_mirror/createjob]
+
+[async_verify_mirror/verifymirror]
+
+[async_verify_mirror/deletemirror]
+
+[async_verify_mirror/verifydelete]
+
+[async_verify_mirror/deletealljobs]
+
+
+[sync_verify_mirror/createmirror]
+;; Test Assertion:
+;; Create an SYNC mirror, and verify it on the target side. This
+;; will pause/unlock volume and verify checksums.
+type=s
+
+[sync_verify_mirror/createjob]
+type2=s
+type3=s
+
+[sync_verify_mirror/verifymirror]
+
+[sync_verify_mirror/deletemirror]
+
+[sync_verify_mirror/verifydelete]
+
+[sync_verify_mirror/deletealljobs]
+
+
+
+
+[sync_verify_switchover/createmirror]
+;; Test Assertion:
+;; Create an SYNC mirror, and verify it on the target side. Fast switchover
+;; from source to buddy. Verify source is locked and the buddy is unlocked
+type=s
+
+[sync_verify_switchover/createjob]
+type2=s
+type3=s
+
+[sync_verify_switchover/verifymirror]
+
+
+[sync_verify_switchover/switchovervolume]
+
+
+[sync_verify_switchover/verifylock]
+;; Verifies node1
+
+
+[sync_verify_switchover/verifyunlock]
+;; Verifies node2
+
+
+[sync_verify_switchover/deletemirror]
+system=${node2:ip1}
+volume=${node2:volume1}
+
+[sync_verify_switchover/verifydelete]
+source=${node2:ip1}
+target=${node1:ip1}
+sourceVol=${node2:volume1}
+targetVol=${node1:volume1}
+
+
+[sync_verify_switchover/deletealljobs]
+
+
+[sync_verify_switchover_writing/createmirror]
+;; Test Assertion:
+;; Create an SYNC mirror, and verify it on the target side. Fast switchover
+;; from source to buddy while writing to disk. Verify source is
+;; locked and the buddy is unlocked
+type=s
+
+[sync_verify_switchover_writing/createjob]
+type2=s
+type3=s
+
+[sync_verify_switchover_writing/verifymirror]
+
+
+[sync_verify_switchover_writing/writefile]
+
+
+[sync_verify_switchover_writing/switchovervolume]
+
+
+[sync_verify_switchover_writing/verifylock]
+;; Verifies node1
+
+
+[sync_verify_switchover_writing/verifyunlock]
+;; Verifies node2
+
+
+[sync_verify_switchover_writing/deletemirror]
+system=${node2:ip1}
+volume=${node2:volume1}
+
+[sync_verify_switchover_writing/verifydelete]
+source=${node2:ip1}
+target=${node1:ip1}
+sourcevol=${node2:volume1}
+targetvol=${node1:volume1}
+
+[sync_verify_switchover_writing/deletealljobs]
+
+
+
+
+
+
+[sync_verify_switchover_panic/createmirror]
+;; Test Assertion:
+;; Create a SYNC mirror, and verify it on the target side. Fast switchover
+;; from source to buddy and Panic source. Verify buddy is
+;; unlocked after 10 sec
+type=s
+
+[sync_verify_switchover_panic/createjob]
+type2=s
+type3=s
+
+[sync_verify_switchover_panic/verifymirror]
+
+
+[sync_verify_switchover_panic/switchovervolume]
+
+
+[sync_verify_switchover_panic/panic]
+
+
+[sync_verify_switchover_panic/verifylock]
+;; Verifies node1
+
+
+[sync_verify_switchover_panic/verifyunlock]
+;; Verifies node2
+
+
+[sync_verify_switchover_panic/deletemirror]
+system=${node2:ip1}
+volume=${node2:volume1}
+
+[sync_verify_switchover_panic/verifydelete]
+source=${node2:ip1}
+target=${node1:ip1}
+sourcevol=${node2:volume1}
+targetvol=${node1:volume1}
+
+[sync_verify_switchover_panic/deletealljobs]
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

@@ -1,0 +1,110 @@
+#-------------------------------------------------------------------------------
+# Name:        emcmd_createmirror.ini
+# Author:      Travis Goldie
+# Created:     11/03/2012
+# Copyright:   (c) SIOS Technology Corp 2012
+#-------------------------------------------------------------------------------
+[settings]
+;companion="emcmd_createmirror.py"
+repeat=3
+scenarioName="emcmd_demo"
+sleep=3.0
+
+[defaults/createmirror]
+expectedRetCode=${returnCodes:success}
+expectedOutput="emcmd_returncode"
+app=${apps:emcmd}
+system=${node1:ip0}
+cmd="CREATEMIRROR"
+volume=${node1:volume0}
+target=${node2:ip0}
+type=s
+options=
+
+[defaults/deletemirror]
+expectedRetCode=${returnCodes:success}
+expectedOutput="emcmd_returncode"
+app=${apps:emcmd}
+system=${node1:ip0}
+cmd="DELETEMIRROR"
+volume=${node2:volume0}
+target=
+
+
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+; Testing Command Line here
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+[emcmd_fail_missingparam1_local_ip]
+## Test Assertion:
+## Shall fail to create a mirror and fail to delete a mirror (but with a return
+## code of "SUCCESS"
+
+[emcmd_fail_missingparam1_local_ip/createmirror]
+expectedRetCode=${returnCodes:missing_param}
+expectedOutput=
+system=${node1:ip0}
+cmd="CREATEMIRROR
+volume=${node1:volume0}
+target=${node2:ip0}
+type=
+
+[emcmd_fail_missingparam1_local_ip/deletemirror]
+expectedRetCode=${returnCodes:missing_param}
+expectedOutput=
+postrun=
+postrunTarget=
+volume=
+
+
+[emcmd_success_async_local_ip0/createmirror]
+type=a
+
+[emcmd_success_async_local_ip0/deletemirror]
+
+
+[emcmd_success_sync_local_ip0]
+## Test Assertion:
+## Shall successfully create an async mirror and successfully delete it
+
+
+[emcmd_success_sync_local_ip0/createmirror]
+type=s
+
+[emcmd_success_sync_local_ip0/deletemirror]
+
+
+[emcmd_success_sync_remote_ip0]
+## Test Assertion:
+## Shall successfully create an async mirror and successfully delete it on
+## the target node
+
+[emcmd_success_sync_remote_ip0/createmirror]
+system=${node1:ip0}
+target=${node2:ip0}
+
+[emcmd_success_sync_remote_ip0/deletemirror]
+system=${node1:ip0}
+
+;;;;;;;;;;;;;;;;;;;;;;;;;;;
+; Testing GUI here
+;;;;;;;;;;;;;;;;;;;;;;;;;;;
+; [defaults/guiconnectservers]
+; expectedRetCode=${returnCodes:success}
+; expectedOutput=
+; app=sikuli
+; guiTarget=${node1:ip0}
+; cmd=connectservers
+; servers=${node2:hostname},${node1:hostname}
+
+; [defaults/guicreatejob]
+; expectedRetCode=${returnCodes:success}
+; expectedOutput=
+; app=sikuli
+; guiTarget=${node1:ip0}
+; cmd=createjob
+; title="Blah"
+; description="Stuff"
+
+; [gui_success_connectserver/guiconnectservers]
+
+; [gui_success_createjob/guicreatejob]

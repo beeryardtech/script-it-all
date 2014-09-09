@@ -1,0 +1,46 @@
+Host *.sc.steeleye.com *.steeleye.com 172.17.*
+    #Only allow SSH 2
+    Protocol 2
+
+    #IdentityFile ~/.ssh/steeleye_key
+
+    StrictHostKeyChecking no
+    UserKnownHostsFile /dev/null
+    ForwardX11 yes
+    ServerAliveInterval 30
+
+Host github-beeryard
+    HostName github.com
+    User git
+    Protocol 2
+    IdentityFile ~/.sshkeys/beeyard_key
+
+    StrictHostKeyChecking no
+    ForwardX11 no
+
+Host github.com
+    HostName github.com
+    User git
+    Protocol 2
+    IdentityFile ~/.ssh/steeleye_key
+
+    StrictHostKeyChecking no
+    ForwardX11 no
+
+Host beeryardnet beeryardtech.servebeer.com
+    HostName beeryardnet.beeryardtech.com 
+    Protocol 2
+
+    StrictHostKeyChecking no
+    ForwardX11 yes
+
+    # Which ID file to use. Stored in encfs vol
+    IdentityFile ~/.sshkeys/beeryard_key
+
+    ServerAliveInterval 30
+    ServerAliveCountMax 240
+    ServerAliveCountMax 240
+
+Host ng-v*.sc.steeleye.com
+    ForwardX11 no
+    IdentityFile ~/.ssh/cldo-sioss-rsa-4096

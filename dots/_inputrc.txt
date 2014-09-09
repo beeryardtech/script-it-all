@@ -1,0 +1,36 @@
+#!/bin/bash
+###############################################################################
+#
+# Name: .inputrc
+# Author: Travis Goldie
+# Date: January 2012
+# Purpose: Basic configurations for the Readline lib
+#
+###############################################################################
+#Gives VI like control to readline programs (like MySQL)
+set editing-mode vi
+set keymap vi
+
+# vi settings
+$if mode=vi
+    # normal mode
+    set keymap vi-command
+    "j": beginning-of-history
+    "l": backward-char
+    "h": forward-char
+    "G": end-of-history
+
+    # insert mode
+    set keymap vi-insert
+    "jj": vi-movement-mode # remap escape
+$endif
+
+#Converts all META-blah key combinations to ESC-blah.
+set convert-meta on
+
+#Controls autocompletion
+set show-all-if-ambiguous on
+set completion-ignore-case on
+
+#Treates '_' and '-' as equivalent when case-insensitive filename matching
+set completion-map-case on

@@ -1,0 +1,55 @@
+
+Usage:
+	EMCmd <system> STOPSERVICE
+	EMCmd <system> CREATEMIRROR <volume letter> <target system> <Type> [options]
+	EMCmd <system> RESYNCMIRROR <volume letter> [<target system>]
+	EMCmd <system> BREAKMIRROR <volume letter> [<target system>]
+	EMCmd <system> PAUSEMIRROR <volume letter> [<target system>]
+	EMCmd <system> CONTINUEMIRROR <volume letter> [<target system>]
+	EMCmd <system> DELETEMIRROR <volume letter> [<target system>]
+	EMCmd <system> DELETELOCALMIRRORONLY <volume letter> [<target system>]
+	EMCmd <system> RESTARTVOLUMEPIPE <volume letter>
+	EMCmd <system> SWITCHOVERVOLUME <volume letter>
+	EMCmd <system> PREPARETOBECOMETARGET <volume letter>
+	EMCmd <system> LOCKVOLUME <volume letter>
+	EMCmd <system> UNLOCKVOLUME <volume letter>
+	EMCmd <system> READREGISTRY <volume letter>
+	EMCmd <system> CLEARSWITCHOVER <volume letter>
+	EMCmd <system> UPDATEVOLUMEINFO <volume letter>
+	EMCmd <system> ISBREAKUSERREQUESTED <volume letter>
+	EMCmd <system> ISPOTENTIALMIRRORVOL <volume letter>
+	EMCmd <system> GETCONFIGURATION <volume letter>
+	EMCmd <system> SETCONFIGURATION <volume letter> <config mask>
+	EMCmd <system> GETSERVICEINFO
+	EMCmd <system> GETVOLUMEINFO <volume letter> <level>
+	EMCmd <system> GETEXTENDEDVOLUMEINFO <volume letter>
+	EMCmd <system> GETMIRRORVOLINFO <volume letter>
+	EMCmd <system> GETVOLUMEDRVSTATE <volume letter>
+	EMCmd <system> GETMIRRORTYPE <volume letter>
+	EMCmd <system> GETRESYNCSTATUS <volume letter>
+	EMCmd <system> GETCOMPLETEVOLUMELIST
+	EMCmd <system> GETSOURCEMIRROREDVOLUMES
+	EMCmd <system> GETTARGETMIRROREDVOLUMES
+	EMCmd <system> ENABLEREWIND <volume letter>
+	EMCmd <system> DISABLEREWIND <volume letter>
+	EMCmd <system> SUSPENDREWIND <volume letter>
+	EMCmd <system> GETREWINDENABLED <volume letter>
+	EMCmd <system> GETREWINDSUSPENDED <volume letter>
+	EMCmd <system> GETREWINDLOGFILE <volume letter>
+	EMCmd <system> REWINDTAG <volume letter> variable number of tag strings...
+	EMCmd <system> MERGETARGETBITMAP <volume letter> <target system>
+	EMCmd <system> FLUSHREWINDLOGFILE <volume letter>
+	EMCmd <system> GETASR_OK <volume letter> <target system>
+	EMCmd <system> SETASR_OK <volume letter> [<target system>]
+	EMCmd <system> CLEARASR_OK <volume letter> [<target system>]
+	EMCmd <system> CREATEJOB <JobName> <Description> <SysName1> <DrvLetter1> <IP1> <SysName2> <DrvLetter2> <IP2> <MirrorType> ...
+	EMCmd <system> DELETEJOB <JobId>
+	EMCmd <system> UPDATEJOB <JobId> <Name> <Descr> [<SysName1> <DrvLetter1> <IP1> <SysName2> <DrvLetter2> <IP2> <MirrorType>]... 
+	EMCmd <system> GETJOBINFO [<JobId>]
+	EMCmd <system> GETJOBINFOFORVOL <DrvLetter> [<FullSysname>|<IP>]
+	EMCmd <system> GETREMOTEBITMAP <volume letter> <target system> <local file>
+	EMCmd <system> CHANGEMIRRORENDPOINTS <volume letter> <OLD target IP> <NEW source IP> <NEW target IP>
+	EMCmd <system> REGISTERCLUSTERVOLUME <volume letter>
+	
+	
+	

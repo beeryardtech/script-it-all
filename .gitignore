@@ -1,0 +1,5 @@
+# Use Vundle to get these files
+dots/_vim/bundle
+
+# A seperate dir for keys
+dots/_sshkeys

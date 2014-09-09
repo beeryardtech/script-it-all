@@ -1,0 +1,10 @@
+#-------------------------------------------------------------------------------
+# Name:        test_smoke.ini
+# Author:      Travis Goldie
+# Created:     12/03/2012
+# Copyright:   (c) SIOS Technology Corp 2012
+#-------------------------------------------------------------------------------
+
+[testScenarios]
+##verify=scenarios\sanity\verify.ini
+test=scenarios\emcmdapi\test.ini

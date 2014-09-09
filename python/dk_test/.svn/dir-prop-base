@@ -1,0 +1,15 @@
+K 10
+svn:ignore
+V 53
+__pycache__
+logs
+postrun.py
+results
+runtests.log
+tmp
+
+K 13
+svn:mergeinfo
+V 13
+/main:136-137
+END

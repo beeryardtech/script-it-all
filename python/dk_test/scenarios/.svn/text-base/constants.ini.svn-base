@@ -1,0 +1,297 @@
+#-------------------------------------------------------------------------------
+# Name:        constants.ini
+# Author:      Travis Goldie
+# Created:     09/21/2012
+# Copyright:   (c) SIOS Technology Corp 2012
+#-------------------------------------------------------------------------------
+[DEFAULT]
+;This is where keys that need to be in every secion
+
+[apps]
+bang=${paths:bindir}\osrbang2008x64.exe
+bangscript=${paths:bindir}\bangscript.py
+blat=${paths:bindir}\blat.exe
+emcmd=${paths:ExtMirrBase}\emcmd.exe
+iometer=C:\Programs\iometer
+winfuncs=${paths:basedir}\libs\winfuncs.py
+verifyactions=${paths:basedir}\libs\verifyactions.py
+writefile=${paths:bindir}\WriteFile.exe
+
+[notifications]
+;Body and subject will be wrapped automatically in quotes.
+;Recipients and Attachements need to be comma seperated list
+;The attachments is the list of the keys of the logs that will be sent
+;Values for attachments are: All | None | {FilePath}.
+;Where  - All - All logs for that run
+;       - None - Include no attachments
+;       - {FilePath} - Comma seperated list of files to include.
+attachments=All
+body=Please see attached logs for results
+recipients=travis.goldie@us.sios.com,jeff.yates@us.sios.com
+sender=siostechshare@steeleye.com
+server=maileast.sc.steeleye.com
+subject=Log files for dk_test
+
+[mirrorStates]
+invalidState=-1
+noMirror=0
+mirroring=1
+resync=2
+broken=3
+paused=4
+pending=5
+
+
+[returnCodes]
+;"False" can also mean an imported command failed/errored
+;Ex: deleteAllJobsFromHost failed to delete all the jobs on a host
+setupcomplete=-2
+false=-1
+success=0
+missing_param=1
+unknown_command=22
+
+
+[paths]
+; basedir=C:\Programs\dk_test
+bindir=${basedir}\libs\bin
+logsDir=C:\logs
+outputsdir=${basedir}\outputs
+resources=${basedir}\libs\resources
+scenariosdir=${basedir}\scenarios
+tmpdir=C:\tmp
+
+;Logging Paths
+logConfigPath=${scenariosdir}\logconfig.ini
+;Format mask for log names. First {} is for the 3-digit count
+;The second {} is for the name of the event log
+logFilePathBase=${logsDir}\${settings:fileLogger}_{}.log
+resultsFilePathBase=${logsDir}\${settings:fileLogger}_{}-results.log
+postrunLogPathBase=${logsDir}\${settings:filelogger}_{}-postrun.log
+eventLogPathBase=${logsDir}\${settings:fileLogger}_{}-{}.evtx
+;This is defined at run time. Used by dklog as the file path to log file
+;TODO: If set this will be the path to the log file
+;logFilePathFull=""
+;postrunLogPathFull=""
+;resultFileLogPathFull=""
+xmlLogging=${scenariosdir}\dklogging.xml
+
+;Resources and scripts used by framework
+allCommands=${basedir}\scenarios\all_commands.ini
+bigfile=${resources}\iobw.tst
+cleanUpPath=${scenariosdir}\cleanup.ini
+scenarioCommon=${scenariosdir}\scenario_common.py
+tmpClusterIni=${tmpdir}\cluster.ini.tmp
+
+
+;Paths for Post Run Functionality and GUI Testing
+GUIServer=${basedir}\libs\dksikuli.sikuli\dksikuli.skl
+GUIImagesDir=${basedir}\libs\dksikuli.sikuli
+sikuliBat=C:\Programs\SikuliX\Sikuli-IDE.bat
+snapinDir=${ExtMirrBase}\SnapIn64
+
+;Tmp files for silent installing
+dkExePath=${tmpdir}\DK-${silentinstall:dkversion}-Setup.exe
+dktmpinstall=${tmpdir}\dkinstall.iss
+dktmprepair=${tmpdir}\dkrepair.iss
+dktmpremove=${tmpdir}\dkremove.iss
+
+;External Applications
+ExtMirrBase=C:\Program Files (x86)\Steeleye\DataKeeper
+installalt=C:\Program-New\DataKeeper
+mmc=C:\Windows\System32\mmc.exe
+dkgui=${ExtMirrBase}\DataKeeper.msc
+
+
+[silentinstall]
+; These are changes that can be updated (such as version of DK
+dkinstallerID={B00365F8-E4E0-11D5-8323-0050DA240D61}
+dkname=SteelEye DataKeeper for Windows v7 Update 6
+dkversion=7.6.0
+
+dkinstall=
+	[InstallShield Silent]
+	Version=v7.00
+	File=Response File
+
+	[File Transfer]
+	OverwrittenReadOnly=NoToAll
+
+	[${dkinstallerID}-DlgOrder]
+	Dlg0=${dkinstallerID}-SdWelcome-0
+	Count=7
+	Dlg1=${dkinstallerID}-SdLicense-0
+	Dlg2=${dkinstallerID}-SdComponentTree-0
+	Dlg3=${dkinstallerID}-SdAskDestPath-0
+	Dlg4=${dkinstallerID}-AskOptions-0
+	Dlg5=${dkinstallerID}-SdRegisterUserEx-0
+	Dlg6=${dkinstallerID}-SdFinishReboot-0
+
+	[${dkinstallerID}-SdWelcome-0]
+	Result=1
+
+	[${dkinstallerID}-SdLicense-0]
+	Result=1
+
+	[${dkinstallerID}-SdComponentTree-0]
+	szDir=C:\Program Files (x86)\SteelEye\DataKeeper
+	Component-type=string
+	Component-count=2
+	Component-0=DataKeeper Server Components
+	Component-1=DataKeeper User Interface
+	Result=1
+
+	[${dkinstallerID}-SdAskDestPath-0]
+	szDir=C:\Program Files (x86)\SteelEye\DataKeeper
+	Result=1
+
+	[Application]
+	Name=${dkname}
+	Version=${dkversion}
+	Company=SteelEye Technology, Inc.
+	Lang=0009
+
+	[${dkinstallerID}-AskOptions-0]
+	Result=1
+	Sel-0=1
+	Sel-1=0
+
+	[${dkinstallerID}-SdRegisterUserEx-0]
+	szName=QAGROUP\Administrator
+	szCompany=frs.123
+	szSerial=frs.123
+	Result=1
+
+	[${dkinstallerID}-SdFinishReboot-0]
+	Result=6
+	BootOption=3
+
+dkremove=
+    [InstallShield Silent]
+	Version=v7.00
+	File=Response File
+
+	[File Transfer]
+	OverwrittenReadOnly=NoToAll
+
+	[${dkinstallerID}-DlgOrder]
+	Dlg0=${dkinstallerID}-SdWelcomeMaint-0
+	Count=6
+	Dlg1=${dkinstallerID}-SprintfBox-0
+	Dlg2=${dkinstallerID}-AskYesNo-0
+	Dlg3=${dkinstallerID}-SprintfBox-1
+	Dlg4=${dkinstallerID}-MessageBox-0
+	Dlg5=${dkinstallerID}-SdFinishReboot-0
+
+	[${dkinstallerID}-SdWelcomeMaint-0]
+	Result=303
+
+	[${dkinstallerID}-SprintfBox-0]
+	Result=1
+
+	[${dkinstallerID}-AskYesNo-0]
+	Result=1
+
+	[${dkinstallerID}-SprintfBox-1]
+	Result=1
+
+	[Application]
+	Name=${dkname}
+	Version=${dkversion}
+	Company=SteelEye Technology, Inc.
+	Lang=0009
+
+	[${dkinstallerID}-MessageBox-0]
+	Result=1
+
+	[${dkinstallerID}-SdFinishReboot-0]
+	Result=6
+	BootOption=3
+
+dkrepair=
+	[InstallShield Silent]
+	Version=v7.00
+	File=Response File
+
+	[File Transfer]
+	OverwrittenReadOnly=NoToAll
+
+	[${dkinstallerID}-DlgOrder]
+	Dlg0=${dkinstallerID}-SdWelcomeMaint-0
+	Count=3
+	Dlg1=${dkinstallerID}-AskYesNo-0
+	Dlg2=${dkinstallerID}-SdFinishReboot-0
+
+	[${dkinstallerID}-SdWelcomeMaint-0]
+	Result=302
+
+	[${dkinstallerID}-AskYesNo-0]
+	Result=1
+
+	[Application]
+	Name=${dkname}
+	Version=${dkversion}
+	Company=SteelEye Technology, Inc.
+	Lang=0009
+
+	[${dkinstallerID}-SdFinishReboot-0]
+	Result=1
+	BootOption=0
+
+
+[settings]
+;These deal with general settings and test case settings
+appKey="app"
+argsKey=args
+;checksumBigFile=
+detailsKeys="app,expectedOutput,expectedRetCode,function"
+defaultSectionName="defaults"
+defaultSleep=2.0
+delimiters=",;|\/"
+functionKey=function
+moduleKey=module
+testSettingsName=testsettings
+
+;These are login settings for the nodes. All nodes should have the same
+;Username, password, and domain.
+nodeDomain=QAGROUP
+nodeUsername=Administrator
+nodePassword=frs.123
+
+;These are setting related to logging
+maxOutputLen=70
+defaultLogLevel=DEBUG
+logFileBaseName='dklog'
+eventLogs="Application,System"
+eventLogger=dkevent
+fileLogger=dklog
+postrunLogger=dkpostrun
+resultsLogger=dkresults
+stdoutLogger=dkstdout
+loggers=${eventLogger},${fileLogger},${resultsLogger},${stdoutLogger}
+
+;All GUI testing settings go here
+;compileGUIServer=0
+guiServerURI=http://{}:8080
+guiTestApp="sikuli"
+startGUIServer=0
+startGUIClient=0
+testCaseSectionMarker="breakpoint"
+
+;These are the settings for the PostRun Functionality
+serviceName="ExtMirrSvc"
+postrunSourceKey="system"
+postRunServerURI=http://{}:9000
+dkListOfDLLs=SDRClient.dll,SDRService.dll,log4net.dll,SteelEye.DataKeeper.Api.dll
+stateSleepTimer=5.0
+stateWaitLoop=60
+validPostRunCmds="verifymirror,verifychecksum,verifydelete"
+
+
+[winreg]
+; All these keys are relative to HKEY_LOCAL_MACHINE
+jobs=${parameters}\jobs
+parameters=SYSTEM\CurrentControlSet\services\ExtMirr\Parameters
+
+;AutoAdminLogon key
+winlogon=Software\Microsoft\Windows NT\CurrentVersion\Winlogon

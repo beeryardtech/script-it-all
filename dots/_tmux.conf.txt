@@ -1,0 +1,63 @@
+###############################################################################
+# Author: Travis Goldie
+# Date: December 2013
+# Purpose: Config for tmux - the terminal multiplexer 
+###############################################################################
+#-------------------------------------------------------------
+# General Settings
+#-------------------------------------------------------------
+# Unbind everything and start over with fresh config
+#source-file ~/.tmux.reset.conf
+
+# Change the default prefix binding (C-b)
+unbind-key C-b
+set -g prefix C-g
+
+# Use VI mode
+set-window-option -g mode-keys vi
+set-option -g status-keys vi
+
+# Basic configs
+set-window-option -g window-status-current-bg green
+set-window-option -g automatic-rename on
+set-option -g history-limit 100000
+set-option -g base-index 1
+set-option -s escape-time 0
+
+# Enable mouse mode
+setw -g mode-mouse on
+set-option -g mouse-select-pane on
+set-option -g mouse-resize-pane on 
+
+# Enable window monitoring. Notify when something happens
+# in another window
+setw -g monitor-activity on
+set -g visual-activity on
+
+#-------------------------------------------------------------
+# Key Bindings
+#-------------------------------------------------------------
+# Hit C-\ twice to go to last window
+bind-key C-\ last-window
+bind-key b set-option status
+bind-key / command-prompt "split-window 'exec man %%'"
+
+# Vim's definition of a horizontal/vertical split is reversed from tmux's
+bind s split-window -v
+bind v split-window -h
+
+# Move around panes with hjkl, as one would in vim after pressing ctrl-w
+bind -r h select-pane -L
+bind -r j select-pane -D
+bind -r k select-pane -U
+bind -r l select-pane -R
+
+# Select and copy like in Vim
+bind-key -r -t vi-copy 'v' begin-selection
+bind-key -r -t vi-copy 'y' copy-selection
+
+# Resize panes like vim
+bind < resize-pane -L 10
+bind > resize-pane -R 10
+bind - resize-pane -D 10
+bind + resize-pane -U 10

@@ -1,0 +1,9 @@
+#-------------------------------------------------------------------------------
+# Name:        test_all.ini
+# Author:      Travis Goldie
+# Email:       test_automation@us.sios.com
+# Copyright:   (c) SIOS Technology Corp 2013
+#-------------------------------------------------------------------------------
+
+[testScenarios]
+stress=scenarios\emcmdapi\win2008R2_switchover_stress.ini

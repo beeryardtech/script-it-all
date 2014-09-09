@@ -1,0 +1,16 @@
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+"
+" Name: .vrapperrc 
+" Author: Travis Goldie
+" Date: July 2013
+" Purpose: Config file for Vrapper - Vim for Eclipse
+"
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+
+set ignorecase
+set smartcase
+
+"set clipboard=autoselect 
+
+noremap <A-left>   :tabp<cr>
+noremap <A-right>   :tabn<cr>

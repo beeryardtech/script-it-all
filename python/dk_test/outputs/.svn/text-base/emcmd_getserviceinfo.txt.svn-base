@@ -1,0 +1,13 @@
+
+Service Description = 'SteelEye DataKeeper Service'
+Service Build Type  = Release
+Service Version     = 7.5.0
+Service Build       = 750010
+Driver Version      = 7.5.0
+Driver Build        = 750010
+Target Dispatch Port = 9999
+Volume Bit Map      = 30h
+Service Start Time  = Thu Nov 22 10:55:57 2012
+Last Modified Time  = Fri Nov 23 18:58:19 2012
+NetBIOS Name        = CAE-QA-V82
+Full Domain Name    = cae-qa-v82.QAGROUP.COM
