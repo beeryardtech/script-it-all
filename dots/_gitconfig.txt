@@ -14,8 +14,6 @@
 [merge]
 	tool = kdiff3
 [core]
-[core]
-[core]
 	pager = less -
 [giggle]
 	main-window-maximized = true
