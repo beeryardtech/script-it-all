@@ -42,7 +42,7 @@
 			</pref>
 		</pref>
 		<pref name='savedstatus'>
-			<pref name='default' type='int' value='1386081350'/>
+			<pref name='default' type='int' value='1383049909'/>
 			<pref name='startup' type='int' value='0'/>
 			<pref name='startup_current_status' type='bool' value='1'/>
 			<pref name='idleaway' type='int' value='1349117461'/>
@@ -392,7 +392,7 @@
 				<pref name='events'>
 					<pref name='signonf' type='bool' value='1'/>
 					<pref name='immsg' type='bool' value='1'/>
-					<pref name='chatmsg' type='bool' value='1'/>
+					<pref name='chatmsg' type='bool' value='0'/>
 					<pref name='chatnick' type='bool' value='1'/>
 				</pref>
 				<pref name='beep' type='bool' value='1'/>
@@ -534,7 +534,7 @@
 			<pref name='sort_type' type='string' value='alphabetical'/>
 			<pref name='x' type='int' value='0'/>
 			<pref name='y' type='int' value='31'/>
-			<pref name='width' type='int' value='357'/>
+			<pref name='width' type='int' value='505'/>
 			<pref name='height' type='int' value='655'/>
 			<pref name='theme' type='string' value=''/>
 		</pref>
@@ -569,8 +569,8 @@
 				<pref name='height' type='int' value='390'/>
 			</pref>
 			<pref name='im'>
-				<pref name='x' type='int' value='359'/>
-				<pref name='y' type='int' value='31'/>
+				<pref name='x' type='int' value='0'/>
+				<pref name='y' type='int' value='23'/>
 				<pref name='width' type='int' value='1071'/>
 				<pref name='height' type='int' value='628'/>
 				<pref name='animate_buddy_icons' type='bool' value='1'/>
@@ -611,21 +611,23 @@
 	<pref name='finch'>
 		<pref name='plugins'>
 			<pref name='loaded' type='pathlist'>
+				<item value='/usr/lib/purple-2/slashexec.so'/>
 				<item value='/usr/lib/purple-2/autoaccept.so'/>
 				<item value='/usr/lib/purple-2/buddynote.so'/>
 				<item value='/usr/lib/purple-2/capsnot.so'/>
 				<item value='/usr/lib/finch/gntclipboard.so'/>
-				<item value='/usr/lib/finch/gnthistory.so'/>
-				<item value='/usr/lib/finch/gntlastlog.so'/>
 				<item value='/usr/lib/purple-2/google.so'/>
 				<item value='/usr/lib/finch/grouping.so'/>
 				<item value='/usr/lib/purple-2/irchelper.so'/>
 				<item value='/usr/lib/purple-2/irc-more.so'/>
 				<item value='/usr/lib/purple-2/joinpart.so'/>
+				<item value='/usr/lib/purple-2/eight_ball.so'/>
 				<item value='/usr/lib/purple-2/ssl-nss.so'/>
+				<item value='/usr/lib/purple-2/offlinemsg.so'/>
 				<item value='/usr/lib/purple-2/psychic.so'/>
 				<item value='/usr/lib/purple-2/ssl.so'/>
 				<item value='/usr/lib/finch/gnttinyurl.so'/>
+				<item value='/usr/lib/purple-2/bash.so'/>
 			</pref>
 			<pref name='seen' type='pathlist'>
 				<item value='/usr/lib/purple-2/xmppprio.so'/>
@@ -672,7 +674,7 @@
 			<pref name='timestamps' type='bool' value='1'/>
 			<pref name='notify_typing' type='bool' value='1'/>
 			<pref name='size'>
-				<pref name='width' type='int' value='45'/>
+				<pref name='width' type='int' value='41'/>
 				<pref name='height' type='int' value='19'/>
 			</pref>
 			<pref name='position'>

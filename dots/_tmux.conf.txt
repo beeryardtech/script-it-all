@@ -1,7 +1,7 @@
 ###############################################################################
 # Author: Travis Goldie
 # Date: December 2013
-# Purpose: Config for tmux - the terminal multiplexer 
+# Purpose: Config for tmux - the terminal multiplexer
 ###############################################################################
 #-------------------------------------------------------------
 # General Settings
@@ -12,6 +12,7 @@
 # Change the default prefix binding (C-b)
 unbind-key C-b
 set -g prefix C-g
+#set -g prefix M
 
 # Use VI mode
 set-window-option -g mode-keys vi
@@ -27,7 +28,7 @@ set-option -s escape-time 0
 # Enable mouse mode
 setw -g mode-mouse on
 set-option -g mouse-select-pane on
-set-option -g mouse-resize-pane on 
+set-option -g mouse-resize-pane on
 
 # Enable window monitoring. Notify when something happens
 # in another window
@@ -47,10 +48,10 @@ bind s split-window -v
 bind v split-window -h
 
 # Move around panes with hjkl, as one would in vim after pressing ctrl-w
-bind -r h select-pane -L
-bind -r j select-pane -D
-bind -r k select-pane -U
-bind -r l select-pane -R
+bind -nr h select-pane -L
+bind -nr j select-pane -D
+bind -nr k select-pane -U
+bind -nr l select-pane -R
 
 # Select and copy like in Vim
 bind-key -r -t vi-copy 'v' begin-selection

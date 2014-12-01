@@ -31,9 +31,9 @@ set ignorecase
 " same except use 'Z'.
 let myChar='a'
 while myChar <= 'z'
-  exec "set <A-".myChar.">=\e".myChar
-  exec "imap \e".myChar." <A-".myChar.">"
-  let myChar = nr2char(1 + char2nr(myChar))
+    exec "set <A-".myChar.">=\e".myChar
+    exec "imap \e".myChar." <A-".myChar.">"
+    let myChar = nr2char(1 + char2nr(myChar))
 endw
 
 " Timeout is to tell difference between Meta encoding and hitting 2 keys
@@ -55,134 +55,13 @@ set keymap=insert-only_capslock
 set iminsert=0
 
 
-"""" Bundles ( Vundle )
-" XXX Start and end with setting filetype
-filetype off
-set rtp+=~/.vim/bundle/vundle/
-call vundle#rc()
+"""" Import External Config Files
+" Plugins should always be sourced in first
+source ~/.vimrc.plugins
 
-let g:vundle_default_git_proto = 'git'
+source ~/.vimrc.funcs
+source ~/.vimrc.js
 
-" Included Bundles
-" First let Vundle handle itself
-Bundle 'gmarik/vundle'
-
-" Makes motions work on Camel Case boundaries
-Bundle 'camelcasemotion'
-
-" Coffeescript support
-Bundle 'kchmck/vim-coffee-script'
-
-" Python refactoring tools
-Bundle 'klen/python-mode'
-
-" Visual Marks
-Bundle 'kshenoy/vim-signature'
-
-" Editor config support for vim
-Bundle 'editorconfig/editorconfig-vim'
-
-" Enancement to NERDTree
-Bundle 'jistr/vim-nerdtree-tabs'
-
-" Parse objects for properties for omnicompleting
-Bundle 'marijnh/tern_for_vim'
-
-" Adds snippets for angular js (Note: need to add to ultis dir list)
-Bundle 'matthewsimo/angular-vim-snippets'
-
-" Visual indent guides
-Bundle 'nathanaelkane/vim-indent-guides'
-
-" Beable to move blocks of text around
-Bundle 'shinokada/dragvisuals.vim'
-
-" Shell within a buffer.
-Bundle 'oplatek/Conque-Shell'
-
-" Javascript library syntax
-Bundle 'https://github.com/othree/javascript-libraries-syntax.vim.git'
-"Bundle 'orthree/javascript-libraries-syntax.vim'
-
-" Improves JS indention and character concealing (script f for function)
-Bundle 'pangloss/vim-javascript'
-
-" Auto end brackets
-Bundle 'Raimondi/delimitMate'
-
-" File explore
-Bundle 'scrooloose/nerdtree'
-
-" Lint all your code
-Bundle 'scrooloose/syntastic'
-
-" Comment out code
-Bundle 'scrooloose/nerdcommenter'
-
-" Snippets using neocomplete
-Bundle 'Shougo/neosnippet'
-Bundle 'Shougo/neosnippet-snippets'
-
-" Manage undo tree
-Bundle 'sjl/gundo.vim'
-
-" Markdown viewer
-Bundle 'suan/vim-instant-markdown'
-
-" Autoclose HTML tags -- XXX Broken for now
-Bundle 'sukima/xmledit'
-
-" Support for autoending code blocks
-Bundle 'tpope/vim-endwise'
-
-" Git wrapper
-Bundle 'tpope/vim-fugitive'
-
-" Haml, SASS, SCSS support
-Bundle 'tpope/vim-haml'
-
-" Narkdown syntax
-Bundle 'tpope/vim-markdown'
-
-" Allows repeating of plugin commands
-Bundle 'tpope/vim-repeat'
-
-" Surrounds words with quotes or parenthesis
-Bundle 'tpope/vim-surround'
-
-" Vim Ruby on Rails Support
-"Bundle 'tpope/vim-rails'
-
-" Pairs of keys
-Bundle 'tpope/vim-unimpaired'
-
-" Snippet manager
-"Bundle 'UltiSnips'
-
-" Neocomplete - omnicomplete
-"Bundle 'Shougo/neocomplete'
-"Bundle 'Shougo/context_filetype.vim'
-
-" Vim session manager
-Bundle 'xolox/vim-session'
-Bundle 'xolox/vim-misc'
-
-" Vim Ruby Support
-Bundle 'vim-ruby/vim-ruby'
-
-" Autoclose Brackets
-"Bundle 'vim-scripts/Auto-Pairs'
-
-" Make VIM a Bash IDE
-"Bundle 'vim-scripts/bash-support.vim'
-
-" Display Ctags in organized tree
-Bundle 'vim-scripts/Tagbar'
-
-" You Complete Me (ycm)
-Bundle 'Valloric/YouCompleteMe'
-
-filetype plugin indent on
 syntax on
 
 """" Auto-Pairs
@@ -199,31 +78,6 @@ syntax on
 "let g:AutoPairsFlyMode = 0
 "let g:AutoPairsShortcutBackInsert
 
-
-"""" Autocmds Headers
-" Update for your system!
-let toolsDir = "/home/tgoldie/ui/utils/"
-
-" Note - %:t gives the basename of current file. See filename-modifiers
-" For Coffeescript file headers
-autocmd bufnewfile *.coffee exe "so " . toolsDir . "coffee_header.txt"
-autocmd bufnewfile *.coffee exe "1," . 8 . "g/Creation Date:.*/s//Creation Date: " . strftime("%d %b %Y")
-
-" For JS file headers
-autocmd bufnewfile *.js exe "so " . toolsDir . "js_header.txt"
-autocmd bufnewfile *.js exe "1," . 8 . "g/Creation Date:.*/s//Creation Date: " . strftime("%d %b %Y")
-
-" For JS Spec file headers
-"autocmd bufnewfile *Spec.js exe "so " . toolsDir . "spec_header.txt"
-"autocmd bufnewfile *Spec.js exe "1," . 8 . "g/Creation Date:.*/s//Creation Date: " . strftime("%d %b %Y")
-
-" For HTML file headers
-"autocmd bufnewfile *.html exe "so " . toolsDir . "html_header.txt"
-"autocmd bufnewfile *.html exe "1," . 8 . "g/Creation Date:.*/s//Creation Date: " . strftime("%d %b %Y")
-
-" For SCSS file headers
-autocmd bufnewfile *.scss exe "so " . toolsDir . "scss_header.txt"
-autocmd bufnewfile *.scss exe "1," . 8 . "g/Creation Date:.*/s//Creation Date: " . strftime("%d %b %Y")
 
 """" DelimitMate - Autoclose quotes, parenthesis, brackets, etc
 "let g:loaded_delimitMate
@@ -447,18 +301,7 @@ verbose map <C-Up> [c
 verbose map <C-Down> ]c
 
 " Surround keymappings
-verbose nnoremap <A-y> ysw
-verbose nnoremap <A-Y> ysW
-
-
-"""" Whitespace
-function! <SID>StripTrailingWhitespaces()
-    let l = line(".")
-    let c = col(".")
-    %s/\s\+$//e
-    call cursor(l, c)
-endfun
-autocmd FileType c,cpp,css,scss,html,javascript,java,php,ruby,python autocmd BufWritePre <buffer> :call <SID>StripTrailingWhitespaces()
+verbose nmap K ysw
 
 
 """"" Syntax
@@ -488,16 +331,6 @@ set foldlevel=12
 set foldopen=block,hor,mark,percent,quickfix,tag
 
 
-"""" Syntastic
-let g:syntastic_check_on_open=1
-
-" CSS Lint
-let g:syntastic_csslint_options = ''
-let g:syntastic_css_checkers = ['csslint']
-
-" JS Lint
-
-
 """" Neocomplete
 let g:neocomplete#enable_at_startup = 0
 let g:neocomplete#enable_smart_case = 0
@@ -515,7 +348,7 @@ inoremap <expr><C-y> neocomplete#close_popup()
 inoremap <expr><C-e> neocomplete#cancel_popup()
 
 " Recommended key-mappings. <CR>: close popup and save indent.
-inoremap <silent> <CR> <C-r>=<SID>my_cr_function()<CR>
+"inoremap <silent> <CR> <C-r>=<SID>my_cr_function()<CR>
 function! s:my_cr_function()
   "return neocomplete#close_popup() . "\<CR>"
   " For no inserting <CR> key.
@@ -569,7 +402,6 @@ endif
 " Open NERDTree
 nnoremap <F6> :NERDTreeToggle<CR>
 nnoremap <S-F6> :NERDTreeToggle ~/ui/app<CR>
-
 
 """" Neosnippets
 " Plugin key-mappings.
@@ -679,7 +511,6 @@ nmap <F8> :TagbarToggle<CR>
 "let g:UltiSnipsExpandTrigger="<c-h>"
 "let g:UltiSnipsJumpForwardTrigger="<c-n>"
 "let g:UltiSnipsJumpBackwardTrigger="<c-p>"
-
 "let g:UltiSnipsSnippetDirectories=['UltiSnips', 'AngularSnips', 'BeeryardSnips']
 
 
@@ -713,49 +544,6 @@ verbose nmap <C-up> <C-w>l
 """" Fugitive Plugin
 " Auto open QuickFix window when grep'ing
 autocmd QuickFixCmdPost *grep* cwindow
-
-
-
-"""" VIM JS plugin settings
-" Autocmd to fix broken regex
-autocmd BufRead *.js exe "set regexpengine=1"
-autocmd BufRead *.js exe "syntax enable"
-
-" Enable HTML/CSS highlighting in JS file
-let javascript_enable_domhtmlcss=0
-
-" Enable JS Code folding
-let b:javascript_fold=1
-
-" Use script 'f' for functions and return statements
-let g:javascript_conceal=0
-
-" Ignore JSDoc syntax
-"let javascript_ignore_javaScriptdoc=0
-
-" Tern - Show argument hints
-let tern_show_argument_hints='on_move'
-
-autocmd Filetype javascript nnoremap <A-d> :TernDef<CR>
-autocmd Filetype javascript nnoremap <A-r> :TernRename<CR>
-autocmd Filetype javascript nnoremap <A-t> :TernRefs<CR>
-
-" Auto adds a ';' to the end of a line.
-"autocmd Filetype javascript let b:delimitMate_eol_marker=';'
-
-
-"""" VIM XML/HTML Plugins
-" Disable delimitMate for xml, html files
-"let delimitMate_excluded_ft='xml,html'
-
-" Changes when autoclosing - Default type literal '>'
-"let xml_tag_completion_map='<c-n>'
-
-" Add support for xsl files
-let xml_tag_syntax_prefixes='html\|xml\|xsl\|docbk'
-
-" Close tags like <br> as <br />
-let xml_use_xhtml=1
 
 
 """" Search
@@ -883,74 +671,3 @@ autocmd BufWritePre *.* :call TrimWhiteSpace()
 "autocmd BufWritePre *.css,*.html,*.js,*.scss :call TrimWhiteSpace()
 
 
-"""" Functions
-"" NOTE The `!` Means override function on sourcing (prevents error messages).
-function! DeleteHiddenBuffers()
-    let tpbl=[]
-    call map(range(1, tabpagenr('$')), 'extend(tpbl, tabpagebuflist(v:val))')
-    for buf in filter(range(1, bufnr('$')), 'bufexists(v:val) && index(tpbl, v:val)==-1')
-        silent execute 'bwipeout' buf
-    endfor
-endfunction
-
-function! FocusLostInsertMode()
-    if v:insertmode
-        feedkeys("\<C-\>\<C-n>")
-    endif
-endfunction
-
-function! SimpleFoldText()
-    return getline(v:foldstart).' '
-endfunction
-
-function! FileSize()
-    let bytes = getfsize(expand("%:p"))
-    if bytes <= 0
-        return ""
-    endif
-    if bytes < 1024
-        return bytes
-        return (bytes / 1024) . "K"
-    endif
-endfunction
-
-function! ClosePair(char)
-	if getline('.')[col('.') - 1] == a:char
-		return "\<Right>"
-	else
-		return a:char
-	endif
-endfunction
-
-function! QuoteDelim(char)
-	let line = getline('.')
-	let col = col('.')
-	if line[col - 2] == "\\"
-		" Inserting an escaped (and therefore conditionally asymmetric)
-        " quotation mark into the string
-		return a:char
-	elseif line[col-1] == a:char
-		" Escaping out of the string
-		return "\<Right>"
-	else
-		"Starting a string
-		return a:char.a:char."\<Esc>i"
-	endif
-endfunction
-
-function! Taba()
-    for newTab in a:000
-        call :tabe newTab
-    endfor
-endfunction
-
-" Append modeline after last line in buffer.
-" Use substitute() instead of printf() to handle '%%s' modeline in LaTeX
-" files.
-function! AppendModeline()
-  let l:modeline = printf(" vim: set ts=%d sw=%d tw=%d %set :",
-        \ &tabstop, &shiftwidth, &textwidth, &expandtab ? '' : 'no')
-  let l:modeline = substitute(&commentstring, "%s", l:modeline, "")
-  call append(line("$"), l:modeline)
-endfunction
-nnoremap <silent> <Leader>ml :call AppendModeline()<CR>

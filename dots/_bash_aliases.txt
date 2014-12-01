@@ -61,8 +61,8 @@ alias tabdiff='vim -c "silent :TabDiff"'
 alias shrew='sudo iked & disown && qikea > /tmp/qikea.log'
 alias ike='shrew'
 
-alias pushit='$HOME/ui/utils/push.sh ng-v7'
-alias updateit='$HOME/ui/utils/update.sh'
+alias pushit='$HOME/ui/utils/push.sh -b localhost ng-v7'
+alias updateit='$HOME/ui/utils/update.sh localhost ng-v7'
 
 # Use Readline wrapper with these programs
 alias kp='rlwrap kpcli --kdb=$DROPBOX/APG/KeePass.kdbx'
@@ -84,6 +84,9 @@ alias dpkgi='sudo dpkg -i'
 # File Permissions
 # Adds exucution to the owner's (user's) permissions
 alias chmodx='chmod -Rv u+x'
+
+# SSH Key
+alias sshby="ssh -p 2222 beeryard@108.167.133.21"
 
 # Only do this if vim is not a valid command  (that is not installed)
 hash vim >/dev/null 2>&1 || { alias vim='vi' ; }
@@ -169,9 +172,9 @@ cpresolv ()
 # Checks for conflict files in Dropbox
 dbconflict () {
     dump="$HOME/tmp/dbdump"
-    tmp=$( mktmp )
+    tmp=$( mktemp )
     mkdir -p "$dump"
-    find $DROPBOX -iname "*\ \(* conflicted\ *" -o -iname "*\(Case Conflict\)*" -o -iname "*\(Selective Sync Conflict\)*" > $tmp
+    find $DROPBOX -iname "*\ \(* conflicted\ *" -o -iname "*\(Case Conflict*" -o -iname "*\(Selective Sync Conflict\)*" > $tmp
 
     while read val ; do
         valNew=$(echo $val | sed  's/\//-/g')
@@ -201,7 +204,7 @@ getip ()
       inf=$1
    fi
 
-	unalias grep
+   unalias grep
    ifconfig $inf | grep 'inet addr:' | cut -d: -f2 | awk '{ print $1}'
 }
 
@@ -259,72 +262,6 @@ mdown()
         echo -e $USAGE && return
     fi
     _mdown $@
-}
-
-#Mount and unmount all encfs mount points for the current (or another) user
-_mountenc()
-{
-	unset cmd home mountpt mounts
-    cmd="encfs"
-
-	if [[ $1 == "-u" ]]; then
-		mounts=( $( mount -t fuse.encfs | grep "user=${2}" | awk '{print $3}' ) )
-		echo "Unmounting all encfs mount points..."
-		for mountpt in  $( mount -t fuse.encfs | grep "user=${2}" | awk '{print $3}' )
-		do
-			echo $mountpt
-			fusermount -u $mountpt
-		done
-	fi
-
-    #Mount each point one by one. This allows for unique options for mount points
-	if [[ $1 == "-m" ]] ; then
-        # Mounts is a assoc array of mount points.
-        # Key - encrypted dir, value - mount point
-        singlept=$2
-        declare -A mounts=(
-            ["${DROPBOX}/.Private"]="${HOME}/Private"
-            ["${BTSYNC}/VMs/.vmdisks"]="${HOME}/vmdisks"
-            ["${DROPBOX}/repos/beeryardtech/scripts/dots/_sshkeys"]="${HOME}/.sshkeys"
-            ["${DROPBOX}/Janie/.SharedPrivate"]="${HOME}/SharedPrivate"
-        )
-
-        for key in ${!mounts[@]} ; do
-            val=${mounts[$key]}
-
-            # If specified, only mount the single mount point
-            if [[ -n "$singlept" ]] ; then
-                if ! icontains $key $singlept ; then
-                    # Skip any that do not match the single point
-                    continue
-                elif mountpoint -q $val ; then
-                    echo "Mount point $val is already mounted"
-                    return
-                else
-                    echo "Do single mounting of $key to $val"
-                    $cmd $key $val
-                    return
-                fi
-            else
-                if ! mountpoint -q $val ; then
-                    echo "Mounting $key to $val"
-                    $cmd $key $val
-                fi
-            fi
-        done
-	fi
-}
-
-mountenc()
-{
-	unset USAGE user; USAGE="USAGE: $FUNCNAME	-m [single point] | -u [user]"
-	if [[ $# == 0 || $1 == "-h" || $1 !=  "-m" && $1 != "-u" ]]; then
-		echo $USAGE; return 1
-	fi
-
-    [[ "$2x" == "x" ]] && var="" || var=$2
-    _mountenc $1 $var
-    #teelog -t _mountenc $1 $var
 }
 
 #Mount steeleye resources

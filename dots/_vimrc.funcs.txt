@@ -1,0 +1,141 @@
+""
+" Name: .vimrc.funcs
+" Description: Functions used by Vim. NOTE The `!` Means
+"               override function on sourcing (prevents error messages).
+""
+function! DeleteHiddenBuffers()
+    let tpbl=[]
+    call map(range(1, tabpagenr('$')), 'extend(tpbl, tabpagebuflist(v:val))')
+    for buf in filter(range(1, bufnr('$')), 'bufexists(v:val) && index(tpbl, v:val)==-1')
+        silent execute 'bwipeout' buf
+    endfor
+endfunction
+
+function! ReloadTabs()
+    " Reload all tabs and windows. Then reset window size
+    execute "tabdo windo e"
+    execute "tabdo normal! ="
+endfunction
+command Tb call ReloadTabs()
+
+function! FocusLostInsertMode()
+    if v:insertmode
+        feedkeys("\<C-\>\<C-n>")
+    endif
+endfunction
+
+function! SimpleFoldText()
+    return getline(v:foldstart).' '
+endfunction
+
+function! <SID>StripTrailingWhitespaces()
+    let l = line(".")
+    let c = col(".")
+    %s/\s\+$//e
+    call cursor(l, c)
+endfun
+autocmd FileType c,cpp,css,scss,html,javascript,java,php,ruby,python autocmd BufWritePre <buffer> :call <SID>StripTrailingWhitespaces()
+
+function! FileSize()
+    let bytes = getfsize(expand("%:p"))
+    if bytes <= 0
+        return ""
+    endif
+    if bytes < 1024
+        return bytes
+        return (bytes / 1024) . "K"
+    endif
+endfunction
+
+function! ClosePair(char)
+	if getline('.')[col('.') - 1] == a:char
+		return "\<Right>"
+	else
+		return a:char
+	endif
+endfunction
+
+function! QuoteDelim(char)
+	let line = getline('.')
+	let col = col('.')
+	if line[col - 2] == "\\"
+		" Inserting an escaped (and therefore conditionally asymmetric)
+        " quotation mark into the string
+		return a:char
+	elseif line[col-1] == a:char
+		" Escaping out of the string
+		return "\<Right>"
+	else
+		"Starting a string
+		return a:char.a:char."\<Esc>i"
+	endif
+endfunction
+
+function! Taba()
+    for newTab in a:000
+        call :tabe newTab
+    endfor
+endfunction
+
+" Append modeline after last line in buffer.
+" Use substitute() instead of printf() to handle '%%s' modeline in LaTeX
+" files.
+function! AppendModeline()
+  let l:modeline = printf(" vim: set ts=%d sw=%d tw=%d %set :",
+        \ &tabstop, &shiftwidth, &textwidth, &expandtab ? '' : 'no')
+  let l:modeline = substitute(&commentstring, "%s", l:modeline, "")
+  call append(line("$"), l:modeline)
+endfunction
+nnoremap <silent> <Leader>ml :call AppendModeline()<CR>
+
+" Sends any ex to a scratch buffer
+function! s:Scratch (command, ...)
+   redir => lines
+   let saveMore = &more
+   set nomore
+   execute a:command
+   redir END
+   let &more = saveMore
+   call feedkeys("\<cr>")
+   new | setlocal buftype=nofile bufhidden=hide noswapfile
+   put=lines
+   if a:0 > 0
+      execute 'vglobal/'.a:1.'/delete'
+   endif
+   if a:command == 'scriptnames'
+      %substitute#^[[:space:]]*[[:digit:]]\+:[[:space:]]*##e
+   endif
+   silent %substitute/\%^\_s*\n\|\_s*\%$
+   let height = line('$') + 3
+   execute 'normal! z'.height."\<cr>"
+   0
+endfunction
+
+command! -nargs=? Scrtnames call <sid>Scratch('scriptnames', <f-args>)
+command! -nargs=? Syntax call <sid>Scratch('syntax', <f-args>)
+command! -nargs=+ Scratch call <sid>Scratch(<f-args>)
+
+
+" Execute 'cmd' while redirecting output.
+" Delete all lines that do not match regex 'filter' (if not empty).
+" Delete any blank lines.
+" Delete '<whitespace><number>:<whitespace>' from start of each line.
+" Display result in a scratch buffer.
+function! s:Filter_lines(cmd, filter)
+  let save_more = &more
+  set nomore
+  redir => lines
+  silent execute a:cmd
+  redir END
+  let &more = save_more
+  new
+  setlocal buftype=nofile bufhidden=hide noswapfile
+  put =lines
+  g/^\s*$/d
+  %s/^\s*\d\+:\s*//e
+  if !empty(a:filter)
+    execute 'v/' . a:filter . '/d'
+  endif
+  0
+endfunction
+command! -nargs=? Scriptnames call s:Filter_lines('scriptnames', <q-args>)

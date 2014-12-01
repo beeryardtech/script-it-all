@@ -93,20 +93,20 @@
 		<feature var='http://jabber.org/protocol/disco#items'/>
 		<feature var='http://jabber.org/protocol/disco#info'/>
 		<ext identifier='camera-v1'>
-			<feature var='http://jabber.org/protocol/disco#info'/>
 			<feature var='http://jabber.org/protocol/disco#items'/>
+			<feature var='http://jabber.org/protocol/disco#info'/>
 		</ext>
 		<ext identifier='voice-v1'>
-			<feature var='http://jabber.org/protocol/disco#info'/>
 			<feature var='http://jabber.org/protocol/disco#items'/>
+			<feature var='http://jabber.org/protocol/disco#info'/>
 		</ext>
 		<ext identifier='video-v1'>
-			<feature var='http://jabber.org/protocol/disco#info'/>
 			<feature var='http://jabber.org/protocol/disco#items'/>
+			<feature var='http://jabber.org/protocol/disco#info'/>
 		</ext>
 		<ext identifier='pmuc-v1'>
-			<feature var='http://jabber.org/protocol/disco#items'/>
 			<feature var='http://jabber.org/protocol/disco#info'/>
+			<feature var='http://jabber.org/protocol/disco#items'/>
 		</ext>
 	</client>
 	<client node='http://www.asterisk.org/xmpp/client/caps' ver='asterisk-xmpp'>
@@ -114,8 +114,8 @@
 		<feature var='http://jabber.org/protocol/disco#info'/>
 		<feature var='http://www.google.com/xmpp/protocol/voice/v1'/>
 		<ext identifier='voice-v1'>
-			<feature var='http://www.google.com/xmpp/protocol/voice/v1'/>
 			<feature var='http://jabber.org/protocol/disco#info'/>
+			<feature var='http://www.google.com/xmpp/protocol/voice/v1'/>
 		</ext>
 	</client>
 	<client node='http://pidgin.im/' ver='elbDWGeJ8mFRjVG016NePLIqJxA=' hash='sha-1'>
@@ -193,6 +193,23 @@
 		</ext>
 		<ext identifier='mvideo'>
 			<feature var='apple:iq:vc:multivideo'/>
+		</ext>
+	</client>
+	<client node='http://trillian.im/caps' ver='3.0.0.47/Mac'>
+		<identity category='client' type='pc' name='Trillian'/>
+		<feature var='http://jabber.org/protocol/bytestreams'/>
+		<feature var='http://jabber.org/protocol/si/profile/file-transfer'/>
+		<feature var='http://jabber.org/protocol/si'/>
+		<feature var='http://www.google.com/xmpp/protocol/session'/>
+		<feature var='urn:xmpp:time'/>
+		<feature var='http://jabber.org/protocol/chatstates'/>
+		<feature var='jabber:x:event'/>
+		<feature var='jabber:iq:version'/>
+		<feature var='jabber:iq:last'/>
+		<feature var='http://jabber.org/protocol/disco#info'/>
+		<ext identifier='pmuc-v1'>
+			<feature var='http://jabber.org/protocol/disco#items'/>
+			<feature var='http://jabber.org/protocol/disco#info'/>
 		</ext>
 	</client>
 	<client node='http://www.apple.com/ichat/caps' ver='1000'>
@@ -290,23 +307,22 @@
 		<feature var='jabber:iq:version'/>
 		<feature var='jabber:iq:last'/>
 		<feature var='http://jabber.org/protocol/disco#info'/>
+		<ext identifier='pmuc-v1'>
+			<feature var='http://jabber.org/protocol/disco#items'/>
+			<feature var='http://jabber.org/protocol/disco#info'/>
+		</ext>
 	</client>
 	<client node='http://mail.google.com/xmpp/client/caps' ver='1.1'>
 		<identity category='client' type='pc'/>
 		<feature var='http://jabber.org/protocol/disco#info'/>
-		<ext identifier='video-v1'>
-			<feature var='http://www.google.com/xmpp/protocol/video/v1'/>
-		</ext>
-		<ext identifier='vavinvite-v1'>
-			<feature var='http://www.google.com/xmpp/protocol/vavinvite/v1'/>
-		</ext>
-		<ext identifier='phone-v1'/>
 		<ext identifier='camera-v1'>
 			<feature var='http://www.google.com/xmpp/protocol/camera/v1'/>
 		</ext>
-		<ext identifier='location-v1'/>
 		<ext identifier='voice-v1'>
 			<feature var='http://www.google.com/xmpp/protocol/voice/v1'/>
+		</ext>
+		<ext identifier='video-v1'>
+			<feature var='http://www.google.com/xmpp/protocol/video/v1'/>
 		</ext>
 		<ext identifier='sms-v1'>
 			<feature var='http://www.google.com/xmpp/protocol/sms/v1'/>
@@ -314,26 +330,29 @@
 		<ext identifier='pmuc-v1'>
 			<feature var='http://www.google.com/xmpp/protocol/pmuc/v1'/>
 		</ext>
+		<ext identifier='vavinvite-v1'>
+			<feature var='http://www.google.com/xmpp/protocol/vavinvite/v1'/>
+		</ext>
 	</client>
 	<client node='http://www.android.com/gtalk/client/caps2' ver='1.1'>
 		<identity category='account' type='registered' name='Google Talk User Account'/>
 		<feature var='http://jabber.org/protocol/disco#items'/>
 		<feature var='http://jabber.org/protocol/disco#info'/>
 		<ext identifier='voice-v1'>
-			<feature var='http://jabber.org/protocol/disco#info'/>
 			<feature var='http://jabber.org/protocol/disco#items'/>
+			<feature var='http://jabber.org/protocol/disco#info'/>
 		</ext>
 		<ext identifier='camera-v1'>
-			<feature var='http://jabber.org/protocol/disco#info'/>
 			<feature var='http://jabber.org/protocol/disco#items'/>
+			<feature var='http://jabber.org/protocol/disco#info'/>
 		</ext>
 		<ext identifier='video-v1'>
-			<feature var='http://jabber.org/protocol/disco#info'/>
 			<feature var='http://jabber.org/protocol/disco#items'/>
+			<feature var='http://jabber.org/protocol/disco#info'/>
 		</ext>
 		<ext identifier='pmuc-v1'>
-			<feature var='http://jabber.org/protocol/disco#info'/>
 			<feature var='http://jabber.org/protocol/disco#items'/>
+			<feature var='http://jabber.org/protocol/disco#info'/>
 		</ext>
 	</client>
 	<client node='http://www.google.com/xmpp/client/caps' ver='1.0.0.104'>

@@ -18,10 +18,15 @@
 					<CredProtMode>Obf</CredProtMode>
 					<CredSaveMode>NoSave</CredSaveMode>
 				</ConnectionInfo>
+				<ConnectionInfo>
+					<Path>../../../home/tgoldie/Dropbox/shared/backup/GoogleDrive/Shared.kdbx</Path>
+					<CredProtMode>Obf</CredProtMode>
+					<CredSaveMode>NoSave</CredSaveMode>
+				</ConnectionInfo>
 			</Items>
 		</MostRecentlyUsed>
 		<WorkingDirectories>
-			<Item>Database@../../../home/tgoldie/Dropbox/APG</Item>
+			<Item>Database@../../../home/tgoldie/Dropbox/shared/backup/GoogleDrive</Item>
 			<Item>Attachments@../../../home/tgoldie</Item>
 		</WorkingDirectories>
 		<Start>
@@ -37,12 +42,12 @@
 	</Application>
 	<Logging />
 	<MainWindow>
-		<X>512</X>
-		<Y>269</Y>
-		<Width>983</Width>
-		<Height>515</Height>
-		<SplitterHorizontalFrac>0.703087866</SplitterHorizontalFrac>
-		<SplitterVerticalFrac>0.249230772</SplitterVerticalFrac>
+		<X>81</X>
+		<Y>56</Y>
+		<Width>946</Width>
+		<Height>522</Height>
+		<SplitterHorizontalFrac>0.691588759</SplitterHorizontalFrac>
+		<SplitterVerticalFrac>0.247334749</SplitterVerticalFrac>
 		<Layout>Default</Layout>
 		<ShowFullPathInTitle>true</ShowFullPathInTitle>
 		<FocusQuickFindOnRestore>true</FocusQuickFindOnRestore>
@@ -53,24 +58,24 @@
 		<EntryListColumnCollection>
 			<Column>
 				<Type>Title</Type>
-				<Width>147</Width>
+				<Width>141</Width>
 			</Column>
 			<Column>
 				<Type>UserName</Type>
-				<Width>144</Width>
+				<Width>139</Width>
 			</Column>
 			<Column>
 				<Type>Password</Type>
-				<Width>144</Width>
+				<Width>139</Width>
 				<HideWithAsterisks>true</HideWithAsterisks>
 			</Column>
 			<Column>
 				<Type>Url</Type>
-				<Width>144</Width>
+				<Width>139</Width>
 			</Column>
 			<Column>
 				<Type>Notes</Type>
-				<Width>144</Width>
+				<Width>139</Width>
 			</Column>
 		</EntryListColumnCollection>
 		<EntryListColumnDisplayOrder>0 1 2 3 4</EntryListColumnDisplayOrder>
@@ -79,6 +84,7 @@
 			<Column>0</Column>
 			<Order>Ascending</Order>
 		</ListSorting>
+		<ShowEntriesOfSubGroups>true</ShowEntriesOfSubGroups>
 	</MainWindow>
 	<UI>
 		<TrayIcon />
