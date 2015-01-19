@@ -1,29 +1,11 @@
 <?xml version='1.0' encoding='UTF-8' ?>
 
 <statuses version='1.0'>
-	<status name='Auto-Cached' transient='true' created='1386081350' lastused='1386081350' usage_count='1'>
-		<state>available</state>
-		<message>Script all the things</message>
-	</status>
-	<status name='Auto-Cached' transient='true' created='1383049909' lastused='1383049909' usage_count='1'>
-		<state>available</state>
-		<message>Hacking on some JavaScript</message>
-	</status>
-	<status name='Auto-Cached' transient='true' created='1383049893' lastused='1383049893' usage_count='1'>
+	<status name='Auto-Cached' transient='true' created='1418656118' lastused='0' usage_count='0'>
 		<state>available</state>
 	</status>
-	<status name='Working' created='1349117461' lastused='1349117461' usage_count='1'>
-		<state>available</state>
-		<message>Working. Programming. Playing. Trying to stay away from the internet....</message>
-	</status>
-	<status name='Auto-Cached' transient='true' created='1341500310' lastused='1341500310' usage_count='1'>
-		<state>available</state>
-	</status>
-	<status name='Auto-Cached' transient='true' created='1336161721' lastused='1336161721' usage_count='1'>
-		<state>available</state>
-	</status>
-	<status name='ReallyWorking' created='1349117491' lastused='0' usage_count='0'>
-		<state>available</state>
-		<message>Making SIOS a better place to raise a family</message>
+	<status name='Auto-Cached' transient='true' created='1418656117' lastused='0' usage_count='0'>
+		<state>away</state>
+		<message>I&apos;m not here right now</message>
 	</status>
 </statuses>
