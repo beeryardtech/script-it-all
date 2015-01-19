@@ -37,7 +37,7 @@ Plugin 'editorconfig/editorconfig-vim'
 Plugin 'jistr/vim-nerdtree-tabs'
 
 " JS Beutifier - Uses editorconfig
-Plugin 'maksimr/vim-jsbeautify'
+Bundle 'maksimr/vim-jsbeautify'
 
 " Parse objects for properties for omnicompleting
 Plugin 'marijnh/tern_for_vim'

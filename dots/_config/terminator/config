@@ -33,7 +33,7 @@
     [[[window0]]]
       type = Window
       parent = ""
-  [[finch-grunt]]
+  [[finch-grunt2]]
     [[[child0]]]
       position = 317:108
       type = Window
@@ -79,4 +79,38 @@
       type = Terminal
       order = 0
       parent = child5
+  [[finch-grunt]]
+    [[[child0]]]
+      position = 317:108
+      type = Window
+      order = 0
+      parent = ""
+      size = 682, 698
+    [[[child1]]]
+      labels = /bin/bash, None
+      type = Notebook
+      order = 0
+      parent = child0
+    [[[child3]]]
+      position = 333
+      type = VPaned
+      order = 1
+      parent = child1
+    [[[terminal2]]]
+      profile = default
+      type = Terminal
+      order = 0
+      parent = child1
+    [[[terminal5]]]
+      profile = default
+      type = Terminal
+      order = 1
+      parent = child3
+      command = finch
+    [[[terminal4]]]
+      profile = general
+      command = ""
+      type = Terminal
+      order = 0
+      parent = child3
 [plugins]

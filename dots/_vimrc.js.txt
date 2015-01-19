@@ -77,15 +77,22 @@ autocmd Filetype javascript nnoremap <A-t> :TernRefs<CR>
 
 
 """" Syntastic
-let g:syntastic_check_on_open=1
+let g:syntastic_check_on_open = 1
 
 " CSS Lint
 let g:syntastic_csslint_options = ''
-let g:syntastic_css_checkers = ['csslint']
+let g:syntastic_css_checkers = [ 'csslint' ]
+let g:syntastic_scss_checkers = [ 'sass' ]
 
 " HTML Attribute checking - ignore custom angularjs directives
 let g:syntastic_html_tidy_ignore_errors = ['proprietary attribute "stc-']
 
+" JS Lint
+let g:syntastic_javascript_checkers = [ 'jshint' ]
+"let g:syntastic_javascript_jshint_args = '--config ~/ui/.jshintrc'
+
+" JSON Lint
+let g:syntastic_json_checkers = [ 'jsonlint' ]
 
 """" VIM XML/HTML Plugins
 " Disable delimitMate for xml, html files
