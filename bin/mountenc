@@ -50,12 +50,12 @@ mnt()
     done
 }
 
-unmt()
+unmnt()
 {
     mounts=( $( mount -t fuse.encfs | grep "user=${2}" | awk '{print $3}' ) )
     echo "Unmounting all encfs mount points..."
-    for mountpt in  $( mount -t fuse.encfs | grep "user=${2}" | awk '{print $3}' )
-    do
+
+    for mountpt in  $( mount -t fuse.encfs | grep "user=${2}" | awk '{print $3}' ) ; do
         echo $mountpt
         fusermount -u $mountpt
     done
@@ -63,7 +63,8 @@ unmt()
 }
 
 # Setup arguments
-optstring=m:u:
+optstring=hm:u
+
 while getopts $optstring opt ; do
     case $opt in
         h) # Usage help and exit
@@ -71,7 +72,8 @@ while getopts $optstring opt ; do
             echo $USAGE
             exit 1 ;;
         m) # mount
-            mnt $OPTARG
+            echo $OPTARG
+           mnt $OPTARG
             exit 0 ;;
         u) # Unmount
             unmnt $OPTARG
