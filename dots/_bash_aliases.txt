@@ -61,8 +61,8 @@ alias tabdiff='vim -c "silent :TabDiff"'
 alias shrew='sudo iked & disown && qikea > /tmp/qikea.log'
 alias ike='shrew'
 
-alias pushit='$HOME/ui/utils/push.sh -b localhost ng-v7'
-alias updateit='$HOME/ui/utils/update.sh localhost ng-v7'
+alias pushit='$HOME/ui/utils/push.sh -b ng-v7'
+alias updateit='$HOME/ui/utils/update.sh ng-v7'
 
 # Use Readline wrapper with these programs
 alias kp='rlwrap kpcli --kdb=$DROPBOX/APG/KeePass.kdbx'

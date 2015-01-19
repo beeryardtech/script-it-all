@@ -15,15 +15,28 @@ set keymap vi
 $if mode=vi
     # normal mode
     set keymap vi-command
-    "j": beginning-of-history
-    "l": backward-char
-    "h": forward-char
+    #"j": beginning-of-history
+    "h": backward-char
+    "l": forward-char
     "G": end-of-history
+    "ZZ": emacs-editing-mode
 
     # insert mode
     set keymap vi-insert
     "jj": vi-movement-mode # remap escape
 $endif
+
+# Vi mode indicator
+set show-mode-in-prompt on
+
+# Insert mode string, default: (ins)
+set vi-mode-str1 (ins)
+
+# Movement mode string, default: (cmd)
+set vi-mode-str2 (cmd)
+
+# Emacs mode string, default: (emacs)
+set emacs-mode-str (emacs)
 
 #Converts all META-blah key combinations to ESC-blah.
 set convert-meta on

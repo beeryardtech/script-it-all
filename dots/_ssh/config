@@ -43,15 +43,15 @@ Host 108.167.133.21 gator4165.hostgator.com
     IdentityFile=~/.sshkeys/beeryard_key
     
 
-Host beeryardnet beeryardtech.servebeer.com
-    HostName beeryardnet.beeryardtech.com 
+Host beeryardnet 
+    HostName beeryardnet
     Protocol 2
 
     StrictHostKeyChecking no
     ForwardX11 yes
 
     # Which ID file to use. Stored in encfs vol
-    #IdentityFile ~/.sshkeys/beeryard_key
+    IdentityFile ~/.sshkeys/beeryard_key
 
     ServerAliveInterval 30
     ServerAliveCountMax 240
