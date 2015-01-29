@@ -1,7 +1,7 @@
 #!/bin/bash -
 #Mount and unmount all encfs mount points for the current (or another) user
 
-source ~/.bash_aliases
+source ~/.bash_funcs
 
 cleanup()
 {
@@ -22,7 +22,7 @@ mnt()
         ["${DROPBOX}/.Private"]="${HOME}/Private"
         ["${BTSYNC}/VMs/.vmdisks"]="${HOME}/vmdisks"
         ["${DROPBOX}/.sshkeys"]="${HOME}/.sshkeys"
-        ["${DROPBOX}/janie/.SharedPrivate"]="${HOME}/SharedPrivate"
+        ["${DROPBOX}/Janie/.SharedPrivate"]="${HOME}/SharedPrivate"
     )
 
     for key in ${!mounts[@]} ; do
