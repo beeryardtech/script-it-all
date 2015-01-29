@@ -48,10 +48,10 @@ bind s split-window -v
 bind v split-window -h
 
 # Move around panes with hjkl, as one would in vim after pressing ctrl-w
-bind -nr h select-pane -L
-bind -nr j select-pane -D
-bind -nr k select-pane -U
-bind -nr l select-pane -R
+bind -nr C-H select-pane -L
+bind -nr C-J select-pane -D
+bind -nr C-K select-pane -U
+bind -nr C-L select-pane -R
 
 # Select and copy like in Vim
 bind-key -r -t vi-copy 'v' begin-selection

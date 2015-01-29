@@ -1,0 +1,8 @@
+{
+    "last-edited": "1385432060", 
+    "uuid": "sysmonitor@orcus", 
+    "name": "System Monitor", 
+    "version": "1.4", 
+    "icon": "utilities-system-monitor", 
+    "description": "Displays CPU, memory, swap and network usage and load in graphs"
+}

@@ -58,7 +58,7 @@
 		<name>tgoldie@gmail.com/</name>
 		<password>asmpjfpardedauvq</password>
 		<statuses>
-			<status type='available' name='Available' active='true'>
+			<status type='available' name='Available' active='false'>
 				<attributes/>
 			</status>
 			<status type='mood' name='Feeling' active='false'>
@@ -67,7 +67,7 @@
 			<status type='freeforchat' name='Chatty' active='false'>
 				<attributes/>
 			</status>
-			<status type='away' name='Away' active='false'>
+			<status type='away' name='Away' active='true'>
 				<attributes>
 					<attribute id='message' value='I&apos;m not here right now'/>
 				</attributes>
@@ -107,10 +107,10 @@
 		<name>beeryardtech@irc.freenode.net</name>
 		<alias>beeryardtech</alias>
 		<statuses>
-			<status type='available' name='Available' active='true'>
+			<status type='available' name='Available' active='false'>
 				<attributes/>
 			</status>
-			<status type='away' name='Away' active='false'>
+			<status type='away' name='Away' active='true'>
 				<attributes>
 					<attribute id='message' value='I&apos;m not here right now'/>
 				</attributes>
@@ -141,10 +141,10 @@
 		<name>beeryard@irc.twit.tv</name>
 		<alias>beeryard</alias>
 		<statuses>
-			<status type='available' name='Available' active='true'>
+			<status type='available' name='Available' active='false'>
 				<attributes/>
 			</status>
-			<status type='away' name='Away' active='false'>
+			<status type='away' name='Away' active='true'>
 				<attributes>
 					<attribute id='message' value='I&apos;m not here right now'/>
 				</attributes>
@@ -166,10 +166,10 @@
 		<name>beeryard@irc.foonetic.net</name>
 		<alias>beeryard</alias>
 		<statuses>
-			<status type='available' name='Available' active='true'>
+			<status type='available' name='Available' active='false'>
 				<attributes/>
 			</status>
-			<status type='away' name='Away' active='false'>
+			<status type='away' name='Away' active='true'>
 				<attributes>
 					<attribute id='message' value='I&apos;m not here right now'/>
 				</attributes>
@@ -200,7 +200,7 @@
 		<password>Ne912emonkey</password>
 		<alias>Steeleye</alias>
 		<statuses>
-			<status type='available' name='Available' active='true'>
+			<status type='available' name='Available' active='false'>
 				<attributes/>
 			</status>
 			<status type='mood' name='Feeling' active='false'>
@@ -209,7 +209,7 @@
 			<status type='freeforchat' name='Chatty' active='false'>
 				<attributes/>
 			</status>
-			<status type='away' name='Away' active='false'>
+			<status type='away' name='Away' active='true'>
 				<attributes>
 					<attribute id='message' value='I&apos;m not here right now'/>
 				</attributes>

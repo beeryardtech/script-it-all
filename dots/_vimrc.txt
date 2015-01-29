@@ -591,10 +591,9 @@ let g:ConqueTerm_InsertOnEnter = 1
 
 "let g:ConqueTerm_PyVersion = 2
 "let g:ConqueTerm_FastMode = 0
-let g:ConqueTerm_Color = 0
+let g:ConqueTerm_Color = 1
 "let g:ConqueTerm_SessionSupport = 0
 let g:ConqueTerm_ReadUnfocused = 0
-
 
 "let g:ConqueTerm_CloseOnEnd = 0
 "let g:ConqueTerm_PromptRegex = '^\w\+@[0-9A-Za-z_.-]\+:[0-9A-Za-z_./\~,:-]\+\$'
@@ -609,9 +608,14 @@ let g:ConqueTerm_ReadUnfocused = 0
 "let g:ConqueTerm_SendFunctionKeys = 0
 "let g:ConqueTerm_TERM = 'vt100'
 
-" Shortcut Keys
+"""" ConqueTerm Commands
 command! Bash execute 'ConqueTermSplit bash'
 command! Vbash execute 'ConqueTermVSplit bash'
+
+command! Pyct execute 'ConqueTermSplit python'
+command! Vpyct execute 'ConqueTermVSplit python'
+
+"""" ConqueTerm Shortcut Keys
 verbose nnoremap <C-w>b :Vbash<CR>
 verbose nnoremap <C-w><C-b> :Vbash<CR>
 verbose nnoremap <C-w>B :Bash<CR>

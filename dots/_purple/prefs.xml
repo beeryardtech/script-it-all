@@ -46,7 +46,7 @@
 			<pref name='startup' type='int' value='0'/>
 			<pref name='startup_current_status' type='bool' value='1'/>
 			<pref name='idleaway' type='int' value='1418656117'/>
-			<pref name='isidleaway' type='bool' value='0'/>
+			<pref name='isidleaway' type='bool' value='1'/>
 		</pref>
 		<pref name='conversations'>
 			<pref name='chat'>
@@ -674,7 +674,7 @@
 			<pref name='timestamps' type='bool' value='1'/>
 			<pref name='notify_typing' type='bool' value='1'/>
 			<pref name='size'>
-				<pref name='width' type='int' value='42'/>
+				<pref name='width' type='int' value='54'/>
 				<pref name='height' type='int' value='20'/>
 			</pref>
 			<pref name='position'>

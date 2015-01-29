@@ -36,10 +36,15 @@ if [ -f ~/.bash_aliases ]; then
     . ~/.bash_aliases
 fi
 
+# Function definitions
+if [ -f ~/.bash_funcs ]; then
+    . ~/.bash_funcs
+fi
+
 # PS1 Config
 # Configures the PS1 prompt
-if [ -f ~/.bashrc.ps1 ]; then
-    . ~/.bashrc.ps1
+if [ -f ~/.bash_ps1 ]; then
+    . ~/.bash_ps1
 fi
 
 #-------------------------------------------------------------
