@@ -102,6 +102,15 @@ dbg ()
 	set -xv ; eval $@ ; set +xv
 }
 
+# Disable <C-s> before running cmd and re-enable it afterward
+disable_ctrl_s()
+{
+    local STTYOPTS="$(stty --save)"
+    stty stop '' -ixoff
+    command "$@"
+    stty "$STTYOPTS"
+}
+
 #Gets the IP addresses of any interface
 getip ()
 {
@@ -318,89 +327,6 @@ rdpst ()
 	teelog _rdpst $@ & disown
 }
 
-#Update all checkouted directories at once
-repoup2 ()
-{
-	unset cwd dir
-	cwd=$( pwd )
-
-	for dir in ${REPOS[@]} ; do
-		for subdir in $( find $dir -type d ); do
-			echo "Starting with $dir"
-
-			#Check if repo dir exists. if so do the update
-			if [ -d $subdir/.git ]; then
-				echo "Updating git repo ${subdir} at $( date )"
-				cd $subdir && git pull --rebase && cd $dir
-				updated=true
-
-			elif [ -d $subdir/.svn ]; then
-				echo "Updating svn repo ${subdir} at $( date )"
-				cd $subdir && svn up && cd $dir
-				updated=true
-
-			elif [ -d $subdir/.hg ]; then
-				echo "Updating hg repo ${subdir} at $( date )"
-				cd $subdir && hg pull && cd $dir
-				updated=true
-
-			fi
-
-		done
-
-	done
-
-	#Finally return to old working dir
-	cd $cwd && return 0
-
-}
-
-
-repoup()
-{
-	unset cwd dbrepo dir gitDirList hgDirList sios svnDirList
-	cwd=$( pwd )
-	dbrepo=${DROPBOX}/repos; sios=${DROPBOX}/SIOS/repos
-
-	#Create list of all the repos
-	svnDirList=( ${HOME}/repos/* ${sios}/{dk_test,lk_test} )
-
-	gitDirList=( ${sios}/siostech/*  )
-	gitDirList+=( ${HOME}/repos/dk_thor  )
-	gitDirList+=( ${dbrepo}/beerbottlelist/* )
-	gitDirList+=( ${dbrepo}/pykee )
-
-	hgDirList=( ${dbrepo}/gnome-encfs	)
-
-	echo "Updating SVN repos... $( date )"
-   for dir in "${svnDirList[@]}" ; do
-		echo ${dir} && svn up ${dir}
-	done
-
-	echo "Updating GIT repos... $( date )"
-	for dir in "${gitDirList[@]}" ; do
-		echo ${dir} && cd ${dir} && git pull --rebase
-	done
-
-	echo "Updating HG repos... $( date )"
-	for dir in "${hgDirList[@]}" ; do
-		echo ${dir} && cd ${dir} && hg pull
-	done
-
-	#Return to old directry and return
-	cd ${cwd} && return 0
-}
-
-#Copy files to amazon cloud
-scpa ()
-{
-	unset d
-	[[ $# < 1 ]] && echo "Usage: scpa [-d dir] [files]" && return 1
-	[[ $1 == "-d" ]] && d=$2 && shift 2 ;
-	# if -d param given, use that dir. Otherwise use default
-	d=${d:-"~/DumpFilesHere"} ; scp -r -i $AWSKEY $@ ubuntu@${AWS}:${d}
-}
-
 #Use scp to send files to system
 scpst ()
 {
@@ -430,26 +356,6 @@ scpw ()
 
 	echo "Destination dir: $d"
    scp -r -i $WINKEY $@ $USER@vclient:${d}
-}
-
-#Change priorty of command and run using current user
-snice()
-{
-	[[ $# < 1 ]] && echo "Usage: snice command [user] [adjustment]" && return 1
-	user=${2:-"tgoldie"} ; adj=${3:-"-5"}
-	[[ -n $1 ]] && sudo nice -n ${adj} "su -c \"${1}\" ${user}"
-}
-
-#Passes in options to ssh command for amazon cloud
-ssha ()
-{
-   ssh -i $AWSKEY ubuntu@${AWS} $@ ;
-}
-
-#Connects to AWS over a dynamic tunnel. Make AWS be a proxy
-sshA ()
-{
-   ssh -i $AWSKEY -D $AWSDYN_PORT ubuntu@${AWS} $@ ;
 }
 
 #SSH into home network using DNS.
@@ -626,21 +532,20 @@ tv()
 # Allows vim to use <C-S> mapping
 vim()
 {
-    local STTYOPTS="$(stty --save)"
-    stty stop '' -ixoff
-    command vim -p "$@"
-    stty "$STTYOPTS"
+    disable_ctrl_s vim -p "$@"
 }
 
 # Easy shorthand for editing remote files using vim
+# XXX Duplicates the vim method above, since it uses the default vim command
 vimscp()
 {
-    srv=$1
-    path=$2
+    srv=$1 ; path=$2
     if ! contains $srv '@' ; then
         srv="root@${srv}"
     fi
-    command vim -p scp://${srv}/${path}
+    cmd="vim -p scp://${srv}/${path}"
+    echo $cmd
+    disable_ctrl_s $cmd
 }
 
 #Easier signon to WPA wireless
