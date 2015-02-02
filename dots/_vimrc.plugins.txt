@@ -24,6 +24,9 @@ Plugin 'burnettk/vim-angular'
 " Coffeescript support
 "Plugin 'kchmck/vim-coffee-script'
 
+" Snippets Engine - This is seperate from UltiSnips
+Plugin 'honza/vim-snippets'
+
 " Python refactoring tools
 Plugin 'klen/python-mode'
 
@@ -73,13 +76,16 @@ Plugin 'scrooloose/nerdcommenter'
 " Be able to move blocks of text around
 Plugin 'shinokada/dragvisuals.vim'
 
+" Snippet manager - not 'UtilSnips'
+Plugin 'SirVer/UltiSnips'
+
 " Neocomplete - omnicomplete
 "Plugin 'Shougo/context_filetype.vim'
 "Plugin 'Shougo/neocomplete'
 
 " Snippets using neocomplete
-Plugin 'Shougo/neosnippet'
-Plugin 'Shougo/neosnippet-snippets'
+"Plugin 'Shougo/neosnippet'
+"Plugin 'Shougo/neosnippet-snippets'
 
 " Manage undo tree
 Plugin 'sjl/gundo.vim'
@@ -113,9 +119,6 @@ Plugin 'tpope/vim-surround'
 
 " Pairs of keys
 Plugin 'tpope/vim-unimpaired'
-
-" Snippet manager
-"Plugin 'UltiSnips'
 
 " Vim session manager
 Plugin 'xolox/vim-session'

@@ -1,0 +1,409 @@
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+" Name: .vimrc.config
+" Author: Travis Goldie
+" Date: February 2015
+" Description:
+" Configuration for various VIM plugins and extensions
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+"""" Auto-Pairs
+" Note: Check if working with ":imap ("
+"" Settings
+"let g:AutoPairsShortcutToggle
+"let g:AutoPairsShortcutFastWrap
+"let g:AutoPairsShortcutJump
+"let g:AutoPairsMapBS
+"let g:AutoPairsMapCR
+"let g:AutoPairsCenterLine
+
+"When g:AutoPairsMapCR is on, center current line after return if the line is at the bottom 1/3 of the window.
+"let g:AutoPairsMapSpace
+"let g:AutoPairsFlyMode = 0
+"let g:AutoPairsShortcutBackInsert
+
+
+"""" Conque Shell - Terminal in Vim
+"" Commands
+command! Bash execute 'ConqueTermSplit bash'
+command! Vbash execute 'ConqueTermVSplit bash'
+
+command! Pyct execute 'ConqueTermSplit python'
+command! Vpyct execute 'ConqueTermVSplit python'
+
+"" Settings - see https://code.google.com/p/conque/wiki/Usage
+" Go to insert mode on entering buffer
+let g:ConqueTerm_InsertOnEnter = 1
+"let g:ConqueTerm_PyVersion = 2
+"let g:ConqueTerm_FastMode = 0
+let g:ConqueTerm_Color = 1
+"let g:ConqueTerm_SessionSupport = 0
+let g:ConqueTerm_ReadUnfocused = 0
+"let g:ConqueTerm_CloseOnEnd = 0
+"let g:ConqueTerm_PromptRegex = '^\w\+@[0-9A-Za-z_.-]\+:[0-9A-Za-z_./\~,:-]\+\$'
+
+"" Mappings
+verbose nnoremap <C-w>b :Vbash<CR>
+verbose nnoremap <C-w><C-b> :Vbash<CR>
+verbose nnoremap <C-w>B :Bash<CR>
+verbose nnoremap <C-w><C-B> :Bash<CR>
+
+"let g:ConqueTerm_EscKey = '<Esc>'
+"let g:ConqueTerm_ToggleKey = '<F8>'
+"let g:ConqueTerm_CWInsert = 0
+"let g:ConqueTerm_ExecFileKey = '<F11>'
+"let g:ConqueTerm_SendFileKey = '<F10>'
+"let g:ConqueTerm_SendVisKey = '<F9>'
+"let g:ConqueTerm_SendFunctionKeys = 0
+"let g:ConqueTerm_TERM = 'vt100'
+
+
+
+"""" DelimitMate - Autoclose quotes, parenthesis, brackets, etc
+"" Settings
+"let g:loaded_delimitMate
+"let g:delimitMate_autoclose
+"let g:delimitMate_matchpairs
+"let g:delimitMate_quotes
+"let g:delimitMate_nesting_quotes
+"let g:delimitMate_expand_cr
+"let g:delimitMate_expand_space
+"let g:delimitMate_jump_expansion
+"let g:delimitMate_smart_quotes
+"let g:delimitMate_smart_matchpairs
+"let g:delimitMate_balance_matchpairs
+"let g:delimitMate_excluded_regions
+"let g:delimitMate_excluded_ft
+"let g:delimitMate_eol_marker
+"let g:delimitMate_apostrophes
+
+
+"""" DragVisuals - Visual Drag settings
+"" Mappings
+vmap  <expr>  <LEFT>   DVB_Drag('left')
+vmap  <expr>  <RIGHT>  DVB_Drag('right')
+vmap  <expr>  <DOWN>   DVB_Drag('down')
+vmap  <expr>  <UP>     DVB_Drag('up')
+vmap  <expr>  D        DVB_Duplicate()
+
+"" Settings
+" Remove any introduced trailing whitespace after moving...
+let g:DVB_TrimWS = 1
+
+
+"""" Fugitive Plugin
+" Auto open QuickFix window when grep'ing
+autocmd QuickFixCmdPost *grep* cwindow
+
+
+"""" Gundo - Undo tree manager
+"" Mappings
+nnoremap <F5> :GundoToggle<CR>
+
+"" Settings
+"let g:gundo_width = 45
+"let g:gundo_preview_bottom = 25
+let g:gundo_preview_height = 30
+"let g:gundo_right = 0
+"let g:gundo_map_move_older = "j"
+"let g:gundo_map_move_newer = "k"
+"let g:gundo_help = 1
+"let g:gundo_disable = 0
+"let g:gundo_close_on_revert = 0
+"let g:gundo_preview_statusline
+"let g:gundo_tree_statusline
+let g:gundo_auto_preview = 1
+"let g:gundo_playback_delay = 60
+
+
+"""" Sessions - Vim Session Manager
+" See :mksession and xolox bundle
+
+"" Settings
+let g:session_directory = $VIMBACKUP
+" Options: 'prompt', 'yes', 'no'
+let g:session_autosave = 'yes'
+let g:session_autosave_periodic = 10
+let g:session_default_overwrite = 1
+let g:session_extension = '.vim'
+let g:session_autoload = 'no'
+
+" Can remove session options - see `:set sessionoptions`
+" set sessionoptions-=tabpages
+let g:session_default_name = 'session'
+"let g:session_verbose_messages = 0
+let g:session_default_to_last = 1
+"let g:session_persist_globals = []
+"let g:session_restart_environment = 0
+let g:session_command_aliases = 1
+"let g:session_menu
+"let g:loaded_session
+
+
+
+"""" NERDTree
+" Open NERDTree
+nnoremap <F6> :NERDTreeToggle<CR>
+nnoremap <S-F6> :NERDTreeToggle ~/ui/app<CR>
+
+
+"""" Neocomplete
+"" Mappings
+" <C-h>, <BS>: close popup and delete backword char.
+"inoremap <expr><TAB>  pumvisible() ? "\<C-n>" : "\<TAB>"
+"inoremap <expr><C-g> neocomplete#undo_completion()
+"inoremap <expr><C-l> neocomplete#complete_common_string()
+"inoremap <expr><C-h> neocomplete#smart_close_popup()."\<C-h>"
+"inoremap <expr><BS> neocomplete#smart_close_popup()."\<C-h>"
+"inoremap <expr><C-y> neocomplete#close_popup()
+"inoremap <expr><C-e> neocomplete#cancel_popup()
+"inoremap <expr><TAB>  pumvisible() ? "\<Down>" : "\<C-x>\<C-u>"
+
+" Recommended key-mappings. <CR>: close popup and save indent.
+" Close popup by <Space>.
+"inoremap <expr><Space> pumvisible() ? neocomplete#close_popup() : "\<Space>"
+
+"" Settings
+let g:neocomplete#enable_at_startup = 0
+let g:neocomplete#enable_smart_case = 0
+let g:neocomplete#sources#syntax#min_keyword_length = 4
+let g:neocomplete#lock_buffer_name_pattern = '\*ku\*'
+
+" AutoComplPop like behavior.
+"let g:neocomplete#enable_auto_select = 1
+
+" Shell like behavior(not recommended).
+"set completeopt+=longest
+"let g:neocomplete#enable_auto_select = 1
+"let g:neocomplete#disable_auto_complete = 1
+
+" Enable heavy omni completion.
+if !exists('g:neocomplete#sources#omni#input_patterns')
+  let g:neocomplete#sources#omni#input_patterns = {}
+endif
+"let g:neocomplete#sources#omni#input_patterns.php = '[^. \t]->\h\w*\|\h\w*::'
+"let g:neocomplete#sources#omni#input_patterns.c = '[^.[:digit:] *\t]\%(\.\|->\)'
+"let g:neocomplete#sources#omni#input_patterns.cpp = '[^.[:digit:] *\t]\%(\.\|->\)\|\h\w*::'
+
+" For perlomni.vim setting.
+" https://github.com/c9s/perlomni.vim
+"let g:neocomplete#sources#omni#input_patterns.perl = '\h\w*->\h\w*\|\h\w*::'
+
+"""" Neosnippets
+"" Mappings.
+"inoremap <C-k>     <Plug>(neosnippet_expand_or_jump)
+"imap <C-m> <Plug>(neosnippet_expand_target)
+"smap <C-m> <Plug>(neosnippet_expand_or_jump)
+"xmap <C-m> <Plug>(neosnippet_expand_target)
+
+" SuperTab like snippets behavior.
+"imap <expr><TAB> neosnippet#expandable_or_jumpable() ?
+imap <expr><C-k> neosnippet#expandable_or_jumpable() ?
+    \ "\<Plug>(neosnippet_expand_or_jump)"
+    \: pumvisible() ? "\<C-n>" : "\<TAB>"
+smap <expr><TAB> neosnippet#expandable_or_jumpable() ?
+    \ "\<Plug>(neosnippet_expand_or_jump)"
+    \: "\<TAB>"
+
+" For snippet_complete marker.
+if has('conceal')
+  set conceallevel=2 concealcursor=i
+endif
+
+"" Settings
+
+" Enable snipMate compatibility feature.
+let g:neosnippet#enable_snipmate_compatibility = 1
+
+" Tell Neosnippet about the other snippets
+let g:neosnippet#snippets_directory='~/.vim/snippets/vim-snippets'
+
+
+
+"""" Python (PyMode) - Refactoring tools
+" For Python file headers
+let pyHeader = "/home/tgoldie/Dropbox/repos/beeryardtech/scripts/python/py_header.txt"
+
+" Only add autcmd one time
+if !exists("autocommands_loaded")
+  let autocommands_loaded = 1
+  autocmd bufnewfile *.py exe "so " . pyHeader
+  autocmd bufnewfile *.py "1," . 15 . 'g/__date__ = .*/s//__date__ = "' . strftime('%d %b %Y') .'"'
+endif
+
+" Options
+let g:pymode = 1
+let g:pymode_warnings = 1
+let g:pymode_paths = []
+let g:pymode_trim_whitespaces = 1
+let g:pymode_options = 1
+"let g:pymode_options_max_line_length = 79
+let g:pymode_options_max_line_length = 0
+let g:pymode_quickfix_minheight = 3
+let g:pymode_quickfix_maxheight = 6
+let g:pymode_python = 'python'
+let g:pymode_indent = 1
+let g:pymode_folding = 1
+let g:pymode_motion = 1
+let g:pymode_doc = 1
+let g:pymode_doc_bind = 'K'
+let g:pymode_virtualenv = 1
+let g:pymode_virtualenv_path = $VIRTUAL_ENV
+let g:pymode_run = 1
+let g:pymode_run_bind = '<leader>r'
+let g:pymode_breakpoint = 1
+let g:pymode_breakpoint_bind = '<leader>b'
+let g:pymode_breakpoint_cmd = ''
+let g:pymode_lint = 1
+let g:pymode_lint_on_write = 1
+let g:pymode_lint_unmodified = 0
+let g:pymode_lint_on_fly = 0
+"let g:pymode_lint_message = 1
+let g:pymode_lint_message = 0
+"let g:pymode_lint_checkers = ['pyflakes', 'pep8', 'mccabe']
+let g:pymode_lint_checkers = ['pyflakes']
+let g:pymode_lint_ignore = "E501,W"
+let g:pymode_lint_select = "E501,W0011,W430"
+"ex: let g:pymode_lint_sort = ['E', 'C', 'I']  " Errors first 'E',
+let g:pymode_lint_sort = []
+let g:pymode_lint_cwindow = 1
+let g:pymode_lint_signs = 1
+let g:pymode_lint_todo_symbol = 'WW'
+let g:pymode_lint_comment_symbol = 'CC'
+let g:pymode_lint_visual_symbol = 'RR'
+let g:pymode_lint_error_symbol = 'EE'
+let g:pymode_lint_info_symbol = 'II'
+let g:pymode_lint_pyflakes_symbol = 'FF'
+" See https://pep8.readthedocs.org/en/1.4.6/intro.html#configuration
+let g:pymode_lint_options_pep8 ={'max_line_length': g:pymode_options_max_line_length}
+let g:pymode_lint_options_pyflakes = { 'builtins': '_' }
+let g:pymode_lint_options_mccabe = { 'complexity': 12 }
+let g:pymode_lint_options_pep257 = {}
+" See http://docs.pylint.org/features.html#options
+let g:pymode_lint_options_pylint = {'max-line-length': g:pymode_options_max_line_length}
+let g:pymode_rope = 1
+let g:pymode_rope_lookup_project = 0
+let g:pymode_rope_project_root = ""
+let g:pymode_rope_ropefolder='.ropeproject'
+let g:pymode_rope_show_doc_bind = '<C-c>d'
+let g:pymode_rope_regenerate_on_write = 1
+let g:pymode_rope_completion = 1
+let g:pymode_rope_complete_on_dot = 1
+let g:pymode_rope_completion_bind = '<C-Space>'
+let g:pymode_rope_autoimport = 1
+let g:pymode_rope_autoimport_modules = ['os', 'shutil', 'datetime']
+let g:pymode_rope_autoimport_import_after_complete = 0
+let g:pymode_rope_goto_definition_cmd = 'new'
+"let g:pymode_rope_goto_definition_bind = '<C-c>g'
+let g:pymode_rope_goto_definition_bind = '<A-d>'
+"let g:pymode_rope_rename_bind = '<C-c>rr'
+let g:pymode_rope_rename_bind = '<A-r>'
+let g:pymode_rope_rename_module_bind = '<C-c>r1r'
+"let g:pymode_rope_organize_imports_bind = '<C-c>ro'
+let g:pymode_rope_organize_imports_bind = '<A-o>'
+let g:pymode_rope_autoimport_bind = '<C-c>ra'
+let g:pymode_rope_module_to_package_bind = '<C-c>r1p'
+let g:pymode_rope_extract_method_bind = '<C-c>rm'
+let g:pymode_rope_extract_variable_bind = '<C-c>rl'
+let g:pymode_rope_use_function_bind = '<C-c>ru'
+let g:pymode_rope_move_bind = '<C-c>rv'
+let g:pymode_rope_change_signature_bind = '<C-c>rs'
+let g:pymode_syntax = 1
+let g:pymode_syntax_slow_sync = 1
+let g:pymode_syntax_all = 1
+let g:pymode_syntax_print_as_function = 0
+let g:pymode_syntax_highlight_equal_operator = g:pymode_syntax_all
+let g:pymode_syntax_highlight_stars_operator = g:pymode_syntax_all
+let g:pymode_syntax_highlight_self = g:pymode_syntax_all
+let g:pymode_syntax_indent_errors = g:pymode_syntax_all
+let g:pymode_syntax_space_errors = g:pymode_syntax_all
+let g:pymode_syntax_string_formatting = g:pymode_syntax_all
+let g:pymode_syntax_string_format = g:pymode_syntax_all
+let g:pymode_syntax_string_templates = g:pymode_syntax_all
+let g:pymode_syntax_doctests = g:pymode_syntax_all
+let g:pymode_syntax_builtin_objs = g:pymode_syntax_all
+let g:pymode_syntax_builtin_types = g:pymode_syntax_all
+let g:pymode_syntax_highlight_exceptions = g:pymode_syntax_all
+let g:pymode_syntax_docstrings = g:pymode_syntax_all
+
+
+"""" Tabbar
+"" Mappings
+nmap <F8> :TagbarToggle<CR>
+
+
+"""" Ultisnips
+"let g:UltiSnipsListSnippets="<F3>"
+"let g:UltiSnipsExpandTrigger="<c-h>"
+"let g:UltiSnipsJumpForwardTrigger="<c-n>"
+"let g:UltiSnipsJumpBackwardTrigger="<c-p>"
+"let g:UltiSnipsSnippetDirectories=['UltiSnips', 'AngularSnips', 'BeeryardSnips']
+
+
+"""" YouCompleteMe (ycm) - enabled as a bundle
+" https://github.com/Valloric/YouCompleteMe
+
+" Settings - Commentted out ones are default unless otherwise stated
+let g:ycm_min_num_of_chars_for_completion = 4
+let g:ycm_min_num_identifier_candidate_chars = 0
+let g:ycm_auto_trigger = 1
+let g:ycm_filetype_whitelist = { '*': 1 }
+let g:ycm_filetype_blacklist = {
+            \ 'tagbar' : 1,
+            \ 'qf' : 1,
+            \ 'notes' : 1,
+            \ 'markdown' : 0,
+            \ 'unite' : 1,
+            \ 'text' : 1,
+            \ 'vimwiki' : 1,
+            \ 'pandoc' : 1
+            \}
+let g:ycm_filetype_specific_completion_to_disable = {}
+let g:ycm_show_diagnostics_ui = 1
+let g:ycm_error_symbol = '>>'
+let g:ycm_enable_diagnostic_signs = 1
+let g:ycm_enable_diagnostic_highlighting = 1
+let g:ycm_echo_current_diagnostic = 1
+let g:ycm_always_populate_location_list = 0
+let g:ycm_open_loclist_on_ycm_diags = 1
+let g:ycm_allow_changing_updatetime = 1
+let g:ycm_complete_in_comments = 1
+let g:ycm_complete_in_strings = 1
+let g:ycm_collect_identifiers_from_comments_and_strings = 0
+let g:ycm_collect_identifiers_from_tags_files = 0
+let g:ycm_seed_identifiers_with_syntax = 0
+let g:ycm_extra_conf_vim_data = []
+let g:ycm_path_to_python_interpreter = ''
+let g:ycm_server_use_vim_stdout = 0
+let g:ycm_server_keep_logfiles = 0
+let g:ycm_server_log_level = 'info'
+let g:ycm_csharp_server_port = 2000
+let g:ycm_auto_start_csharp_server = 1
+let g:ycm_auto_stop_csharp_server = 1
+let g:ycm_add_preview_to_completeopt = 0
+let g:ycm_autoclose_preview_window_after_completion = 0  " Set to 1
+let g:ycm_autoclose_preview_window_after_insertion = 0
+let g:ycm_max_diagnostics_to_display = 30
+let g:ycm_key_list_select_completion=['<TAB>', '<Down>']
+let g:ycm_key_list_previous_completion = ['<S-TAB>', '<Up>']
+let g:ycm_key_invoke_completion = '<C-Space>'
+let g:ycm_key_detailed_diagnostics = '<leader>d'
+let g:ycm_global_ycm_extra_conf = ''
+let g:ycm_confirm_extra_conf = 1
+let g:ycm_extra_conf_globlist = []
+let g:ycm_filepath_completion_use_working_dir = 0
+let g:ycm_semantic_triggers =  {
+      \   'c' : ['->', '.'],
+      \   'objc' : ['->', '.'],
+      \   'ocaml' : ['.', '#'],
+      \   'cpp,objcpp' : ['->', '.', '::'],
+      \   'perl' : ['->'],
+      \   'php' : ['->', '::'],
+      \   'cs,java,javascript,d,vim,python,perl6,scala,vb,elixir,go' : ['.'],
+      \   'ruby' : ['.', '::'],
+      \   'lua' : ['.', ':'],
+      \   'erlang' : [':'],
+      \ }
+let g:ycm_cache_omnifunc = 1
+let g:ycm_use_ultisnips_completer = 1
+
+
+
