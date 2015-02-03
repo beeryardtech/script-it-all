@@ -162,10 +162,10 @@ nnoremap <S-F6> :NERDTreeToggle ~/ui/app<CR>
 "inoremap <expr><Space> pumvisible() ? neocomplete#close_popup() : "\<Space>"
 
 "" Settings
-let g:neocomplete#enable_at_startup = 0
-let g:neocomplete#enable_smart_case = 0
-let g:neocomplete#sources#syntax#min_keyword_length = 4
-let g:neocomplete#lock_buffer_name_pattern = '\*ku\*'
+"let g:neocomplete#enable_at_startup = 0
+"let g:neocomplete#enable_smart_case = 0
+"let g:neocomplete#sources#syntax#min_keyword_length = 4
+"let g:neocomplete#lock_buffer_name_pattern = '\*ku\*'
 
 " AutoComplPop like behavior.
 "let g:neocomplete#enable_auto_select = 1
@@ -176,9 +176,9 @@ let g:neocomplete#lock_buffer_name_pattern = '\*ku\*'
 "let g:neocomplete#disable_auto_complete = 1
 
 " Enable heavy omni completion.
-if !exists('g:neocomplete#sources#omni#input_patterns')
-  let g:neocomplete#sources#omni#input_patterns = {}
-endif
+"if !exists('g:neocomplete#sources#omni#input_patterns')
+  "let g:neocomplete#sources#omni#input_patterns = {}
+"endif
 "let g:neocomplete#sources#omni#input_patterns.php = '[^. \t]->\h\w*\|\h\w*::'
 "let g:neocomplete#sources#omni#input_patterns.c = '[^.[:digit:] *\t]\%(\.\|->\)'
 "let g:neocomplete#sources#omni#input_patterns.cpp = '[^.[:digit:] *\t]\%(\.\|->\)\|\h\w*::'
@@ -189,32 +189,31 @@ endif
 
 """" Neosnippets
 "" Mappings.
-"inoremap <C-k>     <Plug>(neosnippet_expand_or_jump)
-"imap <C-m> <Plug>(neosnippet_expand_target)
-"smap <C-m> <Plug>(neosnippet_expand_or_jump)
-"xmap <C-m> <Plug>(neosnippet_expand_target)
+inoremap <C-k>     <Plug>(neosnippet_expand_or_jump)
+imap <C-m> <Plug>(neosnippet_expand_target)
+smap <C-m> <Plug>(neosnippet_expand_or_jump)
+xmap <C-m> <Plug>(neosnippet_expand_target)
 
 " SuperTab like snippets behavior.
 "imap <expr><TAB> neosnippet#expandable_or_jumpable() ?
-imap <expr><C-k> neosnippet#expandable_or_jumpable() ?
-    \ "\<Plug>(neosnippet_expand_or_jump)"
-    \: pumvisible() ? "\<C-n>" : "\<TAB>"
-smap <expr><TAB> neosnippet#expandable_or_jumpable() ?
-    \ "\<Plug>(neosnippet_expand_or_jump)"
-    \: "\<TAB>"
+"imap <expr><C-k> neosnippet#expandable_or_jumpable() ?
+    "\ "\<Plug>(neosnippet_expand_or_jump)"
+    "\: pumvisible() ? "\<C-n>" : "\<TAB>"
+"smap <expr><TAB> neosnippet#expandable_or_jumpable() ?
+    "\ "\<Plug>(neosnippet_expand_or_jump)"
+    "\: "\<TAB>"
 
 " For snippet_complete marker.
-if has('conceal')
-  set conceallevel=2 concealcursor=i
-endif
+"if has('conceal')
+  "set conceallevel=2 concealcursor=i
+"endif
 
 "" Settings
-
 " Enable snipMate compatibility feature.
-let g:neosnippet#enable_snipmate_compatibility = 1
+"let g:neosnippet#enable_snipmate_compatibility = 1
 
 " Tell Neosnippet about the other snippets
-let g:neosnippet#snippets_directory='~/.vim/snippets/vim-snippets'
+"let g:neosnippet#snippets_directory='~/.vim/snippets/vim-snippets'
 
 
 
@@ -331,11 +330,13 @@ nmap <F8> :TagbarToggle<CR>
 
 
 """" Ultisnips
-"let g:UltiSnipsListSnippets="<F3>"
-"let g:UltiSnipsExpandTrigger="<c-h>"
-"let g:UltiSnipsJumpForwardTrigger="<c-n>"
-"let g:UltiSnipsJumpBackwardTrigger="<c-p>"
-"let g:UltiSnipsSnippetDirectories=['UltiSnips', 'AngularSnips', 'BeeryardSnips']
+"inoremap <C-G> c UltiSnips#ExpandSnippet
+"let g:UltiSnipsListSnippets = '<F3>'
+"let g:UltiSnipsExpandTrigger = '<c-g>'
+"let g:UltiSnipsJumpForwardTrigger = '<c-n>'
+"let g:UltiSnipsJumpBackwardTrigger = '<c-p>'
+"let g:UltiSnipsEditSplit = 'vertical'
+"let g:UltiSnipsSnippetDirectories = [ 'UltiSnips', 'AngularSnips', 'BeeryardSnips']
 
 
 """" YouCompleteMe (ycm) - enabled as a bundle

@@ -7,8 +7,5 @@ dots/_vim/bundle
 # Configs with personal info
 .muttrc.*
 
-# Purple (pidin, finch) directories
-dots/_purple/certificates
-dots/_purple/icons
-dots/_purple/logs
-dots/_purple/blist*
+# Purple (pidin, finch) directory
+dots/_purple/

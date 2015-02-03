@@ -16,7 +16,7 @@ function! ReloadTabs()
     execute "tabdo windo e"
     execute "tabdo normal! ="
 endfunction
-command Tb call ReloadTabs()
+command! Tb call ReloadTabs()
 
 function! FocusLostInsertMode()
     if v:insertmode
