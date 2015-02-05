@@ -1,7 +1,7 @@
-""
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " Name: .vimrc.plugins
 " Description: Plugins managed by Vundle
-""
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " XXX Start and end with setting filetype
 filetype off
 
@@ -35,6 +35,9 @@ Plugin 'kshenoy/vim-signature'
 
 " Editor config support for vim
 Plugin 'editorconfig/editorconfig-vim'
+
+" SuperTab - Allows use of <tab> for completions
+Plugin 'ervandew/supertab'
 
 " Enancement to NERDTree
 Plugin 'jistr/vim-nerdtree-tabs'
@@ -77,15 +80,15 @@ Plugin 'scrooloose/nerdcommenter'
 Plugin 'shinokada/dragvisuals.vim'
 
 " Snippet manager - not 'UtilSnips'
-"Plugin 'SirVer/UltiSnips'
+Plugin 'SirVer/UltiSnips'
 
 " Neocomplete - omnicomplete
 "Plugin 'Shougo/context_filetype.vim'
 "Plugin 'Shougo/neocomplete'
 
 " Snippets using neocomplete
-Plugin 'Shougo/neosnippet'
-Plugin 'Shougo/neosnippet-snippets'
+"Plugin 'Shougo/neosnippet'
+"Plugin 'Shougo/neosnippet-snippets'
 
 " Manage undo tree
 Plugin 'sjl/gundo.vim'

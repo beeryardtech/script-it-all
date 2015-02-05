@@ -189,10 +189,10 @@ nnoremap <S-F6> :NERDTreeToggle ~/ui/app<CR>
 
 """" Neosnippets
 "" Mappings.
-inoremap <C-k>     <Plug>(neosnippet_expand_or_jump)
-imap <C-m> <Plug>(neosnippet_expand_target)
-smap <C-m> <Plug>(neosnippet_expand_or_jump)
-xmap <C-m> <Plug>(neosnippet_expand_target)
+"inoremap <C-k>     <Plug>(neosnippet_expand_or_jump)
+"imap <C-m> <Plug>(neosnippet_expand_target)
+"smap <C-m> <Plug>(neosnippet_expand_or_jump)
+"xmap <C-m> <Plug>(neosnippet_expand_target)
 
 " SuperTab like snippets behavior.
 "imap <expr><TAB> neosnippet#expandable_or_jumpable() ?
@@ -214,7 +214,6 @@ xmap <C-m> <Plug>(neosnippet_expand_target)
 
 " Tell Neosnippet about the other snippets
 "let g:neosnippet#snippets_directory='~/.vim/snippets/vim-snippets'
-
 
 
 """" Python (PyMode) - Refactoring tools
@@ -329,21 +328,33 @@ let g:pymode_syntax_docstrings = g:pymode_syntax_all
 nmap <F8> :TagbarToggle<CR>
 
 
-"""" Ultisnips
-"inoremap <C-G> c UltiSnips#ExpandSnippet
-"let g:UltiSnipsListSnippets = '<F3>'
-"let g:UltiSnipsExpandTrigger = '<c-g>'
-"let g:UltiSnipsJumpForwardTrigger = '<c-n>'
-"let g:UltiSnipsJumpBackwardTrigger = '<c-p>'
-"let g:UltiSnipsEditSplit = 'vertical'
-"let g:UltiSnipsSnippetDirectories = [ 'UltiSnips', 'AngularSnips', 'BeeryardSnips']
+"""" Ultisnips - Not UtilSnips or UtilsSnips
+let g:UltiSnipsListSnippets = '<F3>'
+let g:UltiSnipsExpandTrigger = '<c-g>'
+"inoremap <C-g> UltiSnips#ExpandSnippet
 
+"let g:UltiSnipsJumpBackwardTrigger = '<c-p>'
+"inoremap <C-j> UltiSnips#JumpBackwards
+
+"let g:UltiSnipsJumpForwardTrigger = '<c-n>'
+"inoremap <C-k> UltiSnips#JumpForward
+
+let g:UltiSnipsEditSplit = 'vertical'
+let g:UltiSnipsSnippetDirectories = [ 'UltiSnips' ]
+"let g:UltiSnipsSnippetDirectories = [  'UltiSnips',  'bundle/angular-vim-snippets/snippets',  'bundle/angular-vim-snippets/UltiSnips',  'bundle/vim-snippets/snippets',  'bundle/vim-snippets/UltiSnips',  ]
+let g:UltiSnipsSnippetDirectories = [
+            \ 'UltiSnips',
+            \ './.vim/bundle/angular-vim-snippets/UltiSnips',
+            \ 'bundle/vim-snippets/UltiSnips'
+            \ ]
+            "\ 'bundle/vim-snippets/snippets',
+            "\ 'bundle/angular-vim-snippets/snippets',
 
 """" YouCompleteMe (ycm) - enabled as a bundle
 " https://github.com/Valloric/YouCompleteMe
 
 " Settings - Commentted out ones are default unless otherwise stated
-let g:ycm_min_num_of_chars_for_completion = 4
+let g:ycm_min_num_of_chars_for_completion = 2
 let g:ycm_min_num_identifier_candidate_chars = 0
 let g:ycm_auto_trigger = 1
 let g:ycm_filetype_whitelist = { '*': 1 }

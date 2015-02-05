@@ -1,8 +1,7 @@
-""
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " Name: .vimrc.js
 " Description: Config for JavaScript language and plugins
-""
-"
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 """" Autocmds Headers
 autocmd BufRead *.js exe "set regexpengine=1"
 autocmd BufRead *.js exe "syntax enable"
@@ -66,7 +65,7 @@ let g:javascript_conceal = 0
 "let javascript_ignore_javaScriptdoc = 0
 
 " Tern - Show argument hints - ''
-let tern_show_argument_hints='on_move'
+let tern_show_argument_hints = 'on_move'
 
 autocmd Filetype javascript nnoremap <A-d> :TernDef<CR>
 autocmd Filetype javascript nnoremap <A-r> :TernRename<CR>
@@ -75,6 +74,9 @@ autocmd Filetype javascript nnoremap <A-t> :TernRefs<CR>
 " Auto adds a ';' to the end of a line.
 "autocmd Filetype javascript let b:delimitMate_eol_marker=';'
 
+"""" SuperTab
+let g:SuperTabContextDefaultCompletionType = "<c-n>"
+let g:SuperTabDefaultCompletionType = "<c-n>"
 
 """" Syntastic
 let g:syntastic_check_on_open = 1

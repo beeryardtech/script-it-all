@@ -1,0 +1,77 @@
+
+snippet ngc "Define a new Angular Controller. You can change the controller name and parameters."
+	/**
+	* @ngdoc service
+	* @name ${1:moduleName}.${2:controllerName}
+	* @type function
+	* @requires ng.$scope
+	* @description
+	*/
+	angular.module($1).controller($2, [
+		'$scope',
+		'$3'
+		function($scope, $3) {
+			var name = '$1.$2'
+			$0
+		}
+	]);
+endsnippet
+
+
+snippet ngm "A new angular module without a config function."
+	/**
+	* @ngdoc interface
+	* @name ${1:moduleName}
+	* @description
+	* $0
+	*/
+	angular.module('$1', [
+		${2:moduleDependencies}
+	]);
+endsnippet
+
+
+snippet ngs "Define a Angular Service. Set service name and injectables."
+    /**
+    * @ngdoc service
+    * @name ${1:moduleName}.${2:serviceName}
+    * @type function
+    * @description
+    */
+    angular.module($1).service($2, [
+        'Consts',
+        '$3'
+        function(Consts, $3) {
+            var self = this;
+            var name = '$1.$2'
+            $0
+        }
+    ]);
+endsnippet
+
+
+snippet $w "Define a $watch for an expression. You can change the expression to be watched."
+/**
+ * @ngdoc property
+ * @name WATCH_${2:expr}
+ * @propertyOf ${3:pOf}
+ * @description
+ */
+$scope.WATCH_$2 = $scope.$watch(${1:watchExpr}, function(newVal, oldVal) {
+  $0
+});
+endsnippet
+
+
+snippet $on "Define a $on for a $broadcast/$emit on the $scope inside an Angular Controller. You can change the event name to listen on."
+/**
+ * @ngdoc property
+ * @name ${2:onName}
+ * @propertyOf ${3:pOf}
+ * @type function
+ * @description
+ */
+$scope.$2 = $scope.$on(${1:eventName}, function(event, eventData) {
+    $0
+});
+endsnippet

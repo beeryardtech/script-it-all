@@ -10,9 +10,11 @@ set completeopt=longest,menuone
 set autoread
 
 " Set tabs and spaces handling
-set tabstop=4
 set shiftwidth=4
+set tabstop=4
 set expandtab
+
+" Add Mouse Support
 set mouse=a
 set mousemodel=popup_setpos
 
@@ -169,8 +171,8 @@ autocmd FileType html,markdown setlocal omnifunc=htmlcomplete#CompleteTags
 autocmd FileType javascript setlocal omnifunc=javascriptcomplete#CompleteJS
 autocmd FileType php set omnifunc=phpcomplete#CompletePHP
 autocmd FileType python setlocal omnifunc=pythoncomplete#Complete
+autocmd FileType vim setlocal omnifunc=vimcomplete#CompleteTags
 autocmd FileType xml setlocal omnifunc=xmlcomplete#CompleteTags
-
 
 
 """" Movement
