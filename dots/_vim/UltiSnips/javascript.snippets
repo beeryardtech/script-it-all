@@ -1,6 +1,22 @@
 # vim: tabstop=4:shiftwidth=4:expandtab:
 # Angular Snippets - Use "an" namespace
 
+###
+# Class/Services
+###
+snippet anm "A new angular module without a config function."
+    /**
+    * @ngdoc interface
+    * @name ${1:moduleName}
+    * @description
+    * $0
+    */
+    angular.module('$1', [
+        ${2:moduleDependencies}
+    ]);
+endsnippet
+
+
 snippet anc "Define a new Angular Controller. You can change the controller name and parameters."
     /**
     * @ngdoc service
@@ -13,22 +29,10 @@ snippet anc "Define a new Angular Controller. You can change the controller name
         '$scope',
         '$3'
         function($scope, $3) {
+            var self = this;
             var name = '$1.$2'
             $0
         }
-    ]);
-endsnippet
-
-
-snippet anm "A new angular module without a config function."
-    /**
-    * @ngdoc interface
-    * @name ${1:moduleName}
-    * @description
-    * $0
-    */
-    angular.module('$1', [
-        ${2:moduleDependencies}
     ]);
 endsnippet
 
@@ -49,33 +53,6 @@ snippet ans "Define a Angular Service. Set service name and injectables."
             $0
         }
     ]);
-endsnippet
-
-
-snippet anw "Define a $watch for an expression. You can change the expression to be watched."
-/**
- * @ngdoc property
- * @name WATCH_${2:expr}
- * @propertyOf ${3:pOf}
- * @description
- */
-$scope.WATCH_$2 = $scope.$watch(${1:watchExpr}, function(newVal, oldVal) {
-  $0
-});
-endsnippet
-
-
-snippet anon "Define a $on for a $broadcast/$emit on the $scope inside an Angular Controller. You can change the event name to listen on."
-/**
- * @ngdoc property
- * @name ${2:onName}
- * @propertyOf ${3:pOf}
- * @type function
- * @description
- */
-$scope.$2 = $scope.$on(${1:eventName}, function(event, eventData) {
-    $0
-});
 endsnippet
 
 
@@ -103,6 +80,8 @@ snippet andl "Define directive with a linking function."
                 controller: [
                     '$scope',
                     function($scope) {
+                        var self = this;
+                        var name = '$1.$2'
                         $0
                     }
                 ],
@@ -115,4 +94,36 @@ snippet andl "Define directive with a linking function."
             };
         }
     ]);
+endsnippet
+
+###
+# Properties
+###
+snippet anw "Define a $watch for an expression. You can change the expression to be watched."
+/**
+ * @ngdoc property
+ * @name WATCH_${2:expr}
+ * @propertyOf ${3:pOf}
+ * @description
+ */
+$scope.WATCH_$2 = $scope.$watch(${1:watchExpr}, function(newVal, oldVal) {
+    if(_.isUndefined(newVal)) {
+        return;
+    }
+    $0
+});
+endsnippet
+
+
+snippet anon "Define a $on for a $broadcast/$emit on the $scope inside an Angular Controller. You can change the event name to listen on."
+/**
+ * @ngdoc property
+ * @name ${2:onName}
+ * @propertyOf ${3:pOf}
+ * @type function
+ * @description
+ */
+$scope.$2 = $scope.$on(${1:eventName}, function(event, eventData) {
+    $0
+});
 endsnippet
