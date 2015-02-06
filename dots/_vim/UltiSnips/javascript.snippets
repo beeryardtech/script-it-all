@@ -1,37 +1,39 @@
+# vim: tabstop=4:shiftwidth=4:expandtab:
+# Angular Snippets - Use "an" namespace
 
-snippet ngc "Define a new Angular Controller. You can change the controller name and parameters."
-	/**
-	* @ngdoc service
-	* @name ${1:moduleName}.${2:controllerName}
-	* @type function
-	* @requires ng.$scope
-	* @description
-	*/
-	angular.module($1).controller($2, [
-		'$scope',
-		'$3'
-		function($scope, $3) {
-			var name = '$1.$2'
-			$0
-		}
-	]);
+snippet anc "Define a new Angular Controller. You can change the controller name and parameters."
+    /**
+    * @ngdoc service
+    * @name ${1:moduleName}.${2:controllerName}
+    * @type function
+    * @requires ng.$scope
+    * @description
+    */
+    angular.module($1).controller($2, [
+        '$scope',
+        '$3'
+        function($scope, $3) {
+            var name = '$1.$2'
+            $0
+        }
+    ]);
 endsnippet
 
 
-snippet ngm "A new angular module without a config function."
-	/**
-	* @ngdoc interface
-	* @name ${1:moduleName}
-	* @description
-	* $0
-	*/
-	angular.module('$1', [
-		${2:moduleDependencies}
-	]);
+snippet anm "A new angular module without a config function."
+    /**
+    * @ngdoc interface
+    * @name ${1:moduleName}
+    * @description
+    * $0
+    */
+    angular.module('$1', [
+        ${2:moduleDependencies}
+    ]);
 endsnippet
 
 
-snippet ngs "Define a Angular Service. Set service name and injectables."
+snippet ans "Define a Angular Service. Set service name and injectables."
     /**
     * @ngdoc service
     * @name ${1:moduleName}.${2:serviceName}
@@ -50,7 +52,7 @@ snippet ngs "Define a Angular Service. Set service name and injectables."
 endsnippet
 
 
-snippet $w "Define a $watch for an expression. You can change the expression to be watched."
+snippet anw "Define a $watch for an expression. You can change the expression to be watched."
 /**
  * @ngdoc property
  * @name WATCH_${2:expr}
@@ -63,7 +65,7 @@ $scope.WATCH_$2 = $scope.$watch(${1:watchExpr}, function(newVal, oldVal) {
 endsnippet
 
 
-snippet $on "Define a $on for a $broadcast/$emit on the $scope inside an Angular Controller. You can change the event name to listen on."
+snippet anon "Define a $on for a $broadcast/$emit on the $scope inside an Angular Controller. You can change the event name to listen on."
 /**
  * @ngdoc property
  * @name ${2:onName}
@@ -74,4 +76,43 @@ snippet $on "Define a $on for a $broadcast/$emit on the $scope inside an Angular
 $scope.$2 = $scope.$on(${1:eventName}, function(event, eventData) {
     $0
 });
+endsnippet
+
+
+snippet andl "Define directive with a linking function."
+    /**
+    * @ngdoc directive
+    * @name ${1:moduleName}.${2:directiveName}
+    * @param {${3:paramType}} ${4:param} ${5:paramDesc}
+    * @requires ng.$scope
+    * @restrict ${6:EA}
+    * @description
+    *
+    * @example
+    * <doc:example module="$1">
+    *    <doc:source>
+    *        <script>
+    *        </script>
+    *    </doc:source>
+    * </doc:example>
+    */
+    angular.module('$1').directive('$2', [
+        'Template',
+        function(Template) {
+        return {
+                controller: [
+                    '$scope',
+                    function($scope) {
+                        $0
+                    }
+                ],
+                link: function(scope, element, attrs, ctrl) { },
+                restrict: '$6',
+                scope: {
+                    $4: '@$4',
+                },
+                templateUrl: Template.HTML.DEFAULT,
+            };
+        }
+    ]);
 endsnippet
