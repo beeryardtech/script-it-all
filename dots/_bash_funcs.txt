@@ -70,14 +70,14 @@ convertmp3 ()
 # Replace resolv.conf file with SIOS's version
 cpresolv ()
 {
-	sharedAll=$DROPBOX/shared/all
+	initFiles=$DROPBOX/repos/beeryardtech/init/files/
 	if [[ $1 == -r ]]; then
 		echo "Using home resolv.conf"
-		sudo cp $sharedAll/etc/resolv.conf.home /etc/resolv.conf
+		sudo cp $initFiles/resolv.conf.home /etc/resolv.conf
 		return $?
     else
         echo "Using SIOS resolv.conf"
-        sudo cp $sharedAll/etc/resolv.conf.sios /etc/resolv.conf
+        sudo cp $initFiles/resolv.conf.sios /etc/resolv.conf
 		return $?
 	fi
 }
