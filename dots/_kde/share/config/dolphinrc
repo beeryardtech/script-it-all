@@ -1,0 +1,41 @@
+[CompactMode]
+FontWeight=50
+
+[DetailsMode]
+FontWeight=50
+
+[DownloadDialog Settings]
+Height 1080=574
+Width 1920=1206
+
+[General]
+AutoExpandFolders=true
+BrowseThroughArchives=true
+EditableUrl=true
+FilterBar=true
+ShowCopyMoveMenu=true
+ShowFullPath=true
+ShowSpaceInfo=true
+Version=200
+ViewPropsTimestamp=2014,9,6,16,33,38
+
+[IconsMode]
+FontWeight=50
+
+[MainWindow]
+Height 1080=770
+Height 768=500
+MenuBar=Disabled
+State=AAAA/wAAAAD9AAAAAwAAAAAAAAC0AAAC3PwCAAAAAvsAAAAWAGYAbwBsAGQAZQByAHMARABvAGMAawAAAAAA/////wAAAAUA////+wAAABQAcABsAGEAYwBlAHMARABvAGMAawEAAAAmAAAC3AAAAE4A////AAAAAQAAAAAAAAAA/AIAAAAB+wAAABAAaQBuAGYAbwBEAG8AYwBrAAAAAAD/////AAAABQD///8AAAADAAAAAAAAAAD8AQAAAAH7AAAAGAB0AGUAcgBtAGkAbgBhAGwARABvAGMAawAAAAAA/////wAAAAUA////AAAEGgAAAtwAAAAEAAAABAAAAAgAAAAI/AAAAAEAAAACAAAAAQAAABYAbQBhAGkAbgBUAG8AbwBsAEIAYQByAQAAAAD/////AAAAAAAAAAA=
+ToolBarsMovable=Disabled
+Width 1366=750
+Width 1920=1236
+
+[PreviewSettings]
+Plugins=directorythumbnail,imagethumbnail,jpegthumbnail
+
+[SettingsDialog]
+Height 1080=535
+Height 768=564
+Width 1366=1060
+Width 1920=837
