@@ -1,1 +1,1 @@
-../python/gdcmdtools/gdperm.py
+/home/tgoldie/Dropbox/repos/beeryardtech/scripts/python/gdcmdtools/gdperm.py
