@@ -2612,7 +2612,7 @@
 				<buddy account='travis.goldie@steeleye.com/' proto='prpl-jabber'>
 					<name>3e0q34kewfzlw3h4gts9scvuwo@public.talk.google.com</name>
 					<alias>Vikas Rana</alias>
-					<setting name='last_seen' type='int'>1422535496</setting>
+					<setting name='last_seen' type='int'>1424457337</setting>
 					<setting name='buddy_icon' type='string'>dcc898da20fbb753bc561d918e46dcd1b44adcbe.jpg</setting>
 					<setting name='icon_checksum' type='string'>dcc898da20fbb753bc561d918e46dcd1b44adcbe</setting>
 				</buddy>
@@ -2621,14 +2621,14 @@
 				<buddy account='travis.goldie@steeleye.com/' proto='prpl-jabber'>
 					<name>1icm7tx5otixv0pekienp3vevt@public.talk.google.com</name>
 					<alias>Joe Moukabaa</alias>
-					<setting name='last_seen' type='int'>1422535496</setting>
+					<setting name='last_seen' type='int'>1424333138</setting>
 				</buddy>
 			</contact>
 			<contact>
 				<buddy account='travis.goldie@steeleye.com/' proto='prpl-jabber'>
 					<name>andrew.slice@steeleye.com</name>
 					<alias>Andrew Slice</alias>
-					<setting name='last_seen' type='int'>1422535496</setting>
+					<setting name='last_seen' type='int'>1424368483</setting>
 				</buddy>
 			</contact>
 			<contact>
@@ -2641,7 +2641,7 @@
 				<buddy account='travis.goldie@steeleye.com/' proto='prpl-jabber'>
 					<name>0x4csnq22gets0kdl5ll6p3s5y@public.talk.google.com</name>
 					<alias>Brandon Walker</alias>
-					<setting name='last_seen' type='int'>1422542770</setting>
+					<setting name='last_seen' type='int'>1424543663</setting>
 					<setting name='buddy_icon' type='string'>c365f9e17dc66dcef6f195ca6cb1daf94f845eef.jpg</setting>
 					<setting name='icon_checksum' type='string'>c365f9e17dc66dcef6f195ca6cb1daf94f845eef</setting>
 				</buddy>
@@ -2650,14 +2650,14 @@
 				<buddy account='travis.goldie@steeleye.com/' proto='prpl-jabber'>
 					<name>0ya8q92d6h9ta22vpai2ej9fym@public.talk.google.com</name>
 					<alias>David Gallagher</alias>
-					<setting name='last_seen' type='int'>1422535496</setting>
+					<setting name='last_seen' type='int'>1424333138</setting>
 				</buddy>
 			</contact>
 			<contact>
 				<buddy account='travis.goldie@steeleye.com/' proto='prpl-jabber'>
 					<name>1lld94hwjc8a7350t5c3o2z7qm@public.talk.google.com</name>
 					<alias>Neeraj Chandra</alias>
-					<setting name='last_seen' type='int'>1422535496</setting>
+					<setting name='last_seen' type='int'>1424333138</setting>
 					<setting name='buddy_icon' type='string'>29996f709fc6c4f63a111b8465c2af404d92b6d5.jpg</setting>
 					<setting name='icon_checksum' type='string'>29996f709fc6c4f63a111b8465c2af404d92b6d5</setting>
 				</buddy>
@@ -2666,7 +2666,7 @@
 				<buddy account='travis.goldie@steeleye.com/' proto='prpl-jabber'>
 					<name>2d71le9091r752xk2x664rt6sb@public.talk.google.com</name>
 					<alias>Margaret Hoagland</alias>
-					<setting name='last_seen' type='int'>1422535496</setting>
+					<setting name='last_seen' type='int'>1424333138</setting>
 					<setting name='buddy_icon' type='string'>2a4d6ad7c98cf070eb95a85744188588103eff7d.jpg</setting>
 					<setting name='icon_checksum' type='string'>2a4d6ad7c98cf070eb95a85744188588103eff7d</setting>
 				</buddy>
@@ -2675,7 +2675,7 @@
 				<buddy account='travis.goldie@steeleye.com/' proto='prpl-jabber'>
 					<name>2nxdbgofrfehh1fwktbq8n23fu@public.talk.google.com</name>
 					<alias>James Crocker</alias>
-					<setting name='last_seen' type='int'>1422481342</setting>
+					<setting name='last_seen' type='int'>1424469443</setting>
 				</buddy>
 			</contact>
 			<contact>
@@ -2688,7 +2688,7 @@
 				<buddy account='tgoldie@gmail.com/' proto='prpl-jabber'>
 					<name>janie.hinnant331@gmail.com</name>
 					<alias>Janie Goldie</alias>
-					<setting name='last_seen' type='int'>1422535451</setting>
+					<setting name='last_seen' type='int'>1424331704</setting>
 					<setting name='buddy_icon' type='string'>b9cc424714537304ef1f81e4cad4f68410ad6607.jpg</setting>
 					<setting name='icon_checksum' type='string'>b9cc424714537304ef1f81e4cad4f68410ad6607</setting>
 				</buddy>
@@ -2697,14 +2697,14 @@
 				<buddy account='tgoldie@gmail.com/' proto='prpl-jabber'>
 					<name>janie.goldie@gmail.com</name>
 					<alias>Janie Goldie</alias>
-					<setting name='last_seen' type='int'>1422381709</setting>
+					<setting name='last_seen' type='int'>1424213201</setting>
 				</buddy>
 			</contact>
 			<contact>
 				<buddy account='tgoldie@gmail.com/' proto='prpl-jabber'>
 					<name>caitlin.buckhaults@gmail.com</name>
 					<alias>Caitlin Buckhaults</alias>
-					<setting name='last_seen' type='int'>1422535451</setting>
+					<setting name='last_seen' type='int'>1424331704</setting>
 					<setting name='buddy_icon' type='string'>17a9620c5db09fc7ea65ccdefa8ea68724a91951.jpg</setting>
 					<setting name='icon_checksum' type='string'>17a9620c5db09fc7ea65ccdefa8ea68724a91951</setting>
 				</buddy>
@@ -2713,7 +2713,7 @@
 				<buddy account='tgoldie@gmail.com/' proto='prpl-jabber'>
 					<name>cremesoda@gmail.com</name>
 					<alias>Jason Ghent</alias>
-					<setting name='last_seen' type='int'>1422535451</setting>
+					<setting name='last_seen' type='int'>1424481690</setting>
 					<setting name='buddy_icon' type='string'>08cb718454782cb8ee95110aa967d9ce6a509d93.jpg</setting>
 					<setting name='icon_checksum' type='string'>08cb718454782cb8ee95110aa967d9ce6a509d93</setting>
 				</buddy>
@@ -2722,7 +2722,7 @@
 				<buddy account='tgoldie@gmail.com/' proto='prpl-jabber'>
 					<name>dezzfx@gmail.com</name>
 					<alias>Desmond Archie</alias>
-					<setting name='last_seen' type='int'>1422535451</setting>
+					<setting name='last_seen' type='int'>1424331704</setting>
 					<setting name='buddy_icon' type='string'>9872a4afd6637d0fbf405d3ad96028e921abbae9.jpg</setting>
 					<setting name='icon_checksum' type='string'>9872a4afd6637d0fbf405d3ad96028e921abbae9</setting>
 				</buddy>
@@ -2731,7 +2731,7 @@
 				<buddy account='tgoldie@gmail.com/' proto='prpl-jabber'>
 					<name>ekumar88@gmail.com</name>
 					<alias>Ekishta Kumar</alias>
-					<setting name='last_seen' type='int'>1422535451</setting>
+					<setting name='last_seen' type='int'>1424331704</setting>
 					<setting name='buddy_icon' type='string'>9ece18d149f9bffb3e24904ac47552dfc8c389cf.jpg</setting>
 					<setting name='icon_checksum' type='string'>9ece18d149f9bffb3e24904ac47552dfc8c389cf</setting>
 				</buddy>
@@ -2740,7 +2740,7 @@
 				<buddy account='tgoldie@gmail.com/' proto='prpl-jabber'>
 					<name>elsuperbert@gmail.com</name>
 					<alias>Brian Buchanan</alias>
-					<setting name='last_seen' type='int'>1422535451</setting>
+					<setting name='last_seen' type='int'>1424331704</setting>
 					<setting name='buddy_icon' type='string'>74b5587dcf743213a3711e32997384453e2467ec.jpg</setting>
 					<setting name='icon_checksum' type='string'>74b5587dcf743213a3711e32997384453e2467ec</setting>
 				</buddy>
@@ -2749,7 +2749,7 @@
 				<buddy account='tgoldie@gmail.com/' proto='prpl-jabber'>
 					<name>laceloves2play@gmail.com</name>
 					<alias>Lacey Tipton</alias>
-					<setting name='last_seen' type='int'>1420765502</setting>
+					<setting name='last_seen' type='int'>1424331704</setting>
 					<setting name='buddy_icon' type='string'>11cf060211acd35184e4242c664493a0665b8b89.jpg</setting>
 					<setting name='icon_checksum' type='string'>11cf060211acd35184e4242c664493a0665b8b89</setting>
 				</buddy>
@@ -2758,7 +2758,7 @@
 				<buddy account='tgoldie@gmail.com/' proto='prpl-jabber'>
 					<name>matthewcgoldie@gmail.com</name>
 					<alias>Matthew Goldie</alias>
-					<setting name='last_seen' type='int'>1421800253</setting>
+					<setting name='last_seen' type='int'>1424044949</setting>
 					<setting name='buddy_icon' type='string'>88566ac8c9415247c7490a3686963ee3b076b1eb.jpg</setting>
 					<setting name='icon_checksum' type='string'>88566ac8c9415247c7490a3686963ee3b076b1eb</setting>
 				</buddy>
@@ -2767,7 +2767,7 @@
 				<buddy account='tgoldie@gmail.com/' proto='prpl-jabber'>
 					<name>misha.powell@gmail.com</name>
 					<alias>Misha Powell</alias>
-					<setting name='last_seen' type='int'>1422395869</setting>
+					<setting name='last_seen' type='int'>1423613259</setting>
 					<setting name='buddy_icon' type='string'>c29bc54028271b2d7b334a41d94a66e6cdced12a.jpg</setting>
 					<setting name='icon_checksum' type='string'>c29bc54028271b2d7b334a41d94a66e6cdced12a</setting>
 				</buddy>
@@ -2776,7 +2776,7 @@
 				<buddy account='tgoldie@gmail.com/' proto='prpl-jabber'>
 					<name>neeraj.chandra.nc@gmail.com</name>
 					<alias>Neeraj Chandra</alias>
-					<setting name='last_seen' type='int'>1422535451</setting>
+					<setting name='last_seen' type='int'>1424331704</setting>
 					<setting name='buddy_icon' type='string'>29996f709fc6c4f63a111b8465c2af404d92b6d5.jpg</setting>
 					<setting name='icon_checksum' type='string'>29996f709fc6c4f63a111b8465c2af404d92b6d5</setting>
 				</buddy>
@@ -2785,7 +2785,7 @@
 				<buddy account='tgoldie@gmail.com/' proto='prpl-jabber'>
 					<name>simcoder@gmail.com</name>
 					<alias>penajo@duckcreektech.com</alias>
-					<setting name='last_seen' type='int'>1422482467</setting>
+					<setting name='last_seen' type='int'>1424452817</setting>
 					<setting name='buddy_icon' type='string'>6c6523374be8df6386147c638eca236eb3f82fbf.jpg</setting>
 					<setting name='icon_checksum' type='string'>6c6523374be8df6386147c638eca236eb3f82fbf</setting>
 				</buddy>
@@ -2794,7 +2794,7 @@
 				<buddy account='tgoldie@gmail.com/' proto='prpl-jabber'>
 					<name>0h6wo9qjgmxmt0zezfeetl3h7o@public.talk.google.com</name>
 					<alias>Ashley Bower</alias>
-					<setting name='last_seen' type='int'>1422535451</setting>
+					<setting name='last_seen' type='int'>1424331704</setting>
 					<setting name='buddy_icon' type='string'>7e0661d468bec7519d4e1f714a651bf48326b29b.jpg</setting>
 					<setting name='icon_checksum' type='string'>7e0661d468bec7519d4e1f714a651bf48326b29b</setting>
 				</buddy>
@@ -2809,7 +2809,7 @@
 				<buddy account='tgoldie@gmail.com/' proto='prpl-jabber'>
 					<name>crobertgoldie@gmail.com</name>
 					<alias>Christopher Goldie</alias>
-					<setting name='last_seen' type='int'>1422535451</setting>
+					<setting name='last_seen' type='int'>1424331704</setting>
 				</buddy>
 			</contact>
 			<contact>
@@ -2821,7 +2821,7 @@
 				<buddy account='tgoldie@gmail.com/' proto='prpl-jabber'>
 					<name>regina.mcdaniel@gmail.com</name>
 					<alias>Regina McDaniel</alias>
-					<setting name='last_seen' type='int'>1422535451</setting>
+					<setting name='last_seen' type='int'>1424331704</setting>
 					<setting name='buddy_icon' type='string'>a4f2edf880be23068f56d9843eef2c1dd7cb2bfc.jpg</setting>
 					<setting name='icon_checksum' type='string'>a4f2edf880be23068f56d9843eef2c1dd7cb2bfc</setting>
 				</buddy>
@@ -2848,7 +2848,7 @@
 				<buddy account='tgoldie@gmail.com/' proto='prpl-jabber'>
 					<name>0rlgpwjlkvg0p28rpna0w7qjdb@public.talk.google.com</name>
 					<alias>Willis Falls</alias>
-					<setting name='last_seen' type='int'>1422535451</setting>
+					<setting name='last_seen' type='int'>1424331704</setting>
 					<setting name='buddy_icon' type='string'>e9cddadf960432ace672b8777e611501bcab5b7c.jpg</setting>
 					<setting name='icon_checksum' type='string'>e9cddadf960432ace672b8777e611501bcab5b7c</setting>
 				</buddy>
@@ -2857,7 +2857,7 @@
 				<buddy account='tgoldie@gmail.com/' proto='prpl-jabber'>
 					<name>0t6ez7n31t65z14uz79rezu8hd@public.talk.google.com</name>
 					<alias>Kamala Diefenthaler</alias>
-					<setting name='last_seen' type='int'>1420727179</setting>
+					<setting name='last_seen' type='int'>1424227002</setting>
 					<setting name='buddy_icon' type='string'>db665106fc20d1f4948a52178bd0aad01827478a.jpg</setting>
 					<setting name='icon_checksum' type='string'>db665106fc20d1f4948a52178bd0aad01827478a</setting>
 				</buddy>
@@ -2872,7 +2872,7 @@
 				<buddy account='tgoldie@gmail.com/' proto='prpl-jabber'>
 					<name>14j3ephpd2at53jje2xo3hmwt3@public.talk.google.com</name>
 					<alias>Steve Hodges</alias>
-					<setting name='last_seen' type='int'>1422535451</setting>
+					<setting name='last_seen' type='int'>1424331704</setting>
 					<setting name='buddy_icon' type='string'>518d72a182fab242c6009882caef828fd73acd1b.jpg</setting>
 					<setting name='icon_checksum' type='string'>518d72a182fab242c6009882caef828fd73acd1b</setting>
 				</buddy>
@@ -2881,7 +2881,7 @@
 				<buddy account='tgoldie@gmail.com/' proto='prpl-jabber'>
 					<name>1y13tebr99mv20osxwxcamh7ro@public.talk.google.com</name>
 					<alias>Francisco Javier Blanco-Silva</alias>
-					<setting name='last_seen' type='int'>1422535451</setting>
+					<setting name='last_seen' type='int'>1424331704</setting>
 					<setting name='buddy_icon' type='string'>dd7900661fb16abcb2c7acbbc066a7daf8116d6b.jpg</setting>
 					<setting name='icon_checksum' type='string'>dd7900661fb16abcb2c7acbbc066a7daf8116d6b</setting>
 				</buddy>
@@ -2890,7 +2890,7 @@
 				<buddy account='tgoldie@gmail.com/' proto='prpl-jabber'>
 					<name>20owzicvt934z0lktm54qwtugw@public.talk.google.com</name>
 					<alias>Brandon Walker</alias>
-					<setting name='last_seen' type='int'>1422542770</setting>
+					<setting name='last_seen' type='int'>1424543663</setting>
 					<setting name='buddy_icon' type='string'>c365f9e17dc66dcef6f195ca6cb1daf94f845eef.jpg</setting>
 					<setting name='icon_checksum' type='string'>c365f9e17dc66dcef6f195ca6cb1daf94f845eef</setting>
 				</buddy>
@@ -2906,7 +2906,7 @@
 				<buddy account='travis.goldie@steeleye.com/' proto='prpl-jabber'>
 					<name>0g0ahc0e8o2kc0i6okpocsxknf@public.talk.google.com</name>
 					<alias>Tom Beckenhauer</alias>
-					<setting name='last_seen' type='int'>1422535496</setting>
+					<setting name='last_seen' type='int'>1424333138</setting>
 				</buddy>
 			</contact>
 			<contact>
@@ -2919,7 +2919,7 @@
 				<buddy account='travis.goldie@steeleye.com/' proto='prpl-jabber'>
 					<name>0xa95y2xbnn7f2abdnjo77eipo@public.talk.google.com</name>
 					<alias>Travis Goldie</alias>
-					<setting name='last_seen' type='int'>1422535496</setting>
+					<setting name='last_seen' type='int'>1424333138</setting>
 					<setting name='buddy_icon' type='string'>843e02d00185baac00d1314a3271b1cab05cdad1.jpg</setting>
 					<setting name='icon_checksum' type='string'>843e02d00185baac00d1314a3271b1cab05cdad1</setting>
 				</buddy>
@@ -2928,7 +2928,7 @@
 				<buddy account='tgoldie@gmail.com/' proto='prpl-jabber'>
 					<name>3vyzkjqgu7s683777imlgyiip5@public.talk.google.com</name>
 					<alias>Travis Goldie</alias>
-					<setting name='last_seen' type='int'>1422535451</setting>
+					<setting name='last_seen' type='int'>1424331704</setting>
 					<setting name='buddy_icon' type='string'>c189a964ee7381f643b3f34ff1cb79d64601f4bb.jpg</setting>
 					<setting name='icon_checksum' type='string'>c189a964ee7381f643b3f34ff1cb79d64601f4bb</setting>
 				</buddy>
@@ -2937,14 +2937,14 @@
 				<buddy account='travis.goldie@steeleye.com/' proto='prpl-jabber'>
 					<name>1qn1p5cf6i5ml0caf29vy5qwzd@public.talk.google.com</name>
 					<alias>Allyson Sandifer</alias>
-					<setting name='last_seen' type='int'>1422535496</setting>
+					<setting name='last_seen' type='int'>1424333138</setting>
 				</buddy>
 			</contact>
 			<contact>
 				<buddy account='travis.goldie@steeleye.com/' proto='prpl-jabber'>
 					<name>0wyv1musvdxbd1faoitd06qx0d@public.talk.google.com</name>
 					<alias>Surender Kumar</alias>
-					<setting name='last_seen' type='int'>1422542346</setting>
+					<setting name='last_seen' type='int'>1424444275</setting>
 					<setting name='buddy_icon' type='string'>eb77fdeab413333d38f296ac178ad0af73e9dbeb.jpg</setting>
 					<setting name='icon_checksum' type='string'>eb77fdeab413333d38f296ac178ad0af73e9dbeb</setting>
 				</buddy>
@@ -2953,7 +2953,24 @@
 				<buddy account='travis.goldie@steeleye.com/' proto='prpl-jabber'>
 					<name>1hveohk426smt3j182pak1hv0e@public.talk.google.com</name>
 					<alias>Ernie Coskrey</alias>
-					<setting name='last_seen' type='int'>1422535496</setting>
+					<setting name='last_seen' type='int'>1424333138</setting>
+				</buddy>
+			</contact>
+			<contact>
+				<buddy account='tgoldie@gmail.com/' proto='prpl-jabber'>
+					<name>3ctg2ndtsc2ya1zbmhyyf08ol9@public.talk.google.com</name>
+					<alias>Hamilton Turner</alias>
+					<setting name='last_seen' type='int'>1424331704</setting>
+					<setting name='buddy_icon' type='string'>c070ebc9e95f3b084339731a036dea35bbdf9d87.jpg</setting>
+					<setting name='icon_checksum' type='string'>c070ebc9e95f3b084339731a036dea35bbdf9d87</setting>
+				</buddy>
+			</contact>
+			<contact>
+				<buddy account='tgoldie@gmail.com/' proto='prpl-jabber'>
+					<name>2lckjo3ypcgpc3o8xsjhajasri@public.talk.google.com</name>
+					<alias>Caitlin Buckhaults</alias>
+					<setting name='buddy_icon' type='string'>17a9620c5db09fc7ea65ccdefa8ea68724a91951.jpg</setting>
+					<setting name='icon_checksum' type='string'>17a9620c5db09fc7ea65ccdefa8ea68724a91951</setting>
 				</buddy>
 			</contact>
 		</group>
@@ -2963,7 +2980,7 @@
 				<buddy account='travis.goldie@steeleye.com/' proto='prpl-jabber'>
 					<name>sergey.razin@steeleye.com</name>
 					<alias>Sergey Razin</alias>
-					<setting name='last_seen' type='int'>1422535496</setting>
+					<setting name='last_seen' type='int'>1424333138</setting>
 					<setting name='buddy_icon' type='string'>920628c871503fd288862d141a0221e689ad2685.jpg</setting>
 					<setting name='icon_checksum' type='string'>920628c871503fd288862d141a0221e689ad2685</setting>
 				</buddy>
@@ -2972,7 +2989,7 @@
 				<buddy account='travis.goldie@steeleye.com/' proto='prpl-jabber'>
 					<name>0hn6e21k5ndhz0t9cf8ufbq6mk@public.talk.google.com</name>
 					<alias>Jason Treulich</alias>
-					<setting name='last_seen' type='int'>1422500467</setting>
+					<setting name='last_seen' type='int'>1424451424</setting>
 					<setting name='buddy_icon' type='string'>862d7656dda460be8685d39467df2a22e7dea32a.jpg</setting>
 					<setting name='icon_checksum' type='string'>862d7656dda460be8685d39467df2a22e7dea32a</setting>
 				</buddy>
@@ -2988,7 +3005,7 @@
 				<buddy account='travis.goldie@steeleye.com/' proto='prpl-jabber'>
 					<name>todd.frye@steeleye.com</name>
 					<alias>Gregory Frye</alias>
-					<setting name='last_seen' type='int'>1422535496</setting>
+					<setting name='last_seen' type='int'>1424393669</setting>
 					<setting name='buddy_icon' type='string'>496f58404d0c58d1d37ab7db2b4882a9da3e4fad.jpg</setting>
 					<setting name='icon_checksum' type='string'>496f58404d0c58d1d37ab7db2b4882a9da3e4fad</setting>
 				</buddy>
@@ -2997,7 +3014,7 @@
 				<buddy account='travis.goldie@steeleye.com/' proto='prpl-jabber'>
 					<name>cassius.rhue@steeleye.com</name>
 					<alias>Cassius Rhue</alias>
-					<setting name='last_seen' type='int'>1422535496</setting>
+					<setting name='last_seen' type='int'>1424333138</setting>
 					<setting name='buddy_icon' type='string'>cf2654394ec52797488ef1a593efae501f59bd2a.jpg</setting>
 					<setting name='icon_checksum' type='string'>cf2654394ec52797488ef1a593efae501f59bd2a</setting>
 				</buddy>
@@ -3006,7 +3023,7 @@
 				<buddy account='travis.goldie@steeleye.com/' proto='prpl-jabber'>
 					<name>scott.thoman@steeleye.com</name>
 					<alias>Scott Thoman</alias>
-					<setting name='last_seen' type='int'>1422535496</setting>
+					<setting name='last_seen' type='int'>1424333138</setting>
 					<setting name='buddy_icon' type='string'>c1e1e32594a833ac9e14290ef9d9f5b2b0912038.jpg</setting>
 					<setting name='icon_checksum' type='string'>c1e1e32594a833ac9e14290ef9d9f5b2b0912038</setting>
 				</buddy>
@@ -3022,7 +3039,7 @@
 				<buddy account='travis.goldie@steeleye.com/' proto='prpl-jabber'>
 					<name>jeff.yates@steeleye.com</name>
 					<alias>Jeff Yates</alias>
-					<setting name='last_seen' type='int'>1422482775</setting>
+					<setting name='last_seen' type='int'>1424469115</setting>
 					<setting name='buddy_icon' type='string'>18fdd66c61b358faaf08fc1de2d05ad6e524c9e6.jpg</setting>
 					<setting name='icon_checksum' type='string'>18fdd66c61b358faaf08fc1de2d05ad6e524c9e6</setting>
 				</buddy>
@@ -3031,7 +3048,7 @@
 				<buddy account='travis.goldie@steeleye.com/' proto='prpl-jabber'>
 					<name>1424e7rojv66b1kdaoauqz6kl5@public.talk.google.com</name>
 					<alias>Sergey Razin</alias>
-					<setting name='last_seen' type='int'>1422535496</setting>
+					<setting name='last_seen' type='int'>1424333138</setting>
 					<setting name='buddy_icon' type='string'>4633345714c377bab2a174a84cfa6c5e2161be09.jpg</setting>
 					<setting name='icon_checksum' type='string'>4633345714c377bab2a174a84cfa6c5e2161be09</setting>
 				</buddy>

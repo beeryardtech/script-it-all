@@ -1,0 +1,8 @@
+[myself]
+id=_5f55ced6_eb93_44db_bd46_69df4997d1fd_
+privateKeyPath=/home/tgoldie/.kde/share/apps/kdeconnect/key.pem
+
+[trusted_devices][c193d9f95f2db1c3]
+deviceName=NomThoseApples
+deviceType=phone
+publicKey=-----BEGIN PUBLIC KEY-----\nMIIBIjANBgkqhkiG9w0BAQEFAAOCAQ8AMIIBCgKCAQEAwEWrU8rsHFi3m+o8y65K\nKIItp9hXon0LfDTCmuwhGBOvhMjjBjngcEVX/5A4ympD94SVt1RJlJksLYC30W5q\n77+iXKHRBnhfQ+lKfdeWRFulMWguOc+E3dbqH5/bGMKnWRU/x3Tk5eueJww6KKC2\n5TTI0ELGXGxuruiBMyynor8WJsWfFuR++E/odkyzGii/7mPBpy/CAvY6eMJbujIa\n/9t3lM0kZYRIAAu7F7IxWiVCIdQyK6Yt6uLquwtJtedntNf8WGlIsaB2Z0UuaKOa\nqKXmQ7LocuYxV6iHDO6svY68P8FfikNkTRjD+NnTYA10uA9bNvmSFvzS39rBb6xz\nzwIDAQAB\n-----END PUBLIC KEY-----\n

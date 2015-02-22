@@ -87,6 +87,7 @@ dbconflict () {
     dump="$HOME/tmp/dbdump"
     tmp=$( mktemp )
     mkdir -p "$dump"
+    echo "Find list in $tmp" ; echo
     find $DROPBOX -iname "*\ \(* conflicted\ *" -o -iname "*\(Case Conflict*" -o -iname "*\(Selective Sync Conflict\)*" > $tmp
 
     while read val ; do

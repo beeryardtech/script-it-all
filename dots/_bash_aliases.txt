@@ -22,7 +22,6 @@ alias lrgfile='ls -lSrh'
 
 # cd aliases
 alias cd..='cd ..'
-alias ..='cd ..'
 alias cdl='cd .. ; ls -lhA --color=auto'
 
 # Text/history aliases
@@ -34,7 +33,6 @@ alias l='less'
 
 # System functions
 alias clrswap='echo "Turing swap off" ; sudo swapoff -a && echo "Turning swap back on" && sudo swapon -a'
-alias swapclr='clrswap'
 alias please='sudo'
 alias src="source ~/.bashrc ~/.inputrc ~/.profile"
 
@@ -60,13 +58,20 @@ alias tabdiff='vim -c "silent :TabDiff"'
 alias shrew='sudo iked & disown && qikea > /tmp/qikea.log'
 alias ike='shrew'
 
-alias pushit='$HOME/ui/utils/push.sh -b ng-v7'
-alias updateit='$HOME/ui/utils/update.sh ng-v7'
+alias pushit='$HOME/ui/utils/push.sh -b minion4'
+alias updateit='$HOME/ui/utils/update.sh minion4'
 
 # Use Readline wrapper with these programs
-alias kp='rlwrap kpcli --kdb=$DROPBOX/APG/KeePass.kdbx'
 alias cpan='sudo rlwrap cpan'
+alias kp='rlwrap kpcli --kdb=$DROPBOX/APG/KeePass.kdbx'
 alias sqlite='rlwrap ~/bin/sqlite3'
+
+
+# NodeJs module REPL's
+alias node='rlwrap node'
+alias node='rlwrap nodejs'
+alias protractor-repl='rlwrap protractor-repl'
+alias phantomjs='rlwrap phantomjs'
 
 # Apt-Get and dpkg alias
 alias aptget='sudo apt-get install'

@@ -11,6 +11,12 @@ function! DeleteHiddenBuffers()
     endfor
 endfunction
 
+""
+" Name: ReloadTabs
+" Command: `Tb` - Executes ReloadTabs()
+" Description: Reloads all the windows and tabs. Runs auto resize
+" to reset size (using `CTRL-W =`)
+""
 function! ReloadTabs()
     " Reload all tabs and windows. Then reset window size
     execute "tabdo windo e"
@@ -36,25 +42,6 @@ function! <SID>StripTrailingWhitespaces()
 endfun
 autocmd FileType c,cpp,css,scss,html,javascript,java,php,ruby,python autocmd BufWritePre <buffer> :call <SID>StripTrailingWhitespaces()
 
-function! FileSize()
-    let bytes = getfsize(expand("%:p"))
-    if bytes <= 0
-        return ""
-    endif
-    if bytes < 1024
-        return bytes
-        return (bytes / 1024) . "K"
-    endif
-endfunction
-
-function! ClosePair(char)
-	if getline('.')[col('.') - 1] == a:char
-		return "\<Right>"
-	else
-		return a:char
-	endif
-endfunction
-
 function! QuoteDelim(char)
 	let line = getline('.')
 	let col = col('.')
@@ -71,12 +58,6 @@ function! QuoteDelim(char)
 	endif
 endfunction
 
-function! Taba()
-    for newTab in a:000
-        call :tabe newTab
-    endfor
-endfunction
-
 " Append modeline after last line in buffer.
 " Use substitute() instead of printf() to handle '%%s' modeline in LaTeX
 " files.
@@ -89,7 +70,7 @@ endfunction
 nnoremap <silent> <Leader>ml :call AppendModeline()<CR>
 
 " Sends any ex to a scratch buffer
-function! s:Scratch (command, ...)
+function! s:Scratch(command, ...)
    redir => lines
    let saveMore = &more
    set nomore
@@ -97,7 +78,9 @@ function! s:Scratch (command, ...)
    redir END
    let &more = saveMore
    call feedkeys("\<cr>")
-   new | setlocal buftype=nofile bufhidden=hide noswapfile
+
+   " Create the new buffer here
+   tabe | setlocal buftype=nofile bufhidden=hide noswapfile
    put=lines
    if a:0 > 0
       execute 'vglobal/'.a:1.'/delete'
@@ -108,6 +91,8 @@ function! s:Scratch (command, ...)
    silent %substitute/\%^\_s*\n\|\_s*\%$
    let height = line('$') + 3
    execute 'normal! z'.height."\<cr>"
+
+   " Return
    0
 endfunction
 
@@ -139,3 +124,27 @@ function! s:Filter_lines(cmd, filter)
     0
 endfunction
 command! -nargs=? Scriptnames call s:Filter_lines('scriptnames', <q-args>)
+
+
+" Called with a command and a redirection target
+"   (see `:help redir` for info on redirection targets)
+" Note that since this is executed in function context,
+"   in order to target a global variable for redirection you must prefix it with `g:`.
+" EG call Redir('ls', '=>g:buffer_list')
+function! Redir(command, to)
+  exec 'redir '.a:to
+  exec a:command
+  redir END
+endfunction
+
+" The last non-space substring is passed as the redirection target.
+" EG
+"   :R ls @">
+"   " stores the buffer list in the 'unnamed buffer'
+" Redirections to variables or files will work,
+"   but there must not be a space between the redirection operator and the variable name.
+" Also note that in order to redirect to a global variable you have to preface it with `g:`.
+"   EG
+"     :R ls =>g:buffer_list
+"     :R ls >buffer_list.txt
+command! -nargs=+ R call call(function('Redir'), split(<q-args>, '\s\(\S\+\s*$\)\@='))

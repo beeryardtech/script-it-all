@@ -42,8 +42,9 @@ Plugin 'ervandew/supertab'
 " Enancement to NERDTree
 Plugin 'jistr/vim-nerdtree-tabs'
 
-" JS Beutifier - Uses editorconfig
+" JS Beautifier - Uses editorconfig
 Plugin 'maksimr/vim-jsbeautify'
+Plugin 'einars/js-beautify'
 
 " Parse objects for properties for omnicompleting
 Plugin 'marijnh/tern_for_vim'
@@ -89,6 +90,10 @@ Plugin 'SirVer/UltiSnips'
 " Snippets using neocomplete
 "Plugin 'Shougo/neosnippet'
 "Plugin 'Shougo/neosnippet-snippets'
+
+" Shougo
+Plugin 'Shougo/unite.vim'
+Plugin 'Shougo/vimfiler.vim'
 
 " Manage undo tree
 Plugin 'sjl/gundo.vim'

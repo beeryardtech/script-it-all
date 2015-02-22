@@ -674,8 +674,8 @@
 			<pref name='timestamps' type='bool' value='1'/>
 			<pref name='notify_typing' type='bool' value='1'/>
 			<pref name='size'>
-				<pref name='width' type='int' value='54'/>
-				<pref name='height' type='int' value='20'/>
+				<pref name='width' type='int' value='61'/>
+				<pref name='height' type='int' value='16'/>
 			</pref>
 			<pref name='position'>
 				<pref name='x' type='int' value='0'/>
@@ -698,7 +698,7 @@
 		<pref name='blist'>
 			<pref name='size'>
 				<pref name='width' type='int' value='27'/>
-				<pref name='height' type='int' value='16'/>
+				<pref name='height' type='int' value='13'/>
 			</pref>
 			<pref name='position'>
 				<pref name='x' type='int' value='0'/>

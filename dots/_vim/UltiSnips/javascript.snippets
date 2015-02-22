@@ -5,95 +5,95 @@
 # Class/Services
 ###
 snippet anm "A new angular module without a config function."
-    /**
-    * @ngdoc interface
-    * @name ${1:moduleName}
-    * @description
-    * $0
-    */
-    angular.module('$1', [
-        ${2:moduleDependencies}
-    ]);
+/**
+* @ngdoc interface
+* @name ${1:moduleName}
+* @description
+* $0
+*/
+angular.module('$1', [
+    ${2:moduleDependencies}
+]);
 endsnippet
 
 
 snippet anc "Define a new Angular Controller. You can change the controller name and parameters."
-    /**
-    * @ngdoc service
-    * @name ${1:moduleName}.${2:controllerName}
-    * @type function
-    * @requires ng.$scope
-    * @description
-    */
-    angular.module($1).controller($2, [
-        '$scope',
-        '$3'
-        function($scope, $3) {
-            var self = this;
-            var name = '$1.$2'
-            $0
-        }
-    ]);
+/**
+* @ngdoc service
+* @name ${1:moduleName}.${2:controllerName}
+* @type function
+* @requires ng.$scope
+* @description
+*/
+angular.module('$1').controller('$2', [
+    '$scope',
+    '$3'
+    function($scope, $3) {
+        var self = this;
+        var name = '$1.$2';
+        $0
+    }
+]);
 endsnippet
 
 
 snippet ans "Define a Angular Service. Set service name and injectables."
-    /**
-    * @ngdoc service
-    * @name ${1:moduleName}.${2:serviceName}
-    * @type function
-    * @description
-    */
-    angular.module($1).service($2, [
-        'Consts',
-        '$3'
-        function(Consts, $3) {
-            var self = this;
-            var name = '$1.$2'
-            $0
-        }
-    ]);
+/**
+* @ngdoc service
+* @name ${1:moduleName}.${2:serviceName}
+* @type function
+* @description
+*/
+angular.module('$1').service('$2', [
+    'Consts',
+    '$3'
+    function(Consts, $3) {
+        var self = this;
+        var name = '$1.$2';
+        $0
+    }
+]);
 endsnippet
 
 
 snippet andl "Define directive with a linking function."
-    /**
-    * @ngdoc directive
-    * @name ${1:moduleName}.${2:directiveName}
-    * @param {${3:paramType}} ${4:param} ${5:paramDesc}
-    * @requires ng.$scope
-    * @restrict ${6:EA}
-    * @description
-    *
-    * @example
-    * <doc:example module="$1">
-    *    <doc:source>
-    *        <script>
-    *        </script>
-    *    </doc:source>
-    * </doc:example>
-    */
-    angular.module('$1').directive('$2', [
-        'Template',
-        function(Template) {
-        return {
-                controller: [
-                    '$scope',
-                    function($scope) {
-                        var self = this;
-                        var name = '$1.$2'
-                        $0
-                    }
-                ],
-                link: function(scope, element, attrs, ctrl) { },
-                restrict: '$6',
-                scope: {
-                    $4: '@$4',
-                },
-                templateUrl: Template.HTML.DEFAULT,
-            };
-        }
-    ]);
+/**
+* @ngdoc directive
+* @name ${1:moduleName}.${2:directiveName}
+* @param {${3:paramType}} ${4:param} ${5:paramDesc}
+* @requires ng.$scope
+* @restrict ${6:EA}
+* @description
+*
+* @example
+* <doc:example module="$1">
+*    <doc:source>
+*        <script>
+*        </script>
+*    </doc:source>
+* </doc:example>
+*/
+angular.module('$1').directive('$2', [
+    'Template',
+    function(Template) {
+    return {
+            controller: [
+                '$scope',
+                function($scope) {
+                    var self = this;
+                    var name = '$1.$2';
+                    $0
+                }
+            ],
+            link: function(scope, element, attrs, ctrl) { },
+            restrict: '$6',
+            scope: {
+                $4: '@$4',
+            },
+            templateUrl: Template.HTML.DEFAULT,
+        };
+    }
+]);
 endsnippet
 
 ###
@@ -101,11 +101,11 @@ endsnippet
 ###
 snippet anw "Define a $watch for an expression. You can change the expression to be watched."
 /**
- * @ngdoc property
- * @name WATCH_${2:expr}
- * @propertyOf ${3:pOf}
- * @description
- */
+* @ngdoc property
+* @name WATCH_${2:expr}
+* @propertyOf ${3:pOf}
+* @description
+*/
 $scope.WATCH_$2 = $scope.$watch(${1:watchExpr}, function(newVal, oldVal) {
     if(_.isUndefined(newVal)) {
         return;
@@ -117,13 +117,89 @@ endsnippet
 
 snippet anon "Define a $on for a $broadcast/$emit on the $scope inside an Angular Controller. You can change the event name to listen on."
 /**
- * @ngdoc property
- * @name ${2:onName}
- * @propertyOf ${3:pOf}
- * @type function
- * @description
- */
+* @ngdoc property
+* @name ${2:onName}
+* @propertyOf ${3:pOf}
+* @type function
+* @description
+*/
 $scope.$2 = $scope.$on(${1:eventName}, function(event, eventData) {
     $0
 });
 endsnippet
+
+###
+# Tests
+###
+snippet befm "Creates before each to define variables"
+var ${1:vars};
+beforeEach(function() {
+    $0
+});
+endsnippet
+
+
+snippet descm "Define describe() with it() should should exist"
+describe('${1:method}', function() {
+    it('should exist', function() {
+        expect(_.isFunction(${2:service}.$1)).toBeTrue();
+    });
+
+    $0
+});
+endsnippet
+
+
+snippet desci "Define top describe()"
+/**
+ * @ngdoc interface
+ * @name ${1:moduleName}.${2:serviceName}
+ * @description
+ */
+describe('$1: $2', function() {
+    var assertSpy;
+    var $2;
+    var UtSrv;
+    var ut;
+
+    /**
+     * Boilerplate beforeEach. Update module and injectables
+     */
+    beforeEach(function() {
+        module('Ut', 'Common', '$1');
+        inject(function(_$2_, _UtSrv_, $0) {
+            $2 = _$2_;
+            UtSrv = _UtSrv_;
+        });
+
+        // Get common data for unit tests
+        ut = new UtSrv.getVariables();
+        this.addMatchers(new UtSrv.matchers());
+        assertSpy = new UtSrv.assertSpy();
+    });
+});
+endsnippet
+
+snippet expt "Expect() to be true"
+expect($0).toBeTrue();
+endsnippet
+
+
+snippet expf "Expect() to be false"
+expect($0).toBeFalse();
+endsnippet
+
+
+snippet itf "Define it with function"
+it('should ${1}', function() {
+    expect(${2}).$0;
+});
+endsnippet
+
+
+snippet itth "Define it with toThrow"
+it('should throw error when ${1:message}', function() {
+    expect(function() { $0; }).toThrow();
+});
+endsnippet
+
