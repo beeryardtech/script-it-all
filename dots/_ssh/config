@@ -31,16 +31,17 @@ Host bitbucket.org
     StrictHostKeyChecking no
     ForwardX11 no
 
-Host 108.167.133.21 gator4165.hostgator.com 
+Host integritypropsc.com 108.167.140.90 gator4165.hostgator.com 
     Hostname gator4165.hostgator.com 
-    User beeryard
-    Protocol 2
+    User=beeryard
+    Protocol=2
+    Port=2222
 
     StrictHostKeyChecking no
     ForwardX11=yes
 
     # Which ID file to use. Stored in encfs vol
-    IdentityFile=~/.sshkeys/beeryard_key
+    IdentityFile=~/.sshkeys/beeryard_wp
     
 
 Host beeryardnet 

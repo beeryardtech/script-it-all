@@ -20,6 +20,7 @@
     scrollback_lines = 1000
     font = Monospace 8
     use_system_font = False
+    scrollback_infinite = True
     background_image = None
   [[general]]
     use_system_font = False

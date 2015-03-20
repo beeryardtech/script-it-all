@@ -1,0 +1,6 @@
+interval=60
+maxfeeds=8
+browser=mozilla
+usegnome=1
+startonline=1
+feed=http://ci.sc.steeleye.com/job/cloud-orchestrator-ui/rssFailed;Ui - Failures;1;tgoldie:frs123
