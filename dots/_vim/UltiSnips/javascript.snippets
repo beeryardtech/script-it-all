@@ -1,10 +1,76 @@
 # vim: tabstop=4:shiftwidth=4:expandtab:
 # Angular Snippets - Use "an" namespace
 
+
+###
+# Python Helper Functions
+###
+global !p
+def indentFromOpts(depth=1):
+    #expandtab = snip.opt("expandtab", False)
+    #tabstop = snip.opt("tabstop", 8)
+    #whitespace = ' ' if expandtab else '\t'
+    whitespace = ' '
+    tabstop = 4
+
+    indent = whitespace * tabstop * depth
+
+    return indent
+# end indentFromOpts
+
+def varInject(args):
+    result = ""
+    indent = indentFromOpts(3)
+    argList = args.lstrip().split(",")
+
+    for arg in argList:
+        arg = arg.strip()
+        inject = indent + arg.strip('_') + " = " + arg + ";\n"
+        result = result + inject
+
+    return result.rstrip()
+
+# end varInject
+
+def varDeps(args):
+    """
+        Builds list of injectables from the argument list of controller/service.
+        Note: Does not need whitespace in front
+
+        Example:
+        ```
+            # Sample Snippet
+            angular.module('$1').service('$2', [
+                'Consts',
+            `!p snip.rv = varDeps(t[3])`
+                function(Consts, ${3:deps}) { }
+            ]);
+
+            # Given placeholder $3 (the argument list) , "abc, xyz" --> gives:
+            angular.module('$1').service('$2', [
+                'Consts',
+                'abc',
+                'xyz',
+                function(Consts, abc, xyz) { }
+            ]);
+        ```
+    """
+    result = ""
+    argList = args.split(",")
+
+    for arg in argList:
+        dep = "    " + "'" + arg.strip() + "',\n"
+        result = result + dep
+
+    return result.rstrip()
+# end varDeps
+
+endglobal
+
 ###
 # Class/Services
 ###
-snippet anm "A new angular module without a config function."
+snippet anmod "A new angular module without a config function."
 /**
 * @ngdoc interface
 * @name ${1:moduleName}
@@ -27,8 +93,8 @@ snippet anc "Define a new Angular Controller. You can change the controller name
 */
 angular.module('$1').controller('$2', [
     '$scope',
-    '$3'
-    function($scope, $3) {
+`!p snip.rv = varDeps(t[3])`
+    function($scope, ${3:deps}) {
         var self = this;
         var name = '$1.$2';
         $0
@@ -46,8 +112,8 @@ snippet ans "Define a Angular Service. Set service name and injectables."
 */
 angular.module('$1').service('$2', [
     'Consts',
-    '$3'
-    function(Consts, $3) {
+`!p snip.rv = varDeps(t[3])`
+    function(Consts, ${3:deps}) {
         var self = this;
         var name = '$1.$2';
         $0
@@ -74,27 +140,53 @@ snippet andl "Define directive with a linking function."
 * </doc:example>
 */
 angular.module('$1').directive('$2', [
-    'Template',
-    function(Template) {
-    return {
+`!p snip.rv = varDeps(t[7])`
+    function(${7:Templates}) {
+        return {
             controller: [
                 '$scope',
-                function($scope) {
+            `!p snip.rv = varDeps(t[8])`
+                function($scope, ${8:ctrlDeps}) {
                     var self = this;
-                    var name = '$1.$2';
+                    var name = '$1.$2#ctrl';
                     $0
                 }
             ],
-            link: function(scope, element, attrs, ctrl) { },
+            link: function(scope, element, attrs, ctrl) {
+                var name = '$1.$2#link';
+            },
             restrict: '$6',
             scope: {
                 $4: '@$4',
             },
-            templateUrl: Template.HTML.DEFAULT,
+            template: Template.HTML.DEFAULT,
         };
     }
 ]);
 endsnippet
+
+
+###
+# Methods
+###
+snippet anm "Define a service's method"
+/**
+* @ngdoc method
+* @name ${1:methodName}
+* @methodOf ${2:mod}.${3:service}
+* @param {${4}} ${5} ${6}
+* @return {${7}} ${8}
+* @description
+*
+*/
+self.$1 = function($5) {
+    var name = '$3.$1';
+
+    $0
+    return;
+};
+endsnippet
+
 
 ###
 # Properties
@@ -115,7 +207,7 @@ $scope.WATCH_$2 = $scope.$watch(${1:watchExpr}, function(newVal, oldVal) {
 endsnippet
 
 
-snippet anon "Define a $on for a $broadcast/$emit on the $scope inside an Angular Controller. You can change the event name to listen on."
+snippet anon "Define a $on for a $broadcast/$emit on the $scope inside Controller."
 /**
 * @ngdoc property
 * @name ${2:onName}
@@ -159,6 +251,8 @@ snippet desci "Define top describe()"
 describe('$1: $2', function() {
     var assertSpy;
     var $2;
+    var sinceDiffLog;
+    var UtilsSrv;
     var UtSrv;
     var ut;
 
@@ -167,16 +261,21 @@ describe('$1: $2', function() {
      */
     beforeEach(function() {
         module('Ut', 'Common', '$1');
-        inject(function(_$2_, _UtSrv_, $0) {
+        inject(function(_$2_, _UtSrv_, _UtilsSrv_, ${3:injectables}) {
             $2 = _$2_;
             UtSrv = _UtSrv_;
+            UtilsSrv = _UtilsSrv_;
+`!p snip.rv = varInject(t[3])`
         });
 
         // Get common data for unit tests
         ut = new UtSrv.getVariables();
         this.addMatchers(new UtSrv.matchers());
-        assertSpy = new UtSrv.assertSpy();
+        assertSpy = UtSrv.assertSpy();
+        sinceDiffLog = UtSrv.sinceDiffLog(UtilsSrv);
     });
+
+    $0
 });
 endsnippet
 
@@ -190,9 +289,22 @@ expect($0).toBeFalse();
 endsnippet
 
 
+snippet expa "Expect assert failed."
+expect(assertSpy.stcAssertFail()).toBeTrue();
+endsnippet
+
+
 snippet itf "Define it with function"
 it('should ${1}', function() {
     expect(${2}).$0;
+});
+endsnippet
+
+
+snippet ita "Define it to expect assert"
+it('should ${1}', function() {
+    expect(${2}).$0;
+    expect(assertSpy.stcAssertFail()).toBeTrue();
 });
 endsnippet
 
