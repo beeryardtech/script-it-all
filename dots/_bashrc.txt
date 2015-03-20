@@ -178,6 +178,7 @@ fi
 #-------------------------------------------------------------
 # User specific environment and startup programs
 PATH=$PATH:/opt/ruby/bin
+PATH=$PATH:/var/lib/gems/1.9.1/bin
 PATH=$PATH:$HOME/Dropbox/repos/nextgen/ui/node_modules/.bin
 export PATH=$PATH:$HOME/bin/:/usr/public/bin:/usr/local/etc:.
 

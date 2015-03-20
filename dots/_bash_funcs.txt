@@ -1,36 +1,10 @@
 #!/bin/bash
 ###############################################################################
-#
-# Name: .bashrc.funcs
+# Name: .bashrc_funcs
 # Author: Travis Goldie
 # Date: January 2015
 # Purpose: Functions for the bash terminal
-#
 ###############################################################################
-#-------------------------------------------------------------
-# Functions
-#-------------------------------------------------------------
-# Get list of missing keys for apt-get. Then make cmds to update keys
-aptkeys()
-{
-    sudo echo "Getting list of keys..."
-    keyList=$( (  sudo apt-get update  2>&1 >/dev/null ) | grep "NO_PUBKEY" | sed 's/.*NOPUBKEY //' )
-
-    # Get the list of the key values
-    for key in $keyList; do echo "$key" ; done
-
-    # Now make commands to add to a script...
-    for key in $keyList ; do
-        echo "apt-key adv --keyserver keyserver.ubuntu.com --recv-keys $key"
-    done
-
-    echo
-
-    for key in $keyList ; do
-        echo "gpg --keyserver subkeys.pgp.net --recv $key && gpg --export --armor $key | apt-key add -"
-    done
-}
-
 #Tests if string ($1) contains the substring ($2)
 contains ()
 {
@@ -83,7 +57,8 @@ cpresolv ()
 }
 
 # Checks for conflict files in Dropbox
-dbconflict () {
+dbconflict ()
+{
     dump="$HOME/tmp/dbdump"
     tmp=$( mktemp )
     mkdir -p "$dump"
@@ -252,13 +227,6 @@ _notifysend()
 	notify-send --hint=int:transient:100 -u normal -t 100  "${cmd[@]}" "${msg}"
 }
 
-#Change the name of tabs in xterm
-renametab()
-{
-	#\033 is escape char and \007 is BEL char
-	echo -ne "\033]0;${1}\077" ;
-}
-
 #Use rdp to access Win machines
 _rdpst()
 {
@@ -348,85 +316,6 @@ scpst ()
    user=${user:-"root"} ; scp ${files[@]} ${user}@${host}
 }
 
-#Copy files to windows virtual machine
-scpw ()
-{
-	unset d && [[ $1 == "-d" ]] && d=$2 && shift 2
-	# if -d param given, use that dir. Otherwise use default
-	d=${d:-"c:\\tmp"}
-
-	echo "Destination dir: $d"
-   scp -r -i $WINKEY $@ $USER@vclient:${d}
-}
-
-#SSH into home network using DNS.
-sshb ()
-{
-	#$1 - port to forward to
-	unset cmd d port user ; port=2102 ; user=$USER
-
-   #If more then one arg, shift off 1st arg, then set in an array
-   [[ $# > 1 ]] && shift && declare -a cmd=($@)
-
-	opts="-X -vv -p ${port} -i ${HOME}/.ssh/beeryard_key"
-	ssh $opts ${user}@${HOMEDNS} ${cmd[@]}
-}
-
-#Sets up remote port to NomThoseApples Bypasses firewall.
-sshn ()
-{
-	#If "-c", create the port using either default port or specified port
-	usage="Usage: sshn [-c] [hostport] \nhostport: port used locally"
-	[[ $1 == "-c" ]] && shift && c="1"
-
-	#Either first arg is null or a number. Otherwise display usage and exit
-	( [[ -z "$1" ]] ||  [[ $1 =~ [0-9]+ ]]  ) || ( echo $usage && return )
-
-	ops="-X -p 8120 -N -f"
-	d="nomthoseapples.servebeer.com"
-	user="root" ; h=${1:-"8120"}
-
-	#Ran on the remote phone
-	[[ -n "$c" ]] && ssh ${ops} -R ${h}:localhost:8120 ${user}@${d}
-
-	#Run this on the remote machine
-	[[ -z "$c" ]] && ssh -p $h ${user}@localhost
-}
-
-#Sets up remote port to beeryardnet. Bypasses firewall.
-_sshr ()
-{
-	#If "-c", create the port using either default port or specified port
-	unset d h p ops user
-	[[ $1 == "-c" ]] && shift && c="1"
-
-	#$p is usually 2102
-	p=$1 ; ops="-p $p -XNfvvv " ; d=$HOMEDNS ; user="tgoldie" ; h=8080
-
-	#Do this to create the remote port on the current host machine
-	echo "cmd: ssh ${ops} -R ${h}:localhost:22 ${user}@${d}"
-	[[ -n "$c" ]] && ssh ${ops} -R ${h}:localhost:22 ${user}@${d}
-
-	#Do this on the local machine. Connects to the remote machine
-	[[ -z "$c" ]] && ssh -p $h ${user}@localhost
-}
-
-sshr()
-{
-	unset usage ; usage="Usage: sshr [-c] [hostport]"
-
-	#Hack way to get last arg. loops through args and leaves last one in "lastarg"
-	for lastarg; do true ; done
-
-	( [[ "$1" == "-c" ]] && ! [[ $lastarg =~ [0-9]+ ]] ) || ( echo $usage && return 1 )
-
-	[[ $1 == "-c" ]] 	&& _sshr -c $2 1>/tmp/sshr.log 2>&1
-		return 2
-
-	_sshr 2>/tmp/sshr.log
-		return 0
-}
-
 #SSH into steeleye systems
 _sshst()
 {
@@ -467,12 +356,6 @@ sshst() {
    [[ $# == 0 ]] && echo "Usage: sshst host [commands]" && return 1
 	_sshst ${@}
 	#teelog _sshst ${@}
-}
-
-#SSH into vclient windows machine
-sshw()
-{
-   ssh -i $WINKEY $USER@vclient $@ ;
 }
 
 
