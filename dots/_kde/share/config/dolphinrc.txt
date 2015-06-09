@@ -13,29 +13,58 @@ AutoExpandFolders=true
 BrowseThroughArchives=true
 EditableUrl=true
 FilterBar=true
+ModifiedStartupSettings=false
 ShowCopyMoveMenu=true
 ShowFullPath=true
 ShowSpaceInfo=true
+SplitView=true
 Version=200
 ViewPropsTimestamp=2014,9,6,16,33,38
 
 [IconsMode]
 FontWeight=50
+IconSize=48
+PreviewSize=128
+
+[KPropertiesDialog]
+Height 1050=372
+Width 1680=362
 
 [MainWindow]
+Height 1050=965
 Height 1080=781
-Height 768=499
+Height 480=481
+Height 768=769
+Height 900=901
 MenuBar=Disabled
-State=AAAA/wAAAAD9AAAAAwAAAAAAAAC0AAAC5/wCAAAAAvsAAAAWAGYAbwBsAGQAZQByAHMARABvAGMAawAAAAAA/////wAAAAUA////+wAAABQAcABsAGEAYwBlAHMARABvAGMAawEAAAAmAAAC5wAAAE4A////AAAAAQAAAAAAAAAA/AIAAAAB+wAAABAAaQBuAGYAbwBEAG8AYwBrAAAAAAD/////AAAABQD///8AAAADAAAAAAAAAAD8AQAAAAH7AAAAGAB0AGUAcgBtAGkAbgBhAGwARABvAGMAawAAAAAA/////wAAAAUA////AAAF5gAAAucAAAAEAAAABAAAAAgAAAAI/AAAAAEAAAACAAAAAQAAABYAbQBhAGkAbgBUAG8AbwBsAEIAYQByAQAAAAD/////AAAAAAAAAAA=
+State=AAAA/wAAAAD9AAAAAwAAAAAAAACsAAADn/wCAAAAAvsAAAAWAGYAbwBsAGQAZQByAHMARABvAGMAawAAAAAA/////wAAAAUA////+wAAABQAcABsAGEAYwBlAHMARABvAGMAawEAAAAmAAADnwAAAE4A////AAAAAQAAAa8AAAOf/AIAAAAB+wAAABAAaQBuAGYAbwBEAG8AYwBrAQAAACYAAAOfAAABAwD///8AAAADAAAAAAAAAAD8AQAAAAH7AAAAGAB0AGUAcgBtAGkAbgBhAGwARABvAGMAawAAAAAA/////wAAAAUA////AAAEKQAAA58AAAAEAAAABAAAAAgAAAAI/AAAAAEAAAACAAAAAQAAABYAbQBhAGkAbgBUAG8AbwBsAEIAYQByAQAAAAD/////AAAAAAAAAAA=
 ToolBarsMovable=Disabled
+Width 1024=1025
 Width 1366=1219
+Width 1440=1441
+Width 1680=1680
 Width 1920=1696
+Width 640=641
+
+[Open-with settings]
+CompletionMode=5
+History=dosbox
 
 [PreviewSettings]
 Plugins=directorythumbnail,imagethumbnail,jpegthumbnail
 
+[Search]
+ShowFacetsWidget=false
+What=FileName
+
 [SettingsDialog]
 Height 1080=535
 Height 768=564
+Height 900=372
 Width 1366=1060
+Width 1440=512
 Width 1920=837
+
+[ViewPropertiesDialog]
+Height 900=446
+Width 1440=371

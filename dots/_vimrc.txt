@@ -42,12 +42,14 @@ while myChar <= 'z'
 endw
 
 " Performance improvements
-set ttyfast " u got a fast terminal
+set ttyfast " got a fast terminal
 set ttyscroll=3
 set lazyredraw " to avoid scrolling problems
 
 " Timeout is to tell difference between Meta encoding and hitting 2 keys
-set timeout ttimeoutlen=30
+set timeout
+set timeoutlen=3000
+set ttimeoutlen=100
 
 " Makes backspace work more natually
 fixdel
@@ -64,6 +66,8 @@ set keymap=insert-only_capslock
 " Turn it off by default.
 set iminsert=0
 
+" Enable iternal version of matchit
+runtime! macros/matchit.vim
 
 """" Import External Config Files
 " XXX Plugins should always be sourced in first
@@ -114,7 +118,7 @@ inoremap jj <Esc>
 noremap ; :
 
 " Invert the comment on the current line
-inoremap qq <Esc>:execute "normal \<Leader>ci"<CR>
+"inoremap qq <Esc>:execute "normal \<Leader>ci"<CR>
 
 " Leave insert mode when VIM looses keyboard focus
 autocmd FocusLost,TabLeave,WinLeave,WinEnter * stopinsert
@@ -142,7 +146,9 @@ verbose map <C-Up> [c
 verbose map <C-Down> ]c
 
 " Surround keymappings
-verbose nmap K ysw
+verbose nmap K `[v`]
+
+"verbose nnoremap cof :set <C-R>=<SID><CR><CR>
 
 
 """"" Syntax
@@ -254,6 +260,10 @@ verbose imap <A-l> <Esc>:tabn<cr>
 
 verbose map <A-]> :tab split<CR>:exec("tag ".expand("<cword>"))<CR>
 verbose map <C-}> :vsp <CR>:exec("tag ".expand("<cword>"))<CR>
+
+" In select mode, use \p to paste over selected text
+" without loosing what is in registr
+verbose xnoremap <leader>p "_dP
 
 """" Whitespace Trimming
 function! TrimWhiteSpace()

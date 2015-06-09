@@ -193,14 +193,7 @@ export TEE=false
 # Local Paths
 export DROPBOX="${HOME}/Dropbox"
 export VIMBACKUP="${DROPBOX}/shared/backup/vimbackup"
-export BTSYNC="${HOME}/btsync"
 export REPOS=( ~/repos/* ~/Dropbox/repos/* )
-
-# Amazon Web Services
-export AWS="ec2-23-20-47-5.compute-1.amazonaws.com"
-export AWSUSER="ubuntu"
-export AWSKEY="${HOME}/.ssh/aws_lamptest1"
-export AWSDYN_PORT=4999
 
 #SSH stuff
 export HOMEDNS="beeryardtech.servebeer.com"

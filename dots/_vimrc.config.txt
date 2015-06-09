@@ -1,4 +1,5 @@
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+" vim: ft=vim
 " Name: .vimrc.config
 " Author: Travis Goldie
 " Date: February 2015
@@ -136,6 +137,14 @@ let g:session_default_to_last = 1
 let g:session_command_aliases = 1
 "let g:session_menu
 "let g:loaded_session
+
+
+"""" TypeScript-tools
+autocmd BufRead,BufNewFile *.ts setlocal filetype=typescript
+"set rtp+=/typescript-tools.vim/
+
+" Defaults to [ 'tss' ]
+"let g:TSS = [ 'nodejs', '~/ui/node_modules/tss' ]
 
 
 
@@ -406,7 +415,7 @@ let g:ycm_semantic_triggers =  {
       \   'cpp,objcpp' : ['->', '.', '::'],
       \   'perl' : ['->'],
       \   'php' : ['->', '::'],
-      \   'cs,java,javascript,d,vim,python,perl6,scala,vb,elixir,go' : ['.'],
+      \   'cs,java,javascript,d,vim,python,perl6,scala,vb,elixir,go,typescript' : ['.'],
       \   'ruby' : ['.', '::'],
       \   'lua' : ['.', ':'],
       \   'erlang' : [':'],
@@ -414,5 +423,6 @@ let g:ycm_semantic_triggers =  {
 let g:ycm_cache_omnifunc = 1
 let g:ycm_use_ultisnips_completer = 1
 
-
-
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+" End
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""

@@ -2,6 +2,7 @@ Host *.sc.steeleye.com *.steeleye.com 172.17.*
     #Only allow SSH 2
     Protocol 2
     #IdentityFile ~/.ssh/steeleye_key
+    IdentityFile ~/.ssh/cldo-sioss-rsa-4096
     StrictHostKeyChecking no
     UserKnownHostsFile /dev/null
     ForwardX11 yes
@@ -19,7 +20,7 @@ Host github.com
     HostName github.com
     User git
     Protocol 2
-    #IdentityFile ~/.ssh/steeleye_key
+    IdentityFile ~/.ssh/steeleye_key
     StrictHostKeyChecking no
     ForwardX11 no
 
@@ -31,8 +32,8 @@ Host bitbucket.org
     StrictHostKeyChecking no
     ForwardX11 no
 
-Host integritypropsc.com 108.167.140.90 gator4165.hostgator.com 
-    Hostname gator4165.hostgator.com 
+Host integritypropsc.com 108.167.140.90 gator4165.hostgator.com
+    Hostname gator4165.hostgator.com
     User=beeryard
     Protocol=2
     Port=2222
@@ -42,9 +43,9 @@ Host integritypropsc.com 108.167.140.90 gator4165.hostgator.com
 
     # Which ID file to use. Stored in encfs vol
     IdentityFile=~/.sshkeys/beeryard_wp
-    
 
-Host beeryardnet 
+
+Host beeryardnet
     HostName beeryardnet
     Protocol 2
 

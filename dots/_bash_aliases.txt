@@ -48,6 +48,7 @@ alias psgrp="psgr"
 
 # SSH aliases
 alias sshi="ssh beeryard@integritypropsc.com"
+alias sshfsm4="sshfs root@minion4.sc.steeleye.com:/var/lib/tomcat7/webapps/ui /export/minion4/"
 
 # Program file commands
 alias chrome="google-chrome"

@@ -1,4 +1,5 @@
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+" vim: ft=vim
 " Name: .vimrc.plugins
 " Description: Plugins managed by Vundle
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
@@ -6,7 +7,7 @@
 filetype off
 
 " set the runtime path to include Vundle and initialize
-set rtp+=~/.vim/bundle/vundle.git/
+set rtp+=~/.vim/bundle/Vundle.vim/
 call vundle#begin()
 
 let g:vundle_default_git_proto = 'git'
@@ -16,10 +17,16 @@ let g:vundle_default_git_proto = 'git'
 Plugin 'gmarik/vundle'
 
 " Makes motions work on Camel Case boundaries
-Plugin 'camelcasemotion'
+Plugin 'bkad/camelcasemotion'
 
 " Angular tools
 Plugin 'burnettk/vim-angular'
+
+" TypeScript support
+Plugin 'clausreinke/typescript-tools.vim'
+
+" Chrome browser REPL
+Plugin 'clavery/vim-chrome-repl'
 
 " Coffeescript support
 "Plugin 'kchmck/vim-coffee-script'
@@ -39,8 +46,15 @@ Plugin 'editorconfig/editorconfig-vim'
 " SuperTab - Allows use of <tab> for completions
 Plugin 'ervandew/supertab'
 
+" Adds filetype, highlighting for Clojure
+Plugin 'guns/vim-clojure-static'
+
 " Enancement to NERDTree
 Plugin 'jistr/vim-nerdtree-tabs'
+
+" TypeScript Syntax
+"Plugin 'leafgarland/typescript-vim'
+Plugin 'HerringtonDarkholme/yats.vim'
 
 " JS Beautifier - Uses editorconfig
 Plugin 'maksimr/vim-jsbeautify'
@@ -58,7 +72,8 @@ Plugin 'nathanaelkane/vim-indent-guides'
 " Shell within a buffer.
 Plugin 'oplatek/Conque-Shell'
 
-" Javascript library syntax
+" JavaScript library syntax
+"Plugin 'othree/yajs.vim'
 Plugin 'https://github.com/othree/javascript-libraries-syntax.vim.git'
 "Plugin 'orthree/javascript-libraries-syntax.vim'
 
@@ -104,13 +119,22 @@ Plugin 'suan/vim-instant-markdown'
 " Autoclose HTML tags -- XXX Broken for now
 Plugin 'sukima/xmledit'
 
+" Support for building and making
+Plugin 'tpope/vim-dispatch'
+
 " Support for autoending code blocks
 Plugin 'tpope/vim-endwise'
+
+" REPL Support for Clojure
+Plugin 'tpope/vim-fireplace'
+
+" Lein support (nREPL)
+Plugin 'tpope/vim-leiningen'
 
 " Git wrapper
 Plugin 'tpope/vim-fugitive'
 
-" Haml, SASS, SCSS support
+" HAML, SASS, SCSS support
 Plugin 'tpope/vim-haml'
 
 " Markdown syntax
