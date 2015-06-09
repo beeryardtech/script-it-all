@@ -1,0 +1,21 @@
+#!/bin/bash
+###############################################################################
+# Name: vimui.sh
+# Author: Travis Goldie
+# Date: May 2015
+# Purpose: Shorthand for opening SIOS UI files in tmux
+###############################################################################
+
+session=tmuxui
+config=~/.tmux.conf.vimui
+PWD=~/ui
+uipath=~/Dropbox/shared/backup/vimbackup/ui.vim
+cmd="cd $PWD ; disable_ctrl_s vim -S $uipath"
+
+tmux -f $config new-session -d -s $session
+
+echo "Sending keys"
+tmux send-keys -t "tmuxui:0.0" "$cmd" C-m
+
+echo "Attaching to session"
+tmux attach-session -t $session
