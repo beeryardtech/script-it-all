@@ -1,1 +1,1 @@
-/home/tgoldie/Dropbox/repos/beeryardtech/scripts/python/gdcmdtools/gdauth.py
+../python/gdcmdtools/gdauth.py

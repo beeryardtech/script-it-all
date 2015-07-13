@@ -1,1 +1,1 @@
-/home/tgoldie/Dropbox/repos/beeryardtech/scripts/python/gdcmdtools/gdput.py
+../python/gdcmdtools/gdput.py
