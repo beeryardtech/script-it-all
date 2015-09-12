@@ -1,7 +1,7 @@
 #!/bin/bash
 ###############################################################################
 # Author: Travis Goldie
-# Purpose: Shorthand for opening SIOS UI files in tmux
+# Purpose: Shorthand for creating home tmux session
 ###############################################################################
 
 CURRENT_DIR="$( cd "$( dirname "${BASH_SOURCE[0]}" )" && pwd )"
@@ -9,20 +9,14 @@ source "$CURRENT_DIR/helpers.sh"
 trap cleanup SIGINT SIGTERM
 
 # Options
-CONFIG=~/.tmux.conf.vimui
-SESSION=vimui
-PWD=~/ui
-CD="cd $PWD"
-UIPATH=~/Dropbox/shared/backup/vimbackup/ui.vim
+CONFIG=~/.tmux.conf.tmuxhome
+SESSION=tmuxhome
 
-##
-# Startup Commands
-##
 window0()
 {
     local session=$1
     local name="vim"
-    local vimCmd="$CD ; disable_ctrl_s vim -S $UIPATH"
+    local vimCmd="disable_ctrl_s vim"
 
     echo "Sending keys to window 0"
 
@@ -32,32 +26,30 @@ window0()
 
 window1()
 {
+
     local session=$1
-    local name="grunt-finch"
-    local finch="finch"
-    local grunt="cd $PWD ; grunt server"
+    local name="GMAIL"
+    local muttCmd="mutt -F ~/.muttrc.tgoldie"
 
     echo "Creating window 1"
     tmux new-window -n "$name"
 
-    tmux split-window -v -t "$session:1.0"
-    tmux split-window -h -t "$session:1.1"
-
     echo "Sending keys to window 1"
-    tmux send-keys -t "$session:1.0" "$grunt" C-m
-    tmux send-keys -t "$session:1.2" "$finch" C-m
+    tmux send-keys -t "$session:1.0" "$muttCmd" C-m
 }
 
 window2()
 {
 
     local session=$1
-    local name="git"
+    local name="STEELEYE"
+    local muttCmd="mutt -F ~/.muttrc.steeleye"
 
     echo "Creating window 2"
     tmux new-window -n "$name"
-    tmux split-window -h -t "$session:2.0"
-    tmux split-window -v -t "$session:2.0"
+
+    echo "Sending keys to window 2"
+    tmux send-keys -t "$session:2.0" "$muttCmd" C-m
 }
 
 window3()
