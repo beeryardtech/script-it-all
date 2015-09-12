@@ -47,6 +47,11 @@ if [ -f ~/.bash_ps1 ]; then
     . ~/.bash_ps1
 fi
 
+# Tmux Tab Completion
+if [ -f ~/bin/tmux_completion ]; then
+    . ~/bin/tmux_completion
+fi
+
 #-------------------------------------------------------------
 # Bash history options
 #-------------------------------------------------------------
@@ -179,7 +184,7 @@ fi
 # User specific environment and startup programs
 PATH=$PATH:/opt/ruby/bin
 PATH=$PATH:/var/lib/gems/1.9.1/bin
-PATH=$PATH:$HOME/Dropbox/repos/nextgen/ui/node_modules/.bin
+PATH=$PATH:~/Dropbox/repos/nextgen/ui/node_modules/.bin
 export PATH=$PATH:$HOME/bin/:/usr/public/bin:/usr/local/etc:.
 
 # Update paths for nodejs
@@ -187,30 +192,17 @@ export NODE_PATH="/usr/local/lib/jsctags:${NODE_PATH}"
 
 # Change editor so that will use vim rather than nano
 export EDITOR=vim
-export DEBUG=false
-export TEE=false
 
 # Local Paths
 export DROPBOX="${HOME}/Dropbox"
 export VIMBACKUP="${DROPBOX}/shared/backup/vimbackup"
-export REPOS=( ~/repos/* ~/Dropbox/repos/* )
-
-#SSH stuff
-export HOMEDNS="beeryardtech.servebeer.com"
 
 #For GPG
 export GPG_TTY=$( tty )
 #export GNUPGHOME=~/.gnupg
 
 # cd command will search these extra paths.
-# export CDPATH=".:~/Dropbox/eBooks-Scripts/Languages/"
 export CDPATH="."
-
-# SIOS machines on the network. Either the Windows machines or Linux
-export SIOSWIN=( saluda vclient )
-export SIOSLIN=( buildrhel4 ci fenric hancock  )
-export SIOSVM=( vespasian pertinax )
-export SIOSDSK=( beeryard vclient )
 
 # Defaults permissions when a file is created
 #077 - read/write/exucute to user, nothing for everyone else

@@ -1,5 +1,5 @@
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-" vim: ft=vim
+" vim: ft=vim:
 " Name: .vimrc.plugins
 " Description: Plugins managed by Vundle
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
@@ -7,14 +7,14 @@
 filetype off
 
 " set the runtime path to include Vundle and initialize
-set rtp+=~/.vim/bundle/Vundle.vim/
+set rtp+=~/.vim/bundle/vundle.git/
 call vundle#begin()
 
 let g:vundle_default_git_proto = 'git'
 
 " Included Bundles
 " First let Vundle handle itself
-Plugin 'gmarik/vundle'
+Plugin 'gmarik/vundle.git'
 
 " Makes motions work on Camel Case boundaries
 Plugin 'bkad/camelcasemotion'
@@ -22,14 +22,14 @@ Plugin 'bkad/camelcasemotion'
 " Angular tools
 Plugin 'burnettk/vim-angular'
 
+" Tmux navigator - Move seamlessly between tmux/vim panes
+Plugin 'christoomey/vim-tmux-navigator'
+
 " TypeScript support
 Plugin 'clausreinke/typescript-tools.vim'
 
 " Chrome browser REPL
 Plugin 'clavery/vim-chrome-repl'
-
-" Coffeescript support
-"Plugin 'kchmck/vim-coffee-script'
 
 " Snippets Engine - This is separate from UltiSnips
 Plugin 'honza/vim-snippets'
@@ -43,6 +43,9 @@ Plugin 'kshenoy/vim-signature'
 " Editor config support for vim
 Plugin 'editorconfig/editorconfig-vim'
 
+" JS Beautifier
+Plugin 'einars/js-beautify'
+
 " SuperTab - Allows use of <tab> for completions
 Plugin 'ervandew/supertab'
 
@@ -52,13 +55,11 @@ Plugin 'guns/vim-clojure-static'
 " Enancement to NERDTree
 Plugin 'jistr/vim-nerdtree-tabs'
 
-" TypeScript Syntax
-"Plugin 'leafgarland/typescript-vim'
+" TypeScript Syntax (Yet Another TypeScript)
 Plugin 'HerringtonDarkholme/yats.vim'
 
 " JS Beautifier - Uses editorconfig
 Plugin 'maksimr/vim-jsbeautify'
-Plugin 'einars/js-beautify'
 
 " Parse objects for properties for omnicompleting
 Plugin 'marijnh/tern_for_vim'
@@ -72,10 +73,8 @@ Plugin 'nathanaelkane/vim-indent-guides'
 " Shell within a buffer.
 Plugin 'oplatek/Conque-Shell'
 
-" JavaScript library syntax
-"Plugin 'othree/yajs.vim'
+" JavaScript library syntax - Note uses the full github url
 Plugin 'https://github.com/othree/javascript-libraries-syntax.vim.git'
-"Plugin 'orthree/javascript-libraries-syntax.vim'
 
 " Improves JS indention and character concealing (script f for function)
 Plugin 'pangloss/vim-javascript'
@@ -116,20 +115,11 @@ Plugin 'sjl/gundo.vim'
 " Markdown viewer
 Plugin 'suan/vim-instant-markdown'
 
-" Autoclose HTML tags -- XXX Broken for now
-Plugin 'sukima/xmledit'
-
 " Support for building and making
 Plugin 'tpope/vim-dispatch'
 
 " Support for autoending code blocks
 Plugin 'tpope/vim-endwise'
-
-" REPL Support for Clojure
-Plugin 'tpope/vim-fireplace'
-
-" Lein support (nREPL)
-Plugin 'tpope/vim-leiningen'
 
 " Git wrapper
 Plugin 'tpope/vim-fugitive'
@@ -146,21 +136,15 @@ Plugin 'tpope/vim-repeat'
 " Surrounds words with quotes or parenthesis
 Plugin 'tpope/vim-surround'
 
-" Vim Ruby on Rails Support
-"Plugin 'tpope/vim-rails'
-
 " Pairs of keys
 Plugin 'tpope/vim-unimpaired'
 
 " Vim session manager
-Plugin 'xolox/vim-session'
 Plugin 'xolox/vim-misc'
+Plugin 'xolox/vim-session'
 
-" Vim Ruby Support
-"Plugin 'vim-ruby/vim-ruby'
-
-" Autoclose Brackets
-"Plugin 'vim-scripts/Auto-Pairs'
+" Add variables (let x=5) to modeline
+Plugin 'vim-scripts/let-modeline.vim'
 
 " Make VIM a Bash IDE
 "Plugin 'vim-scripts/bash-support.vim'
@@ -168,7 +152,7 @@ Plugin 'xolox/vim-misc'
 " Display Ctags in organized tree
 Plugin 'vim-scripts/Tagbar'
 
-" You Complete Me (ycm)
+" You Complete Me (ycm) - Code completion
 Plugin 'Valloric/YouCompleteMe'
 
 call vundle#end()

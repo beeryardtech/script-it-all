@@ -1,5 +1,15 @@
+###############################################################################
+# Author: Travis Goldie
+# Date: January 2012
+###############################################################################
+#-------------------------------------------------------------
 # Account details for personal gmail account
+#-------------------------------------------------------------
+source ~/.muttrc
+
 set imap_user = "tgoldie@gmail.com"
+set imap_pass = "qkwpdpmnbgisajij"
 set smtp_url = "smtp://tgoldie@gmail.com:587/"
+set smtp_pass = "qkwpdpmnbgisajij"
 set from = "tgoldie@gmail.com"
 set realname = "Travis Goldie"

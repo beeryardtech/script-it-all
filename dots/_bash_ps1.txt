@@ -10,7 +10,7 @@
 ## See http://mediadoneright.com/content/ultimate-git-ps1-bash-prompt
 # Color constants instead of escape codes
 # Reset
-Color_Off="\[\033[0m\]"       # Text Reset
+COLOR_OFF="\[\033[0m\]"       # Text Reset
 
 # Regular Colors
 BLACK="\[\033[0;30m\]"        # Black
@@ -141,6 +141,7 @@ esac
 if [ "$TERM" != "dumb" ] && [ -x /usr/bin/dircolors ]; then
     eval "`dircolors -b`"
 fi
+
 # Unset username used above
 unset USERNAME color_prompt force_color_prompt
 

@@ -25,6 +25,19 @@ icontains ()
     return $( contains $str $substr )
 }
 
+# Print out colors with there names
+colors ()
+{
+    for i in {0..255} ; do
+        printf "\x1b[38;5;${i}mcolor${i}\n"
+    done
+}
+
+colors_ps1 ()
+{
+    echo
+}
+
 #Convert files to mp3 using VLC. Uses same base name
 convertmp3 ()
 {
@@ -107,30 +120,23 @@ getip ()
 }
 
 
-#Backup gpg keys to stoarge
-gpgbackup()
-{
-    unset prefix sshkeys
-    prefix='beeryard' ;  sshkeys=$HOME/.sshkeys ; uid='Travis Goldie'
-    pushd $sshkeys
-
-    #Now do all the backing up
-    gpg --export $uid > ${prefix}.pub.gpg
-    gpg --export --armor $uid > ${prefix}.pub.asc
-    gpg --export-secret-keys $uid > ${prefix}.gpg
-    gpg --export-secret-keys --armor $uid > ${prefix}.asc
-    gpg --finger > ${prefix}.finger.txt #fingerprint
-    gpg --output ${prefix}.revoke.asc --gen-revoke $uid
-    popd
-}
-
 #Store password to a variable. Does not echo text like a normal pwd prompt
 getpwd()
 {
-    #TODO WIP
-    unset out stty_orig
+    local out=
+    local stty_orig=
+
     [[ -z $1 ]] && out=$1 || out="Password: "
-	stty_orig=$( stty -g ) ; stty -echo ; read -p "$out" pass ; stty $stty_orig
+
+    # Save off old stty config
+	stty_orig=$( stty -g )
+    stty -echo
+
+    # Read input
+    read -p "$out" pass
+
+    # Replace with new config, and echo result
+    stty $stty_orig
     echo "$pass"
 }
 
@@ -201,7 +207,7 @@ notify()
 notifyerror()
 {
 	[[ $# == 0 ]] && _notifysend -h && return 2
-	_notifysend -n ${@}
+	_notifysend ${@}
 }
 
 #Generic wrapper for notify accounts.
@@ -355,7 +361,6 @@ _sshst()
 sshst() {
    [[ $# == 0 ]] && echo "Usage: sshst host [commands]" && return 1
 	_sshst ${@}
-	#teelog _sshst ${@}
 }
 
 
@@ -401,16 +406,6 @@ teelog()
 		#echo "no tee and no errornly"
 		eval $cmd >$log 2>$err
 	fi
-}
-
-#Open Teamviewer from a remote connection
-tv()
-{
-	export DISPLAY=:0;
-	if  ! ps ax | grep -v "grep" | grep teamviewer >/dev/null ; then
-		/usr/bin/teamviewer
-	fi
-	gnome-screensaver; gnome-screensaver-command -d
 }
 
 # Allows vim to use <C-S> mapping

@@ -1,1 +1,2 @@
-registry = https://registry.npmjs.org/
+registry=http://maven.sc.steeleye.com/nexus/content/groups/public-npm/
+bin-links=true

@@ -52,12 +52,10 @@ alias sshfsm4="sshfs root@minion4.sc.steeleye.com:/var/lib/tomcat7/webapps/ui /e
 
 # Program file commands
 alias chrome="google-chrome"
-alias etagsbck="etags -f $VIMBACKUP/TAGS * && chmodx $VIMBACKUP/TAGS"
 alias svim="sudo vim -p"
 alias vimp="vim --noplugin"
 alias view="view -p"
 alias vimsrc="vim -S $VIMBACKUP/src.vim"
-alias tabdiff="vim -c 'silent :TabDiff'"
 
 alias shrew="sudo iked & disown && qikea > /tmp/qikea.log"
 alias ike="shrew"
@@ -67,11 +65,10 @@ alias updateit="$HOME/ui/utils/update.sh minion4"
 
 # Use Readline wrapper with these programs
 alias cpan="sudo rlwrap cpan"
-alias kp="rlwrap kpcli --kdb=$DROPBOX/APG/KeePass.kdbx"
+alias kp="rlwrap kpcli --kdb=$DROPBOX/APG/keepass.kdbx"
 alias sqlite="rlwrap ~/bin/sqlite3"
 
 # NodeJs module REPL"s
-alias node="rlwrap node"
 alias node="rlwrap nodejs"
 alias protractor-repl="rlwrap protractor-repl"
 alias phantomjs="rlwrap phantomjs"

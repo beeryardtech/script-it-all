@@ -4,7 +4,8 @@
 " Date: January 2012
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 """" Core
-filetype plugin indent on
+syntax on
+set syntax=on
 set background=dark
 set completeopt=longest,menuone
 set autoread
@@ -21,12 +22,12 @@ set mousemodel=popup_setpos
 " Enable modeline
 set modeline
 
+syntax enable
+
 " Turn on line numbers, set to width, and set color of the line numbers
 set number
 set numberwidth=2
 highlight LineNr ctermfg=Blue
-" Use relative counting
-"set relativenumber
 
 " set ignorecase smartcase, case-insensitive searching
 set ignorecase
@@ -77,8 +78,6 @@ source ~/.vimrc.plugins
 source ~/.vimrc.config
 source ~/.vimrc.funcs
 source ~/.vimrc.js
-
-syntax on
 
 
 """" Files
@@ -167,9 +166,10 @@ set foldlevel=12
 " what movements open folds
 set foldopen=block,hor,mark,percent,quickfix,tag
 
+"""" Fix Syntax Highlighting issues
+autocmd BufEnter * :syntax sync fromstart
 
-
-" Enable omni completion.
+"""" Enable omni completion.
 " Autocompleting tags - http://tdewolf.blogspot.com/2013/05/the-mighty-vim.html
 autocmd FileType c set omnifunc=ccomplete#Complete
 autocmd FileType css setlocal omnifunc=csscomplete#CompleteCSS

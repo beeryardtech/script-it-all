@@ -3,13 +3,11 @@
 <account version='1.0'>
 	<account>
 		<protocol>prpl-jabber</protocol>
-		<name>beeryard@chat.facebook.com/</name>
-		<password>whyamIusingfacebook??</password>
+		<name>tgoldie@gmail.com/</name>
+		<password>asmpjfpardedauvq</password>
 		<statuses>
 			<status type='available' name='Available' active='true'>
-				<attributes>
-					<attribute id='message' value='Working. Programming. Playing. Trying to stay away from the internet....'/>
-				</attributes>
+				<attributes/>
 			</status>
 			<status type='mood' name='Feeling' active='false'>
 				<attributes/>
@@ -19,58 +17,6 @@
 			</status>
 			<status type='away' name='Away' active='false'>
 				<attributes/>
-			</status>
-			<status type='extended_away' name='Extended away' active='false'>
-				<attributes/>
-			</status>
-			<status type='dnd' name='Do Not Disturb' active='false'>
-				<attributes/>
-			</status>
-			<status type='offline' name='Offline' active='false'>
-				<attributes/>
-			</status>
-		</statuses>
-		<userinfo>&lt;vCard xmlns=&apos;vcard-temp&apos;&gt;&lt;FN&gt;Travis Goldie&lt;/FN&gt;&lt;PHOTO&gt;&lt;TYPE&gt;image/jpeg&lt;/TYPE&gt;&lt;BINVAL&gt;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&lt;/BINVAL&gt;&lt;/PHOTO&gt;&lt;/vCard&gt;</userinfo>
-		<settings>
-			<setting name='buddy_icon_timestamp' type='int'>1390594592</setting>
-			<setting name='auth_plain_in_clear' type='bool'>0</setting>
-			<setting name='custom_smileys' type='bool'>1</setting>
-			<setting name='port' type='int'>5222</setting>
-			<setting name='ft_proxies' type='string'>proxy.eu.jabber.org</setting>
-			<setting name='check-mail' type='bool'>0</setting>
-			<setting name='connection_security' type='string'>require_tls</setting>
-			<setting name='use-global-buddyicon' type='bool'>1</setting>
-			<setting name='silence-suppression' type='bool'>0</setting>
-		</settings>
-		<settings ui='gtk-gaim'>
-			<setting name='auto-login' type='bool'>1</setting>
-		</settings>
-		<settings ui='gnt-purple'>
-			<setting name='auto-login' type='bool'>0</setting>
-		</settings>
-		<current_error>
-			<type>2</type>
-			<description>Not Authorized</description>
-		</current_error>
-	</account>
-	<account>
-		<protocol>prpl-jabber</protocol>
-		<name>tgoldie@gmail.com/</name>
-		<password>asmpjfpardedauvq</password>
-		<statuses>
-			<status type='available' name='Available' active='false'>
-				<attributes/>
-			</status>
-			<status type='mood' name='Feeling' active='false'>
-				<attributes/>
-			</status>
-			<status type='freeforchat' name='Chatty' active='false'>
-				<attributes/>
-			</status>
-			<status type='away' name='Away' active='true'>
-				<attributes>
-					<attribute id='message' value='I&apos;m not here right now'/>
-				</attributes>
 			</status>
 			<status type='extended_away' name='Extended away' active='false'>
 				<attributes/>
@@ -103,104 +49,12 @@
 		<current_error/>
 	</account>
 	<account>
-		<protocol>prpl-irc</protocol>
-		<name>beeryardtech@irc.freenode.net</name>
-		<alias>beeryardtech</alias>
-		<statuses>
-			<status type='available' name='Available' active='false'>
-				<attributes/>
-			</status>
-			<status type='away' name='Away' active='true'>
-				<attributes>
-					<attribute id='message' value='I&apos;m not here right now'/>
-				</attributes>
-			</status>
-			<status type='offline' name='Offline' active='false'>
-				<attributes/>
-			</status>
-		</statuses>
-		<settings>
-			<setting name='realname' type='string'>Travis</setting>
-			<setting name='username' type='string'>beeryardtech</setting>
-			<setting name='port' type='int'>6697</setting>
-			<setting name='ssl' type='bool'>1</setting>
-			<setting name='encoding' type='string'>UTF-8</setting>
-			<setting name='autodetect_utf8' type='bool'>0</setting>
-			<setting name='check-mail' type='bool'>0</setting>
-		</settings>
-		<settings ui='gtk-gaim'>
-			<setting name='auto-login' type='bool'>1</setting>
-		</settings>
-		<settings ui='gnt-purple'>
-			<setting name='auto-login' type='bool'>1</setting>
-		</settings>
-		<current_error/>
-	</account>
-	<account>
-		<protocol>prpl-irc</protocol>
-		<name>beeryard@irc.twit.tv</name>
-		<alias>beeryard</alias>
-		<statuses>
-			<status type='available' name='Available' active='false'>
-				<attributes/>
-			</status>
-			<status type='away' name='Away' active='true'>
-				<attributes>
-					<attribute id='message' value='I&apos;m not here right now'/>
-				</attributes>
-			</status>
-			<status type='offline' name='Offline' active='false'>
-				<attributes/>
-			</status>
-		</statuses>
-		<settings ui='gtk-gaim'>
-			<setting name='auto-login' type='bool'>1</setting>
-		</settings>
-		<settings ui='gnt-purple'>
-			<setting name='auto-login' type='bool'>1</setting>
-		</settings>
-		<current_error/>
-	</account>
-	<account>
-		<protocol>prpl-irc</protocol>
-		<name>beeryard@irc.foonetic.net</name>
-		<alias>beeryard</alias>
-		<statuses>
-			<status type='available' name='Available' active='false'>
-				<attributes/>
-			</status>
-			<status type='away' name='Away' active='true'>
-				<attributes>
-					<attribute id='message' value='I&apos;m not here right now'/>
-				</attributes>
-			</status>
-			<status type='offline' name='Offline' active='false'>
-				<attributes/>
-			</status>
-		</statuses>
-		<settings>
-			<setting name='username' type='string'>beeryard</setting>
-			<setting name='port' type='int'>6667</setting>
-			<setting name='check-mail' type='bool'>0</setting>
-			<setting name='encoding' type='string'>UTF-8</setting>
-			<setting name='autodetect_utf8' type='bool'>0</setting>
-			<setting name='ssl' type='bool'>0</setting>
-		</settings>
-		<settings ui='gtk-gaim'>
-			<setting name='auto-login' type='bool'>1</setting>
-		</settings>
-		<settings ui='gnt-purple'>
-			<setting name='auto-login' type='bool'>1</setting>
-		</settings>
-		<current_error/>
-	</account>
-	<account>
 		<protocol>prpl-jabber</protocol>
 		<name>travis.goldie@steeleye.com/</name>
 		<password>Ne912emonkey</password>
 		<alias>Steeleye</alias>
 		<statuses>
-			<status type='available' name='Available' active='false'>
+			<status type='available' name='Available' active='true'>
 				<attributes/>
 			</status>
 			<status type='mood' name='Feeling' active='false'>
@@ -209,10 +63,8 @@
 			<status type='freeforchat' name='Chatty' active='false'>
 				<attributes/>
 			</status>
-			<status type='away' name='Away' active='true'>
-				<attributes>
-					<attribute id='message' value='I&apos;m not here right now'/>
-				</attributes>
+			<status type='away' name='Away' active='false'>
+				<attributes/>
 			</status>
 			<status type='extended_away' name='Extended away' active='false'>
 				<attributes/>

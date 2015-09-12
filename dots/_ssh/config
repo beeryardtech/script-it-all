@@ -20,7 +20,12 @@ Host github.com
     HostName github.com
     User git
     Protocol 2
-    IdentityFile ~/.ssh/steeleye_key
+
+    # For SIOS repos
+    #IdentityFile ~/.ssh/steeleye_key
+
+    # For beeryardtech repos
+    IdentityFile ~/.sshkeys/beeryard_key
     StrictHostKeyChecking no
     ForwardX11 no
 

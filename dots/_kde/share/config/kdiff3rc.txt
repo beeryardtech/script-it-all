@@ -57,7 +57,7 @@ MidAgeFileColor=192,192,0
 MissingFileColor=0,0,0
 NewestFileColor=0,208,0
 OldestFileColor=240,0,0
-Position=297,207
+Position=98,719
 PreProcessorCmd=\\0
 RecentAFiles=file:///home/tgoldie/ui/app/bower_components/ng-grid,file:///home/tgoldie/Dropbox/repos/nextgen/ui/app/bower_components/ng-grid,file:///home/tgoldie/ui/app/scripts/common/NewCtrl.js,file:///home/tgoldie/ui/app/scripts/services/Consts2.js
 RecentBFiles=file:///home/tgoldie/Dropbox/repos/nextgen/cloud-orchestrator-ui/app/bower_components/ng-grid,file:///home/tgoldie/Dropbox/repos/nextgen/cloud-orchestrator-ui/app/bower_components,file:///home/tgoldie/Dropbox/repos/nextgen/cloud-orchestrator/app/bower_components/ng-grid,file:///home/tgoldie/ui/app/scripts/common/NewCtrl2.js,file:///home/tgoldie/ui/app/scripts/common/Consts.js
@@ -89,20 +89,22 @@ UseCvsIgnore=false
 WhiteSpace2FileMergeDefault=0
 WhiteSpace3FileMergeDefault=0
 WhiteSpaceEqual=true
-WindowStateMaximised=true
+WindowStateMaximised=false
 WordWrap=false
 
 [KFileDialog Settings]
 Height 1080=517
-Recent Files[$e]=Consts2.js,$HOME/ui/app/scripts/common/NewCtrl.js,$HOME/ui/app/scripts/common/NewCtrl2.js,$HOME/ui/app/scripts/inventory/env/EnvNewCtrl.js,$HOME/ui/app/scripts/common/Consts.js
-Recent URLs[$e]=$HOME/ui/app/scripts/services/,$HOME/ui/app/scripts/common/,$HOME/ui/app/scripts/inventory/env/,$HOME/ui/app/scripts/,$HOME/ui/app/scripts/inventory/
+Height 768=515
+Recent Files[$e]=Consts2.js,$HOME/ui/app/index.templ.html.BASE.15055.html,$HOME/ui/app/index.templ.html,$HOME/ui/app/scripts/common/NewCtrl.js,$HOME/ui/app/scripts/inventory/env/EnvNewCtrl.js,$HOME/ui/app/scripts/common/Consts.js
+Recent URLs[$e]=$HOME/ui/app/,$HOME/ui/app/scripts/services/,$HOME/ui/app/scripts/common/,$HOME/ui/app/scripts/inventory/env/,$HOME/ui/app/scripts/,$HOME/ui/app/scripts/inventory/
+Width 1366=1053
 Width 1920=960
 
 [MainWindow]
 Height 1050=1051
 Height 1080=1081
 Height 768=769
-State=AAAA/wAAAAD9AAAAAAAAB4AAAAOSAAAABAAAAAQAAAAIAAAACPwAAAABAAAAAgAAAAEAAAAWAG0AYQBpAG4AVABvAG8AbABCAGEAcgEAAAAA/////wAAAAAAAAAA
+State=AAAA/wAAAAD9AAAAAAAABVYAAAJaAAAABAAAAAQAAAAIAAAACPwAAAABAAAAAgAAAAEAAAAWAG0AYQBpAG4AVABvAG8AbABCAGEAcgEAAAAA/////wAAAAAAAAAA
 ToolBarsMovable=Disabled
 Width 1366=1367
 Width 1680=1681

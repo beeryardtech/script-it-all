@@ -121,7 +121,7 @@ let g:gundo_auto_preview = 1
 "" Settings
 let g:session_directory = $VIMBACKUP
 " Options: 'prompt', 'yes', 'no'
-let g:session_autosave = 'yes'
+let g:session_autosave = 'no'
 let g:session_autosave_periodic = 10
 let g:session_default_overwrite = 1
 let g:session_extension = '.vim'
@@ -130,10 +130,10 @@ let g:session_autoload = 'no'
 " Can remove session options - see `:set sessionoptions`
 " set sessionoptions-=tabpages
 let g:session_default_name = 'session'
-"let g:session_verbose_messages = 0
+let g:session_verbose_messages = 1
 let g:session_default_to_last = 1
 "let g:session_persist_globals = []
-"let g:session_restart_environment = 0
+let g:session_restart_environment = 1
 let g:session_command_aliases = 1
 "let g:session_menu
 "let g:loaded_session

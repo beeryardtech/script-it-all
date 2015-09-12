@@ -484,3 +484,24 @@ it('should throw error when ${1:message}', function() {
 });
 endsnippet
 
+
+snippet descc "Create a controller for unit testing"
+${1:state.current.data = {}};
+var ctrlResults = UtSrv.createCtrl('${2:CtrlName}', this.$injector);
+
+$2 = ctrlResults.ctrl;
+scope = ctrlResults.scope;
+$0
+endsnippet
+
+
+snippet descd "Create a directive for unit testing"
+var elemHtml = '<stc-${1:name} ${2:prop=""}></stc-$1>';
+var dirResults = UtSrv.createDir(elemHtml, this.$injector);
+
+compiled = dirResults.compiled;
+elem = dirResults.elem;
+elemScope = dirResults.elemScope;
+scope = dirResults.scope;
+$0
+endsnippet

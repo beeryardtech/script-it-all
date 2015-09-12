@@ -1,0 +1,41 @@
+snippet initi "Define header for init scripts."
+#!/bin/bash -
+
+CURRENT_DIR="$( cd "$( dirname "${BASH_SOURCE[0]}" )" && pwd )"
+source "$CURRENT_DIR/../helpers/helpers.sh"
+trap cleanup SIGINT SIGTERM
+
+read -r -d '' USAGE << "EOF"
+${1:"Script `!p snip.fn` help"}
+
+optional arguments:
+-h    Print this help and exit
+-n    Test run
+
+EOF
+
+dryrun=
+optstring=hn
+while getopts $optstring opt ; do
+    case $opt in
+    h) echo "$USAGE" ; exit 255 ;;
+    n) dryrun=true ;;
+    esac
+done
+
+main()
+{
+    echo "not implemented"
+}
+main
+$0
+endsnippet
+
+snippet initt "Just Header"
+#!/bin/bash -
+
+CURRENT_DIR="$( cd "$( dirname "${BASH_SOURCE[0]}" )" && pwd )"
+source "$CURRENT_DIR/../helpers/helpers.sh"
+trap cleanup SIGINT SIGTERM
+
+endsnippet

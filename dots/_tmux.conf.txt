@@ -1,8 +1,49 @@
+# vim: ft=conf
 ###############################################################################
 # Author: Travis Goldie
 # Date: December 2013
 # Purpose: Config for tmux - the terminal multiplexer
 ###############################################################################
+#-------------------------------------------------------------
+# Plugins
+#-------------------------------------------------------------
+# TPM - Tmux Plugin Manager
+set -g @plugin 'tmux-plugins/tpm'
+
+# Adds format string to status-right:
+#--> #{battery_icon} #{battery_percentage} #{battery_remain}
+set -g @plugin 'tmux-plugins/tmux-battery'
+
+# Mem-cpu-load - all of them together
+set -g @plugin 'thewtex/tmux-mem-cpu-load'
+
+# Add format strings to status-right: #{cpu_icon} #{cpu_percentage}
+set -g @plugin 'tmux-plugins/tmux-cpu'
+
+# Net-speed - Adds format string for network speed:
+# #{download_speed} #{net_speed} #{upload_speed}
+set -g @plugin 'beeryardtech/tmux-net-speed'
+
+# Resurrect - Store tmux session
+set -g @plugin 'tmux-plugins/tmux-resurrect'
+
+# Continuum - Autosave session
+set -g @plugin 'tmux-plugins/tmux-continuum'
+
+# Yank - Allows tmux copy'ing to system clipboard
+set -g @plugin 'tmux-plugins/tmux-yank'
+
+#-------------------------------------------------------------
+# Plugin Config
+#-------------------------------------------------------------
+### Tmux Navigator
+is_vim='echo "#{pane_current_command}" | grep -iqE "(^|\/)g?(view|n?vim?)(diff)?$"'
+bind -n C-h if-shell "$is_vim" "send-keys C-h" "select-pane -L"
+bind -n C-j if-shell "$is_vim" "send-keys C-j" "select-pane -D"
+bind -n C-k if-shell "$is_vim" "send-keys C-k" "select-pane -U"
+bind -n C-l if-shell "$is_vim" "send-keys C-l" "select-pane -R"
+bind -n C-\ if-shell "$is_vim" "send-keys C-\\" "select-pane -l"
+
 #-------------------------------------------------------------
 # General Settings
 #-------------------------------------------------------------
@@ -11,23 +52,31 @@
 
 # Change the default prefix binding (C-b)
 #unbind-key C-b
-#set -g prefix C-t
-#set -g prefix M
+#set -g prefix C-\
+#bind Space send-prefix
 
 # Use VI mode
-#set-window-option -g mode-keys vi
-#set-option -g status-keys vi
+set-window-option -g mode-keys vi
+set-option -g status-keys vi
 
-# Basic configs
+#-------------------------------------------------------------
+# Basic Config
+#-------------------------------------------------------------
 #set-window-option -g window-status-current-bg green
 #set-window-option -g automatic-rename on
 set-option -g history-limit 100000
 #set-option -s escape-time 0
+set-option -g default-terminal "xterm"
 
 # Enable mouse mode
+set-option -g mode-mouse on
 setw -g mode-mouse on
-set-option -g mouse-select-pane on
 set-option -g mouse-resize-pane on
+set-option -g mouse-select-pane on
+set-option -g mouse-select-window on
+
+# Messages - Increase display time
+set-option -g display-time 3000
 
 # Enable window monitoring. Notify when something happens
 # in another window
@@ -37,27 +86,105 @@ set -g visual-activity on
 #-------------------------------------------------------------
 # Key Bindings
 #-------------------------------------------------------------
+# Reload key
+bind r source-file ~/.tmux.conf
+
 # Hit C-\ twice to go to last window
 bind-key C-\ last-window
-bind-key b set-option status
 bind-key / command-prompt "split-window 'exec man %%'"
 
 # Vim's definition of a horizontal/vertical split is reversed from tmux's
-bind s split-window -v
-bind v split-window -h
+bind s split-window -v -c "#{pane_current_path}"
+bind v split-window -h -c "#{pane_current_path}"
 
-# Move around panes with hjkl, as one would in vim after pressing ctrl-w
-#bind -r C-h select-pane -L
-#bind -r C-j select-pane -D
-#bind -r C-k select-pane -U
-#bind -r C-l select-pane -R
+# Set new window to use PWD
+unbind c
+bind c new-window -c "#{pane_current_path}"
 
 # Select and copy like in Vim
 bind-key -r -t vi-copy 'v' begin-selection
 bind-key -r -t vi-copy 'y' copy-selection
+
+# Unbind the alt arrows (not sure why this is needed)
+unbind-key -n M-h
+unbind-key -n M-j
+unbind-key -n M-k
+unbind-key -n M-l
+
+# Use Alt-vim keys without prefix key to switch panes
+bind -n M-H select-pane -L
+bind -n M-J select-pane -D
+bind -n M-K select-pane -U
+bind -n M-L select-pane -R
+
+# Fixes clear screen. Use <PREFIX> C-l to clear screen
+unbind C-l
+bind C-l send-keys 'C-l'
+
+# Use Alt-Ctrl-l and h to change windows
+bind -n C-M-h select-window -p
+bind -n C-M-l select-window -n
 
 # Resize panes like vim
 bind < resize-pane -L 10
 bind > resize-pane -R 10
 bind - resize-pane -D 10
 bind + resize-pane -U 10
+
+#-------------------------------------------------------------
+# Status Line
+#-------------------------------------------------------------
+# See http://zanshin.net/2013/09/05/my-tmux-configuration/
+set-option -g status "on"                # turn the status bar on
+set-option -g status-utf8 "on"           # set utf-8 on for the status bar
+set-option -g status-interval "5"        # set update frequencey (default 15 seconds)
+set-option -g status-position "top"
+
+#-------------------------------------------------------------
+# Status Line Theme - murmur
+#-------------------------------------------------------------
+## NOTE Adopted from tmuxline.vim and vim-airline
+# Message styles
+set -g message-command-style "fg=colour144,bg=colour237"
+set -g message-style "fg=colour144,bg=colour237"
+
+set -g status-justify "left"
+set -g status "on"
+set -g status-left-style "none"
+set -g status-right-style "none"
+#set -g pane-active-border-style "fg=colour27"
+set -g status-utf8 "on"
+set -g status-style "bg=colour234,none"
+#set -g pane-border-style "fg=colour237"
+
+# Is pane zoomed?
+is_zoomed='tmux list-panes -F "#F" | grep -q Z'
+
+# Left and right sections
+set -g status-right-length "200"
+set -g status-left-length "200"
+set -g status-left "#[fg=colour15,bg=colour27] #S #[fg=colour27,bg=colour234,nobold,nounderscore,noitalics] ||"
+#set -g status-right "#[fg=colour237,bg=colour234,nounderscore,noitalics]#[fg=colour144,bg=colour237] %a %b %e  %H:%M #[fg=colour27,bg=colour237,nobold,nounderscore,noitalics]#[fg=colour15,bg=colour27] #{battery_icon}#{battery_percentage}#{battery_remain} || #{cpu_icon}#{cpu_percentage} || #(dropbox status)"
+set -g status-right "#[fg=colour237,bg=colour234,nounderscore,noitalics]#[fg=colour144,bg=colour237] %a %b %e  %H:%M #[fg=colour27,bg=colour237,nobold,nounderscore,noitalics]#[fg=colour15,bg=colour27] #{battery_icon}#{battery_percentage}#{battery_remain} || #(tmux-mem-cpu-load -g 0) || #(dropbox status) || #{net_speed}"
+
+# Window Status
+setw -g window-status-activity-attr "none"
+setw -g window-status-activity-style "fg=colour27,bg=colour234,none"
+setw -g window-status-separator "||"
+setw -g window-status-style "fg=colour39,bg=colour234,none"
+
+setw -g window-status-format "#[fg=colour39,bg=colour234] #I #[fg=colour39,bg=colour234] #W"
+
+setw -g window-status-current-format "#[fg=colour234,bg=colour237,nobold,nounderscore,noitalics]#[fg=colour144,bg=colour237] #I #[fg=colour144,bg=colour237]#[fg=colour144,bg=colour237] #W #[fg=colour237,bg=colour234,nobold,nounderscore,noitalics]"
+
+#setw -g window-status-current-format "#[fg=colour234,bg=colour237,nobold,nounderscore,noitalics]#[fg=colour144,bg=colour237] #I #[fg=colour144,bg=colour237] #{pane_current_path} #[fg=colour144,bg=colour237] #W #[fg=colour237,bg=colour234,nobold,nounderscore,noitalics]"
+
+#-------------------------------------------------------------
+# Start Net Speed - Creates file for storing values
+#-------------------------------------------------------------
+run-shell "~/.tmux/plugins/tmux-net-speed/init.sh"
+
+#-------------------------------------------------------------
+# Start TPM - Must be last line
+#-------------------------------------------------------------
+run-shell '~/.tmux/plugins/tpm/tpm'

@@ -93,20 +93,20 @@
 		<feature var='http://jabber.org/protocol/disco#items'/>
 		<feature var='http://jabber.org/protocol/disco#info'/>
 		<ext identifier='camera-v1'>
-			<feature var='http://jabber.org/protocol/disco#info'/>
 			<feature var='http://jabber.org/protocol/disco#items'/>
+			<feature var='http://jabber.org/protocol/disco#info'/>
 		</ext>
 		<ext identifier='voice-v1'>
-			<feature var='http://jabber.org/protocol/disco#info'/>
 			<feature var='http://jabber.org/protocol/disco#items'/>
+			<feature var='http://jabber.org/protocol/disco#info'/>
 		</ext>
 		<ext identifier='video-v1'>
-			<feature var='http://jabber.org/protocol/disco#info'/>
 			<feature var='http://jabber.org/protocol/disco#items'/>
+			<feature var='http://jabber.org/protocol/disco#info'/>
 		</ext>
 		<ext identifier='pmuc-v1'>
-			<feature var='http://jabber.org/protocol/disco#items'/>
 			<feature var='http://jabber.org/protocol/disco#info'/>
+			<feature var='http://jabber.org/protocol/disco#items'/>
 		</ext>
 	</client>
 	<client node='http://www.asterisk.org/xmpp/client/caps' ver='asterisk-xmpp'>
@@ -114,8 +114,8 @@
 		<feature var='http://jabber.org/protocol/disco#info'/>
 		<feature var='http://www.google.com/xmpp/protocol/voice/v1'/>
 		<ext identifier='voice-v1'>
-			<feature var='http://www.google.com/xmpp/protocol/voice/v1'/>
 			<feature var='http://jabber.org/protocol/disco#info'/>
+			<feature var='http://www.google.com/xmpp/protocol/voice/v1'/>
 		</ext>
 	</client>
 	<client node='http://pidgin.im/' ver='elbDWGeJ8mFRjVG016NePLIqJxA=' hash='sha-1'>
@@ -144,23 +144,6 @@
 		<feature var='urn:xmpp:jingle:1'/>
 		<feature var='urn:xmpp:ping'/>
 		<feature var='urn:xmpp:time'/>
-	</client>
-	<client node='http://trillian.im/caps' ver='3.0.0.47/Mac'>
-		<identity category='client' type='pc' name='Trillian'/>
-		<feature var='http://jabber.org/protocol/bytestreams'/>
-		<feature var='http://jabber.org/protocol/si/profile/file-transfer'/>
-		<feature var='http://jabber.org/protocol/si'/>
-		<feature var='http://www.google.com/xmpp/protocol/session'/>
-		<feature var='urn:xmpp:time'/>
-		<feature var='http://jabber.org/protocol/chatstates'/>
-		<feature var='jabber:x:event'/>
-		<feature var='jabber:iq:version'/>
-		<feature var='jabber:iq:last'/>
-		<feature var='http://jabber.org/protocol/disco#info'/>
-		<ext identifier='pmuc-v1'>
-			<feature var='http://jabber.org/protocol/disco#info'/>
-			<feature var='http://jabber.org/protocol/disco#items'/>
-		</ext>
 	</client>
 	<client node='http://www.apple.com/ichat/caps' ver='900'>
 		<identity category='client' type='pc' name='imagent'/>
@@ -210,6 +193,23 @@
 		</ext>
 		<ext identifier='mvideo'>
 			<feature var='apple:iq:vc:multivideo'/>
+		</ext>
+	</client>
+	<client node='http://trillian.im/caps' ver='3.0.0.47/Mac'>
+		<identity category='client' type='pc' name='Trillian'/>
+		<feature var='http://jabber.org/protocol/bytestreams'/>
+		<feature var='http://jabber.org/protocol/si/profile/file-transfer'/>
+		<feature var='http://jabber.org/protocol/si'/>
+		<feature var='http://www.google.com/xmpp/protocol/session'/>
+		<feature var='urn:xmpp:time'/>
+		<feature var='http://jabber.org/protocol/chatstates'/>
+		<feature var='jabber:x:event'/>
+		<feature var='jabber:iq:version'/>
+		<feature var='jabber:iq:last'/>
+		<feature var='http://jabber.org/protocol/disco#info'/>
+		<ext identifier='pmuc-v1'>
+			<feature var='http://jabber.org/protocol/disco#items'/>
+			<feature var='http://jabber.org/protocol/disco#info'/>
 		</ext>
 	</client>
 	<client node='http://www.apple.com/ichat/caps' ver='1000'>
@@ -308,9 +308,37 @@
 		<feature var='jabber:iq:last'/>
 		<feature var='http://jabber.org/protocol/disco#info'/>
 		<ext identifier='pmuc-v1'>
-			<feature var='http://jabber.org/protocol/disco#info'/>
 			<feature var='http://jabber.org/protocol/disco#items'/>
+			<feature var='http://jabber.org/protocol/disco#info'/>
 		</ext>
+	</client>
+	<client node='http://pidgin.im/' ver='VUFD6HcFmUT2NxJkBGCiKlZnS3M=' hash='sha-1'>
+		<identity category='client' type='pc' name='Adium'/>
+		<feature var='http://jabber.org/protocol/bytestreams'/>
+		<feature var='http://jabber.org/protocol/caps'/>
+		<feature var='http://jabber.org/protocol/chatstates'/>
+		<feature var='http://jabber.org/protocol/commands'/>
+		<feature var='http://jabber.org/protocol/disco#info'/>
+		<feature var='http://jabber.org/protocol/disco#items'/>
+		<feature var='http://jabber.org/protocol/ibb'/>
+		<feature var='http://jabber.org/protocol/mood+notify'/>
+		<feature var='http://jabber.org/protocol/muc'/>
+		<feature var='http://jabber.org/protocol/muc#user'/>
+		<feature var='http://jabber.org/protocol/nick+notify'/>
+		<feature var='http://jabber.org/protocol/si'/>
+		<feature var='http://jabber.org/protocol/si/profile/file-transfer'/>
+		<feature var='http://jabber.org/protocol/tune+notify'/>
+		<feature var='http://jabber.org/protocol/xhtml-im'/>
+		<feature var='jabber:iq:last'/>
+		<feature var='jabber:iq:oob'/>
+		<feature var='jabber:iq:version'/>
+		<feature var='jabber:x:conference'/>
+		<feature var='urn:xmpp:attention:0'/>
+		<feature var='urn:xmpp:avatar:metadata+notify'/>
+		<feature var='urn:xmpp:bob'/>
+		<feature var='urn:xmpp:jingle:1'/>
+		<feature var='urn:xmpp:ping'/>
+		<feature var='urn:xmpp:time'/>
 	</client>
 	<client node='http://telepathy.freedesktop.org/caps' ver='f3LIM6cNl9MFkTGznLccYIUdmy0=' hash='sha-1'>
 		<identity category='client' type='pc' name='Telepathy Gabble 0.18.3'/>
@@ -344,6 +372,16 @@
 		<feature var='urn:xmpp:jingle:transports:raw-udp:1'/>
 		<feature var='urn:xmpp:receipts'/>
 	</client>
+	<client node='http://www.profanity.im' ver='bZlXRB533Pg0lPEE6z/FJ+/VylE=' hash='sha-1'>
+		<identity category='client' type='console' name='Profanity 0.4.6'/>
+		<feature var='http://jabber.org/protocol/caps'/>
+		<feature var='http://jabber.org/protocol/chatstates'/>
+		<feature var='http://jabber.org/protocol/disco#info'/>
+		<feature var='http://jabber.org/protocol/disco#items'/>
+		<feature var='http://jabber.org/protocol/muc'/>
+		<feature var='jabber:iq:version'/>
+		<feature var='urn:xmpp:ping'/>
+	</client>
 	<client node='http://mail.google.com/xmpp/client/caps' ver='1.1'>
 		<identity category='client' type='pc'/>
 		<feature var='http://jabber.org/protocol/disco#info'/>
@@ -371,20 +409,20 @@
 		<feature var='http://jabber.org/protocol/disco#items'/>
 		<feature var='http://jabber.org/protocol/disco#info'/>
 		<ext identifier='voice-v1'>
-			<feature var='http://jabber.org/protocol/disco#info'/>
 			<feature var='http://jabber.org/protocol/disco#items'/>
+			<feature var='http://jabber.org/protocol/disco#info'/>
 		</ext>
 		<ext identifier='camera-v1'>
-			<feature var='http://jabber.org/protocol/disco#info'/>
 			<feature var='http://jabber.org/protocol/disco#items'/>
+			<feature var='http://jabber.org/protocol/disco#info'/>
 		</ext>
 		<ext identifier='video-v1'>
-			<feature var='http://jabber.org/protocol/disco#info'/>
 			<feature var='http://jabber.org/protocol/disco#items'/>
+			<feature var='http://jabber.org/protocol/disco#info'/>
 		</ext>
 		<ext identifier='pmuc-v1'>
-			<feature var='http://jabber.org/protocol/disco#info'/>
 			<feature var='http://jabber.org/protocol/disco#items'/>
+			<feature var='http://jabber.org/protocol/disco#info'/>
 		</ext>
 	</client>
 	<client node='http://www.google.com/xmpp/client/caps' ver='1.0.0.104'>

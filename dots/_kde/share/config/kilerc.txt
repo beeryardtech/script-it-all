@@ -25,12 +25,12 @@ NoDOOS=0
 NoPOOS=0
 
 [Geometries]
-MainwindowHeight=687
-MainwindowWidth=1366
-horizontalSplitterLeft=356
-horizontalSplitterRight=1004
-verticalSplitterBottom=133
-verticalSplitterTop=467
+MainwindowHeight=682
+MainwindowWidth=1364
+horizontalSplitterLeft=355
+horizontalSplitterRight=1003
+verticalSplitterBottom=132
+verticalSplitterTop=463
 
 [IncludeGraphics]
 imagemagick=true
@@ -104,6 +104,7 @@ Default Mark Type=1
 Dynamic Word Wrap=false
 Dynamic Word Wrap Align Indent=80
 Dynamic Word Wrap Indicators=1
+Fold First Line=false
 Folding Bar=true
 Icon Bar=false
 Keyword Completion=true
@@ -124,19 +125,20 @@ Smart Copy Cut=false
 Vi Input Mode=false
 Vi Input Mode Emulate Command Bar=false
 Vi Input Mode Steal Keys=false
+Vi Relative Line Numbers=false
 Word Completion=true
 Word Completion Minimal Word Length=3
 Word Completion Remove Tail=true
 
 [KileMainWindow]
-Height 768=769
-State=AAAA/wAAAAD9AAAAAAAABVYAAAJeAAAABAAAAAQAAAAIAAAACPwAAAABAAAAAgAAAAQAAAAWAG0AYQBpAG4AVABvAG8AbABCAGEAcgEAAAAA/////wAAAAAAAAAAAAAAGAB0AG8AbwBsAHMAVABvAG8AbABCAGEAcgEAAADh/////wAAAAAAAAAAAAAAFgBlAGQAaQB0AFQAbwBvAGwAQgBhAHIAAAAAAP////8AAAAAAAAAAAAAABYAbQBhAHQAaABUAG8AbwBsAEIAYQByAAAAAAD/////AAAAAAAAAAA=
+Height 768=682
+State=AAAA/wAAAAD9AAAAAAAABVQAAAJZAAAABAAAAAQAAAAIAAAACPwAAAABAAAAAgAAAAQAAAAWAG0AYQBpAG4AVABvAG8AbABCAGEAcgEAAAAA/////wAAAAAAAAAAAAAAGAB0AG8AbwBsAHMAVABvAG8AbABCAGEAcgEAAADh/////wAAAAAAAAAAAAAAFgBlAGQAaQB0AFQAbwBvAGwAQgBhAHIAAAAAAP////8AAAAAAAAAAAAAABYAbQBhAHQAaABUAG8AbwBsAEIAYQByAAAAAAD/////AAAAAAAAAAA=
 ToolBarsMovable=Disabled
-Width 1366=1367
+Width 1366=1364
 
 [MainWindow]
 Height 768=668
-State=AAAA/wAAAAD9AAAAAAAABPIAAAJLAAAABAAAAAQAAAAIAAAACPwAAAABAAAAAgAAAAQAAAAWAG0AYQBpAG4AVABvAG8AbABCAGEAcgEAAAAA/////wAAAAAAAAAAAAAAGAB0AG8AbwBsAHMAVABvAG8AbABCAGEAcgEAAADh/////wAAAAAAAAAAAAAAFgBlAGQAaQB0AFQAbwBvAGwAQgBhAHIAAAAAAP////8AAAAAAAAAAAAAABYAbQBhAHQAaABUAG8AbwBsAEIAYQByAAAAAAD/////AAAAAAAAAAA=
+State=AAAA/wAAAAD9AAAAAAAABPIAAAJLAAAABAAAAAQAAAAIAAAACPwAAAABAAAAAgAAAAA=
 ToolBarsMovable=Disabled
 Width 1366=1266
 
@@ -153,8 +155,8 @@ Documents=file:///tmp/kde-tgoldie/kile9nxaMc/test_index.tex
 Saved Documents=file:///tmp/kde-tgoldie/kile9nxaMc/test_index.tex,file:///tmp/kde-tgoldie/kile9nxaMc/test_bib.tex,file:///tmp/kde-tgoldie/kile9nxaMc/test.tex,file:///tmp/kde-tgoldie/kile9nxaMc/test_plain.tex
 
 [Show]
-BottomBarSize=109
-SideBarSize=332
+BottomBarSize=108
+SideBarSize=331
 
 [Tool/Archive/Tar]
 class=Archive

@@ -1,7 +1,14 @@
-""
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " Name: .vimrc.funcs
+" Author: Travis Goldie
+" Date: January 2012
 " Description: Functions used by Vim. NOTE The `!` Means
 "               override function on sourcing (prevents error messages).
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+""
+" Name: DeleteHiddenBuffers
+" Description: Closes (deletes) all hidden buffers in current session. Useful
+" when using session.vim. Keeps the curent session cleaner.
 ""
 function! DeleteHiddenBuffers()
     let tpbl=[]
@@ -22,54 +29,37 @@ function! ReloadTabs()
     execute "tabdo windo e"
     execute "tabdo normal! ="
 endfunction
+
+"" Command
 command! Tb call ReloadTabs()
 
-function! FocusLostInsertMode()
-    if v:insertmode
-        feedkeys("\<C-\>\<C-n>")
-    endif
-endfunction
-
-function! SimpleFoldText()
-    return getline(v:foldstart).' '
-endfunction
-
+""
+" Name: StripTrailingWhitespaces
+" Description: Removes any trailing whitespace from a line. Useful for
+" cleanup after saving
+""
 function! <SID>StripTrailingWhitespaces()
     let l = line(".")
     let c = col(".")
     %s/\s\+$//e
     call cursor(l, c)
 endfun
+
+"" Autocmd
 autocmd FileType c,cpp,css,scss,html,javascript,java,php,ruby,python autocmd BufWritePre <buffer> :call <SID>StripTrailingWhitespaces()
 
-function! QuoteDelim(char)
-	let line = getline('.')
-	let col = col('.')
-	if line[col - 2] == "\\"
-		" Inserting an escaped (and therefore conditionally asymmetric)
-        " quotation mark into the string
-		return a:char
-	elseif line[col-1] == a:char
-		" Escaping out of the string
-		return "\<Right>"
-	else
-		"Starting a string
-		return a:char.a:char."\<Esc>i"
-	endif
-endfunction
-
-" Append modeline after last line in buffer.
-" Use substitute() instead of printf() to handle '%%s' modeline in LaTeX
-" files.
-function! AppendModeline()
-  let l:modeline = printf(" vim: set ts=%d sw=%d tw=%d %set :",
-        \ &tabstop, &shiftwidth, &textwidth, &expandtab ? '' : 'no')
-  let l:modeline = substitute(&commentstring, "%s", l:modeline, "")
-  call append(line("$"), l:modeline)
-endfunction
-nnoremap <silent> <Leader>ml :call AppendModeline()<CR>
-
 " Sends any ex to a scratch buffer
+""
+" Name: Scratch
+" Param: `command` The command that will be executed and redirected
+" Command: `Map` Executes `map`, and gives list of all mapped keybindings
+" Command: `Scratch` Executes the Scratch function (without needing to use
+" `call Scratch('foo')`
+" Command: `Scrtnames` List of scripts (plugins) loaded
+" Command: `Syntax` List of syntax rules loaded for current filetype
+" Description: Redirects any `ex` command to a new (scratch) buffer. Useful
+" for searching or collecting results of a command.
+""
 function! s:Scratch(command, ...)
    redir => lines
    let saveMore = &more
@@ -96,9 +86,11 @@ function! s:Scratch(command, ...)
    0
 endfunction
 
+"" Commands
+command! -nargs=? Map call <sid>Scratch('map', <f-args>)
+command! -nargs=+ Scratch call <sid>Scratch(<f-args>)
 command! -nargs=? Scrtnames call <sid>Scratch('scriptnames', <f-args>)
 command! -nargs=? Syntax call <sid>Scratch('syntax', <f-args>)
-command! -nargs=+ Scratch call <sid>Scratch(<f-args>)
 
 
 " Execute 'cmd' while redirecting output.
