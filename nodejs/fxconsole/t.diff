@@ -1,0 +1,100 @@
+diff --git a/index.js b/index.js
+index 00f9608..902948a 100644
+--- a/index.js
++++ b/index.js
+@@ -1,4 +1,6 @@
+ var util = require("util"),
++    url = require("url"),
++    path = require("path"),
+     repl = require("repl"),
+     colors = require("colors"),
+     FirefoxClient = require("firefox-client");
+@@ -14,16 +16,20 @@ FirefoxREPL.prototype = {
+     this.connect(options, function(err, tab) {
+       if (err) throw err;
+ 
+-      this.tab = tab;
++      console.log(tab.url.yellow);
++
++      this.setTab(tab)
+ 
+       this.repl = repl.start({
+-        prompt: "firefox> ",
++        prompt: this.getPrompt(),
+         eval: this.eval.bind(this),
+         input: process.stdin,
+         output: process.stdout,
+         writer: this.writer.bind(this)
+       });
+ 
++      this.setTab(tab);
++
+       this.defineCommands();
+     }.bind(this))
+   },
+@@ -56,10 +62,12 @@ FirefoxREPL.prototype = {
+       });
+     }
+ 
++    // write out a few properties and their values
+     var strs = [];
+     for (name in props) {
+       var value = props[name].value;
+       value = this.transformResult(value);
++
+       if (value && value.type == "object") {
+         value = ("[object " + value.class + "]").cyan;
+       }
+@@ -70,6 +78,7 @@ FirefoxREPL.prototype = {
+     }
+     str += strs.join(", ");
+ 
++    // write the number of remaining properties
+     var total = Object.keys(getters).length + Object.keys(ownProps).length;
+     var more = total - PROP_SHOW_COUNT;
+     if (more > 0) {
+@@ -98,6 +107,24 @@ FirefoxREPL.prototype = {
+     process.exit(0);
+   },
+ 
++  setTab: function(tab) {
++    this.tab = tab;
++
++    if (this.repl) {
++      this.repl.prompt = this.getPrompt();
++    }
++  },
++
++  getPrompt: function() {
++    var parts = url.parse(this.tab.url);
++
++    var name = parts.hostname;
++    if (!name) {
++      name = path.basename(parts.path);
++    }
++    return name + "> ";
++  },
++
+   // compliant with node REPL module eval function reqs
+   eval: function(cmd, context, filename, cb) {
+     this.evalInTab(cmd, cb);
+@@ -148,9 +175,7 @@ FirefoxREPL.prototype = {
+ 
+     this.repl.defineCommand('quit', {
+       help: 'quit fxconsole',
+-      action: function() {
+-        process.exit(0);
+-      }
++      action: this.quit
+     })
+ 
+     this.repl.defineCommand('switch', {
+@@ -168,7 +193,7 @@ FirefoxREPL.prototype = {
+         this.write("no tab at index " + index + "\n");
+       }
+       else {
+-        this.tab = tab;
++        this.setTab(tab);
+         this.write((this.tab.url + "\n").yellow);
+       }
+ 

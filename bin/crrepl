@@ -1,1 +1,4 @@
-/home/tgoldie/Dropbox/repos/beeryardtech/scripts/nodejs/crconsole/bin/repl.js
+#!/bin/bash -
+
+REPL=~/Dropbox/repos/beeryardtech/scripts/nodejs/crconsole/bin/repl.js
+rlwrap $REPL $@

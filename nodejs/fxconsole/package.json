@@ -1,0 +1,52 @@
+{
+  "name": "fxconsole",
+  "description": "Remote JavaScript console for Firefox",
+  "version": "0.1.0",
+  "author": {
+    "name": "Heather Arthur",
+    "email": "fayearthur@gmail.com"
+  },
+  "repository": {
+    "type": "git",
+    "url": "http://github.com/harthur/fxconsole.git"
+  },
+  "dependencies": {
+    "nomnom": "^1.6.1",
+    "colors": "^0.5.1",
+    "firefox-client": "^0.2.3"
+  },
+  "bin": {
+    "fxconsole": "./bin/repl.js"
+  },
+  "keywords": [
+    "firefox",
+    "repl",
+    "remote debugging",
+    "FirefoxOS"
+  ],
+  "bugs": {
+    "url": "https://github.com/harthur/fxconsole/issues"
+  },
+  "homepage": "https://github.com/harthur/fxconsole",
+  "_id": "fxconsole@0.1.0",
+  "dist": {
+    "shasum": "aa47beb1769c7e2b8c90b906a3d034e0e506313a",
+    "tarball": "http://maven.sc.steeleye.com/nexus/content/groups/public-npm/fxconsole/-/fxconsole-0.1.0.tgz"
+  },
+  "_from": "fxconsole@",
+  "_npmVersion": "1.4.3",
+  "_npmUser": {
+    "name": "harth",
+    "email": "fayearthur@gmail.com"
+  },
+  "maintainers": [
+    {
+      "name": "harth",
+      "email": "fayearthur@gmail.com"
+    }
+  ],
+  "directories": {},
+  "_shasum": "aa47beb1769c7e2b8c90b906a3d034e0e506313a",
+  "_resolved": "http://maven.sc.steeleye.com/nexus/content/groups/public-npm/fxconsole/-/fxconsole-0.1.0.tgz",
+  "readme": "ERROR: No README data found!"
+}
