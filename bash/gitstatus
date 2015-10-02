@@ -11,21 +11,37 @@ trap cleanup SIGINT SIGTERM
 SESSION="vimui"
 PWD=~/ui
 CD="cd $PWD"
+WINDOW=2
 
-main()
+respawn_pane()
+{
+    # Respawn panes (-k kills current commands)
+    tmux respawn-pane -k -t "$SESSION:2.0"
+    tmux respawn-pane -k -t "$SESSION:2.1"
+    tmux respawn-pane -k -t "$SESSION:2.2"
+}
+
+send_keys()
 {
     local gitAdd="git add"
     local gitDiff="$CD ; git diff"
     local gitStatus="$CD ; git status"
 
-    # Respawn panes (-k kills current commands)
-    tmux respawn-pane -k -t "$SESSION:2.0"
-    tmux respawn-pane -k -t "$SESSION:2.1"
-    tmux respawn-pane -k -t "$SESSION:2.2"
-
     # Send keys
     tmux send-keys -t "$SESSION:2.0" "$gitStatus" C-m
     tmux send-keys -t "$SESSION:2.1" "$gitDiff" C-m
     tmux send-keys -t "$SESSION:2.2" "$CD" C-m
+}
+
+select_window()
+{
+    tmux select-window -t "$SESSION:2"
+}
+
+main()
+{
+    respawn_pane
+    send_keys
+    select_window
 }
 main

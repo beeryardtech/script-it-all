@@ -14,6 +14,7 @@ SESSION=vimui
 PWD=~/ui
 CD="cd $PWD"
 UIPATH=~/Dropbox/shared/backup/vimbackup/ui.vim
+PROXY="minion4.sc.steeleye.com"
 
 ##
 # Startup Commands
@@ -23,11 +24,21 @@ window0()
     local session=$1
     local name="vim"
     local vimCmd="$CD ; disable_ctrl_s vim -S $UIPATH"
+    local replCmd="crrepl"
+    local karmaCmd="$CD ; grunt karma:debug"
+
+    echo "Renaming window 0 and splitting it"
+    tmux rename-window -t "$session:0" "$name"
+    tmux split-window -v -t "$session:0.0"
+    tmux split-window -h -t "$session:0.1"
+
+    # Resize pane to make it smaller
+    tmux resize-pane -t "$session:0.1" -y 6
 
     echo "Sending keys to window 0"
-
-    tmux rename-window -t "$session:0" "$name"
     tmux send-keys -t "$session:0.0" "$vimCmd" C-m
+    tmux send-keys -t "$session:0.1" "$CD" C-m
+    tmux send-keys -t "$session:0.2" "$karmaCmd" C-m
 }
 
 window1()
@@ -35,7 +46,7 @@ window1()
     local session=$1
     local name="grunt-finch"
     local finch="finch"
-    local grunt="cd $PWD ; grunt server"
+    local grunt="$CD ; grunt --proxy=${PROXY} server:proxy"
 
     echo "Creating window 1"
     tmux new-window -n "$name"
@@ -53,11 +64,19 @@ window2()
 
     local session=$1
     local name="git"
+    local win=2
 
-    echo "Creating window 2"
+    echo "Creating window $win"
     tmux new-window -n "$name"
-    tmux split-window -h -t "$session:2.0"
-    tmux split-window -v -t "$session:2.0"
+    tmux split-window -h -t "$session:${win}.0"
+    tmux split-window -v -t "$session:${win}.0"
+    tmux split-window -v -t "$session:${win}.2"
+
+    echo "Sending keys to window 1"
+    tmux send-keys -t "$session:${win}.0" "$CD" C-m
+    tmux send-keys -t "$session:${win}.1" "$CD" C-m
+    tmux send-keys -t "$session:${win}.2" "$CD" C-m
+    tmux send-keys -t "$session:${win}.3" "$CD" C-m
 }
 
 window3()
@@ -71,6 +90,15 @@ window3()
 
     echo "Sending keys to window 3"
     tmux send-keys -t "$session:3.0" "$htop" C-m
+}
+
+window4()
+{
+    local session=$1
+    local name="extras"
+
+    echo "Creating window 4"
+    tmux new-window -n "$name"
 }
 
 select_window()
@@ -88,6 +116,7 @@ main()
     window1 $SESSION
     window2 $SESSION
     window3 $SESSION
+    window4 $SESSION
     select_window $SESSION
     tmux_run_attach $SESSION
 }
