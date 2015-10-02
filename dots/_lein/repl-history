@@ -1,0 +1,29 @@
+(println "H")
+"h"
+type 'a
+(type 'a)
+a
+print a
+def a "fdf"
+(def a "fdf")
+a
+print a
+print 'a
+(defn s-h "dfdf"
+[f]
+(prinln (str "h" 
+name)
+))
+(prinln (str "h" 
+))
+(defn s-h "dfdf" [x] (println (str "h" x)))
+s-h
+s-h 'ff'
+s-h "ff"
+(defn s-h "dfdf" [x] (println (str "h" x)))
+s-h
+(defn s-h "dfdf" [x] (println "h" x))
+s-h
+s-h f
+s-h "f"
+(doc s-h)

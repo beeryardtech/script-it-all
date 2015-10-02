@@ -10,7 +10,7 @@ set imap_check_subscribed
 set hostname = gmail.com
 set mail_check = 120
 set timeout = 300
-set imap_keepalive = 300
+set imap_keepalive = 30000
 set postponed = "+[GMail]/Drafts"
 set record = "+[GMail]/Sent Mail"
 set header_cache=~/.mutt/cache/headers
@@ -53,3 +53,6 @@ macro index,pager gi "<change-folder>=INBOX<enter>" "Go to inbox"
 macro index,pager ga "<change-folder>=[Gmail]/All Mail<enter>" "Go to all mail"
 macro index,pager gs "<change-folder>=[Gmail]/Starred<enter>" "Go to starred messages"
 macro index,pager gd "<change-folder>=[Gmail]/Drafts<enter>" "Go to drafts"
+
+## GPG Config
+

@@ -22,10 +22,11 @@ Host github.com
     Protocol 2
 
     # For SIOS repos
-    #IdentityFile ~/.ssh/steeleye_key
+    IdentityFile ~/.ssh/steeleye_key
 
     # For beeryardtech repos
-    IdentityFile ~/.sshkeys/beeryard_key
+    #IdentityFile ~/.sshkeys/beeryard_key
+
     StrictHostKeyChecking no
     ForwardX11 no
 

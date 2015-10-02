@@ -16,7 +16,7 @@ set tabstop=4
 set expandtab
 
 " Add Mouse Support
-set mouse=a
+set mouse=nicr
 set mousemodel=popup_setpos
 
 " Enable modeline
@@ -121,9 +121,6 @@ noremap ; :
 
 " Leave insert mode when VIM looses keyboard focus
 autocmd FocusLost,TabLeave,WinLeave,WinEnter * stopinsert
-
-" Gets full path to file by default
-verbose noremap <leader>g1 <C-g>
 
 " If the current buffer has never been saved, it will have no name,
 " call the file browser to save it, otherwise just save it.
