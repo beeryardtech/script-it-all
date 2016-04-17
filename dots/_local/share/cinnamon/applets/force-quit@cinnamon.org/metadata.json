@@ -1,7 +1,0 @@
-{
-    "last-edited": "1328097600", 
-    "description": "Click on the applet to launch xkill and force any window to quit immediately", 
-    "icon": "window-close", 
-    "uuid": "force-quit@cinnamon.org", 
-    "name": "Force Quit"
-}

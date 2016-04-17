@@ -1,7 +1,7 @@
 #!/bin/bash
 ###############################################################################
 # Author: Travis Goldie
-# Purpose: Shorthand for opening SIOS UI files in tmux
+# Purpose: Creates the development environment for UI project
 ###############################################################################
 
 CURRENT_DIR="$( cd "$( dirname "${BASH_SOURCE[0]}" )" && pwd )"
@@ -13,7 +13,7 @@ CONFIG=~/.tmux.conf.vimui
 SESSION=vimui
 PWD=~/ui
 CD="cd $PWD"
-UIPATH=~/Dropbox/shared/backup/vimbackup/ui.vim
+UIPATH=~/Dropbox/shared/backup/vim/ui.vim
 PROXY="minion4.sc.steeleye.com"
 
 ##
@@ -23,45 +23,49 @@ window0()
 {
     local session=$1
     local name="vim"
+    local win=0
     local vimCmd="$CD ; disable_ctrl_s vim -S $UIPATH"
     local replCmd="crrepl"
     local karmaCmd="$CD ; grunt karma:debug"
 
     echo "Renaming window 0 and splitting it"
-    tmux rename-window -t "$session:0" "$name"
-    tmux split-window -v -t "$session:0.0"
-    tmux split-window -h -t "$session:0.1"
+    tmux rename-window -t "$session:${win}" "$name"
+    tmux split-window -v -t "$session:${win}.0"
+    tmux split-window -h -t "$session:${win}.1"
 
     # Resize pane to make it smaller
-    tmux resize-pane -t "$session:0.1" -y 6
+    tmux resize-pane -t "$session:${win}.1" -y 6
 
     echo "Sending keys to window 0"
-    tmux send-keys -t "$session:0.0" "$vimCmd" C-m
-    tmux send-keys -t "$session:0.1" "$CD" C-m
-    tmux send-keys -t "$session:0.2" "$karmaCmd" C-m
+    tmux send-keys -t "$session:${win}.0" "$vimCmd" C-m
+    tmux send-keys -t "$session:${win}.1" "$CD" C-m
+    tmux send-keys -t "$session:${win}.2" "$karmaCmd" C-m
 }
 
 window1()
 {
     local session=$1
+    local win=1
     local name="grunt-finch"
     local finch="finch"
-    local grunt="$CD ; grunt --proxy=${PROXY} server:proxy"
+    local grunt="$CD ; grunt --stack --proxy=${PROXY} server:proxy"
+    local tasks="vim -c TW"
 
-    echo "Creating window 1"
+    echo "Creating window $win"
     tmux new-window -n "$name"
 
-    tmux split-window -v -t "$session:1.0"
-    tmux split-window -h -t "$session:1.1"
+    tmux split-window -v -t "$session:${win}.0"
+    tmux split-window -h -t "$session:${win}.1"
+    tmux split-window -v -t "$session:${win}.1"
 
-    echo "Sending keys to window 1"
-    tmux send-keys -t "$session:1.0" "$grunt" C-m
-    tmux send-keys -t "$session:1.2" "$finch" C-m
+    echo "Sending keys to window $win"
+    tmux send-keys -t "$session:${win}.0" "$grunt" C-m
+    tmux send-keys -t "$session:${win}.1" "$tasks" C-m
+    tmux send-keys -t "$session:${win}.2" "$finch" C-m
 }
 
 window2()
 {
-
     local session=$1
     local name="git"
     local win=2

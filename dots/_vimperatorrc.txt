@@ -1,7 +1,0 @@
-" Config file for Vimperator plugin for FireFox
-
-inoremap <Esc> <S-Esc><Esc><S-Esc>
-nmap <c-f> /
-
-" Hint characters
-set hintchars="abcdefghijklmnopqrstuvxyz"

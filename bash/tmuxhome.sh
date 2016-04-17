@@ -1,4 +1,4 @@
-#!/bin/bash
+#!/bin/bash -
 ###############################################################################
 # Author: Travis Goldie
 # Purpose: Shorthand for creating home tmux session
@@ -8,61 +8,114 @@ CURRENT_DIR="$( cd "$( dirname "${BASH_SOURCE[0]}" )" && pwd )"
 source "$CURRENT_DIR/helpers.sh"
 trap cleanup SIGINT SIGTERM
 
-# Options
+## Options
 CONFIG=~/.tmux.conf.tmuxhome
 SESSION=tmuxhome
+
+## Paths
+DIFF_PATH=~/Dropbox/shared/backup/vim/dbdiff.vim
+DIFF_PWD=~/Dropbox/repos/beeryardtech/dbdiff.py/
+SITE_PWD=~/Dropbox/repos/beeryardtech/beeryardtech.github.io/
+VIM_SESSION=~/Dropbox/shared/backup/vim/session.vim
+CD="cd $DIFF_PWD"
 
 window0()
 {
     local session=$1
-    local name="vim"
-    local vimCmd="disable_ctrl_s vim"
+    local win=0
+    local name="DB-DIFF"
+    local win=0
+    local virtCmd="$CD ; source virt.sh"
+    local vimCmd="$virtCmd ; disable_ctrl_s vim -S $DIFF_PATH"
 
-    echo "Sending keys to window 0"
+    echo "Creating window $win"
+    tmux rename-window -t "$session:${win}" "$name"
+    tmux split-window -v -t "$session:${win}.0"
+    tmux split-window -h -t "$session:${win}.1"
 
-    tmux rename-window -t "$session:0" "$name"
-    tmux send-keys -t "$session:0.0" "$vimCmd" C-m
+    # Resize pane to make it smaller
+    tmux resize-pane -t "$session:${win}.1" -y 8
+
+    echo "Sending keys to window ${win}"
+    tmux send-keys -t "$session:${win}.0" "$vimCmd" C-m
+    tmux send-keys -t "$session:${win}.1" "$virtCmd" C-m
+    tmux send-keys -t "$session:${win}.2" "$virtCmd" C-m
 }
 
 window1()
 {
-
     local session=$1
-    local name="GMAIL"
-    local muttCmd="mutt -F ~/.muttrc.tgoldie"
+    local win=1
+    local name="GIT"
 
-    echo "Creating window 1"
+    echo "Creating window $win"
     tmux new-window -n "$name"
+    tmux split-window -h -t "$session:${win}.0"
+    tmux split-window -v -t "$session:${win}.0"
+    tmux split-window -v -t "$session:${win}.2"
 
     echo "Sending keys to window 1"
-    tmux send-keys -t "$session:1.0" "$muttCmd" C-m
+    tmux send-keys -t "$session:${win}.0" "$CD" C-m
+    tmux send-keys -t "$session:${win}.1" "$CD" C-m
+    tmux send-keys -t "$session:${win}.2" "$CD" C-m
+    tmux send-keys -t "$session:${win}.3" "$CD" C-m
 }
 
 window2()
 {
-
     local session=$1
-    local name="STEELEYE"
-    local muttCmd="mutt -F ~/.muttrc.steeleye"
+    local win=2
+    local name="TASKS-FINCH"
 
-    echo "Creating window 2"
+    local tasks="vim -c TW"
+    local finchCmd="finch"
+
+    echo "Creating window 1"
     tmux new-window -n "$name"
+    tmux split-window -h -t "$session:${win}.0"
+    tmux split-window -v -t "$session:${win}.1"
 
-    echo "Sending keys to window 2"
-    tmux send-keys -t "$session:2.0" "$muttCmd" C-m
+    echo "Sending keys to window $win"
+    tmux send-keys -t "$session:${win}.0" "$tasks" C-m
+    tmux send-keys -t "$session:${win}.1" "$CD" C-m
+    tmux send-keys -t "$session:${win}.2" "$finchCmd" C-m
 }
 
 window3()
 {
     local session=$1
-    local name="htop"
-    local htop="htop"
+    local win=3
+    local name="HTOP"
+    local htopCmd="htop"
 
-    echo "Creating window 3"
+    echo "Creating window $win"
     tmux new-window -n "$name"
 
-    echo "Sending keys to window 3"
-    tmux send-keys -t "$session:3.0" "$htop" C-m
+    echo "Sending keys to window $win"
+    tmux send-keys -t "$session:${win}.0" "$htopCmd" C-m
+}
+
+window4()
+{
+    local session=$1
+    local win=4
+    local name="SITE"
+
+    local vimCmd="disable_ctrl_s vim"
+    local rvmCmd="rvm use ruby-2.1-head"
+
+    echo "Creating window $win"
+    tmux new-window -n "$name"
+    tmux split-window -v -t "$session:${win}.0"
+    tmux split-window -h -t "$session:${win}.1"
+
+    # Resize pane to make it smaller
+    tmux resize-pane -t "$session:${win}.1" -y 8
+
+    echo "Sending keys to window ${win}"
+    tmux send-keys -t "$session:${win}.0" "$vimCmd" C-m
+    tmux send-keys -t "$session:${win}.1" "$rvmCmd" C-m
+    tmux send-keys -t "$session:${win}.2" "$rvmCmd" C-m
 }
 
 select_window()
@@ -80,6 +133,7 @@ main()
     window1 $SESSION
     window2 $SESSION
     window3 $SESSION
+    window4 $SESSION
     select_window $SESSION
     tmux_run_attach $SESSION
 }

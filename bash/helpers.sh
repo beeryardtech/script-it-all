@@ -86,7 +86,7 @@ tmux_new_or_attach()
         echo "attached"
     else
         tmux -f "$config" new-session -d -s "$session"
-        echo "new"
+        echo "new using $config"
     fi
 }
 
@@ -103,4 +103,32 @@ tmux_run_attach()
 
     echo "Attaching to session: $session"
     tmux attach-session -t "$session"
+}
+
+#Tests if string ($1) contains the substring ($2)
+contains ()
+{
+    [[ $# < 2 ]] && echo "Usage: contains \$string \$substring" >&2
+    string=$1 ; substring=$2
+    if test "${string#*$substring}" != "$string" ; then
+        return 0    # $substring is in $string
+    else
+        return 1    # $substring is not in $string
+    fi
+}
+
+#Case insensitive test if string ($1) contains the substring ($2)
+icontains ()
+{
+    str=$( echo $1 | tr '[:upper:]' '[:lower:]' )
+    substr=$( echo $2 | tr '[:upper:]' '[:lower:]' )
+    return $( contains $str $substr )
+}
+
+# Print out colors with there names
+colors ()
+{
+    for i in {0..255} ; do
+        printf "\x1b[38;5;${i}mcolor${i}\n"
+    done
 }

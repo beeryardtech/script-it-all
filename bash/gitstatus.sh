@@ -8,8 +8,9 @@ CURRENT_DIR="$( cd "$( dirname "${BASH_SOURCE[0]}" )" && pwd )"
 source "$CURRENT_DIR/helpers.sh"
 trap cleanup SIGINT SIGTERM
 
+ARG1=$1
 SESSION="vimui"
-PWD=~/ui
+PWD=${ARG1:-~/ui}
 CD="cd $PWD"
 WINDOW=2
 
