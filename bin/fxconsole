@@ -1,4 +1,0 @@
-#!/bin/bash -
-
-REPL=~/Dropbox/repos/beeryardtech/scripts/nodejs/fxconsole/bin/repl.js
-rlwrap $REPL $@

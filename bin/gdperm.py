@@ -1,1 +1,0 @@
-../python/gdcmdtools/gdperm.py

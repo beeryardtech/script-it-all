@@ -1,1 +1,2 @@
-/home/tgoldie/Dropbox/repos/beeryardtech/scripts/bash/tmux_completion.sh
+#!/bin/bash
+source /home/tgoldie/Dropbox/repos/beeryardtech/scripts/bash/tmux_completion.sh $@

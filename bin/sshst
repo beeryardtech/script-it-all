@@ -1,1 +1,2 @@
-/home/tgoldie/Dropbox/repos/beeryardtech/scripts/bash/sshst.sh
+#!/bin/bash
+/home/tgoldie/Dropbox/repos/beeryardtech/scripts/bash/sshst.sh $@

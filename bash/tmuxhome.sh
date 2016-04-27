@@ -15,6 +15,7 @@ SESSION=tmuxhome
 ## Paths
 DIFF_PATH=~/Dropbox/shared/backup/vim/dbdiff.vim
 DIFF_PWD=~/Dropbox/repos/beeryardtech/dbdiff.py/
+SITE_PATH=~/Dropbox/shared/backup/vim/site.vim
 SITE_PWD=~/Dropbox/repos/beeryardtech/beeryardtech.github.io/
 VIM_SESSION=~/Dropbox/shared/backup/vim/session.vim
 CD="cd $DIFF_PWD"
@@ -101,8 +102,8 @@ window4()
     local win=4
     local name="SITE"
 
-    local vimCmd="disable_ctrl_s vim"
-    local rvmCmd="rvm use ruby-2.1-head"
+    local vimCmd="disable_ctrl_s vim -S $SITE_PATH"
+    local rvmCmd="rvm use ruby-head"
 
     echo "Creating window $win"
     tmux new-window -n "$name"

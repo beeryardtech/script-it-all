@@ -1,1 +1,0 @@
-../python/gdcmdtools/gdget.py

@@ -1,1 +1,0 @@
-/home/tgoldie/Dropbox/repos/beeryardtech/scripts/perl/cloc-1.62.pl

@@ -125,10 +125,15 @@ icontains ()
     return $( contains $str $substr )
 }
 
+##
+# @name colors
+# @description
 # Print out colors with there names
+##
 colors ()
 {
     for i in {0..255} ; do
         printf "\x1b[38;5;${i}mcolor${i}\n"
     done
 }
+

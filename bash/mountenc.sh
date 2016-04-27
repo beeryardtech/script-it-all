@@ -81,9 +81,11 @@ mnt()
 unmnt()
 {
     local mounts=( $( mount -t fuse.encfs | grep "user=${2}" | awk '{print $3}' ) )
+    local singlept=$1
+
     echo "Unmounting all encfs mount points..."
 
-    for $MOUNTPOINT in  $( mount -t fuse.encfs | grep "user=${2}" | awk '{print $3}' ) ; do
+    for mountpt in  $( mount -t fuse.encfs | grep "user=${2}" | awk '{print $3}' ) ; do
         echo $mountpt
         $FUSERMOUNT -u $mountpt
     done

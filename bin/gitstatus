@@ -1,1 +1,2 @@
-/home/tgoldie/Dropbox/repos/beeryardtech/scripts/bash/gitstatus.sh
+#!/bin/bash
+/home/tgoldie/Dropbox/repos/beeryardtech/scripts/bash/gitstatus.sh $@

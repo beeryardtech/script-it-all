@@ -46,10 +46,11 @@ window1()
 {
     local session=$1
     local win=1
-    local name="grunt-finch"
+    local name="GRUNT-FINCH"
     local finch="finch"
     local grunt="$CD ; grunt --stack --proxy=${PROXY} server:proxy"
     local tasks="vim -c TW"
+    local agenda="gcalcli --calendar 'Travis Goldie' agenda today +2day 2>/dev/null | less -r"
 
     echo "Creating window $win"
     tmux new-window -n "$name"
@@ -57,17 +58,19 @@ window1()
     tmux split-window -v -t "$session:${win}.0"
     tmux split-window -h -t "$session:${win}.1"
     tmux split-window -v -t "$session:${win}.1"
+    tmux split-window -v -t "$session:${win}.2"
 
     echo "Sending keys to window $win"
     tmux send-keys -t "$session:${win}.0" "$grunt" C-m
     tmux send-keys -t "$session:${win}.1" "$tasks" C-m
     tmux send-keys -t "$session:${win}.2" "$finch" C-m
+    tmux send-keys -t "$session:${win}.3" "$agenda" C-m
 }
 
 window2()
 {
     local session=$1
-    local name="git"
+    local name="GIT"
     local win=2
 
     echo "Creating window $win"
