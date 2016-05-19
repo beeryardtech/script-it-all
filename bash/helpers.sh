@@ -78,15 +78,17 @@ tmux_new_or_attach()
     local session=$1
     local config=$2
 
+    echo HERE $session $config
+
     tmux has-session -t "$session" > /dev/null 2>&1
     should_attach=$?
 
     if [[ "$should_attach" == 0 ]] ; then
         tmux attach-session -t "$session"
-        echo "attached"
+        echo "Attached to {$session}"
     else
         tmux -f "$config" new-session -d -s "$session"
-        echo "new using $config"
+        echo "new session {$session} using config: {$config}"
     fi
 }
 
@@ -100,6 +102,7 @@ tmux_new_or_attach()
 tmux_run_attach()
 {
     local session=$1
+    #export TMUX_SESSION=$session
 
     echo "Attaching to session: $session"
     tmux attach-session -t "$session"

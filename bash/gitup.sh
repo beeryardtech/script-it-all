@@ -23,4 +23,4 @@ git pull $rebase
 [[ $? > 0 ]] && echo "Fail to pull" && exit 1
 
 # If Gruntfile is available, run generated tasks
-[[ -f Gruntfile.js ]] && echo -e "\n Generating Grunt files \n" && grunt generator
+#[[ -f Gruntfile.js ]] && echo -e "\n Generating Grunt files \n" && grunt generator

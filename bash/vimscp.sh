@@ -7,14 +7,23 @@ CURRENT_DIR="$( cd "$( dirname "${BASH_SOURCE[0]}" )" && pwd )"
 source "$CURRENT_DIR/helpers.sh"
 trap cleanup SIGINT SIGTERM
 
-vimscp()
+## Options
+$DEFAULT_USER="root"
+
+echo_cmd()
 {
-    srv=$1 ; path=$2
     if ! contains $srv '@' ; then
         srv="root@${srv}"
     fi
     cmd="vim -p scp://${srv}/${path}"
     echo $cmd
-    disable_ctrl_s $cmd
 }
+main()
+{
+    local srv=shift
+    local path=shift
 
+    local cmd=$( echo_cmd $1 $2 )
+    disable_ctrl_s $cmd $@
+}
+main $@

@@ -34,8 +34,8 @@ done
 compatiblePrograms=( nautilus kdeinit kded4 pulseaudio trackerd )
 
 # Attempt to get a program pid
-for index in ${compatiblePrograms[@]}; do
-    PID=$(pidof -s ${index})
+for prog in ${compatiblePrograms[@]}; do
+    PID=$(pidof -s ${prog})
     if [[ "${PID}" != "" ]]; then
         break
     fi

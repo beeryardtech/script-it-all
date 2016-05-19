@@ -21,19 +21,21 @@ Optional Arguments:
 
 EOF
 
-do_wait=
-optstring=h
+is_wait=
+is_next_event=
+optstring=htw
 while getopts $optstring opt ; do
     case $opt in
         h) echo "$USAGE" ; exit 255 ;;
-        w) echo "Setting looping" ; do_wait=true ;;
+        t) is_next_event=true ;;
+        w) echo "Setting looping" ; is_wait=true ;;
     esac
 done
 
 
 CONFIG_DIR="--configFolder=$HOME/.gcalcli.steeleye"
 GCALCLI=/usr/local/bin/gcalcli
-CALENDARS=( "Weather" "travis.goldie@steeleye.com" "Travis Goldie" )
+CALENDARS=( "Weather" "travis.goldie@steeleye.com" "TravisGoldie" )
 KILL_LESS="/bin/kill \$(ps aux | grep '/tmp/agenda' | head -n1 | awk '{print \$2}')"
 LESS="/usr/bin/less -r /tmp/agenda"
 RANGE="today +5days"
@@ -56,7 +58,6 @@ echo_agenda_cmd()
     echo $cmd
 }
 
-
 do_while()
 {
     while true ; do
@@ -70,11 +71,15 @@ do_while()
 
 main()
 {
-    if [[ $wait ]] ; then
+
+    if [[ $is_wait ]] ; then
         do_while
+    elif [[ $is_next_event ]] ; then
+        cmd=$( echo_agenda_cmd )
+        eval $cmd | head -n2 | tail -1
     else
         cmd=$( echo_agenda_cmd )
-        eval $cmd >/tmp/agenda 2>/dev/null
+        eval $cmd >/tmp/agenda
         eval $LESS 2>/dev/null
     fi
 }
