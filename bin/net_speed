@@ -1,2 +1,2 @@
 #!/bin/bash
-/home/tgoldie/Dropbox/repos/beeryardtech/scripts/bash/net_speed.sh $@
+~/Dropbox/repos/beeryardtech/scripts/bash/net_speed.sh $@

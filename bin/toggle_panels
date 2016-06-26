@@ -1,2 +1,2 @@
 #!/bin/bash
-/home/tgoldie/Dropbox/repos/beeryardtech/scripts/bash/toggle_panels.sh $@
+~/Dropbox/repos/beeryardtech/scripts/bash/toggle_panels.sh $@

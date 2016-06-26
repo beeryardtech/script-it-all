@@ -1,2 +1,2 @@
 #!/bin/bash
-/home/tgoldie/Dropbox/repos/beeryardtech/scripts/bash/kpcli.sh $@
+~/Dropbox/repos/beeryardtech/scripts/perl/kpcli.pl --kdb=~/APG/keepass.kdbx $@
