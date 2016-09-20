@@ -20,17 +20,18 @@ Optional Arguments:
 EOF
 
 # Variables
-ACTION="mount"
 FUSERMOUNT=/bin/fusermount
 ENCFS=/usr/bin/encfs
 MOUNTPOINT=/bin/mountpoint
 declare -A MOUNTS=(
     ["${DROPBOX}/.Private"]="${HOME}/Private"
     ["${DROPBOX}/.sshkeys"]="${HOME}/.sshkeys"
-    ["${DROPBOX}/Janie/.SharedPrivate"]="${HOME}/SharedPrivate"
+    ["${DROPBOX}/janie/.SharedPrivate"]="${HOME}/SharedPrivate"
 )
 
 # Setup arguments
+ACTION=
+MOUNTPT=
 dryrun=
 optstring=hm:nu
 while getopts $optstring opt ; do

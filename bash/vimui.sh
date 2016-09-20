@@ -40,34 +40,45 @@ window0()
     tmux send-keys -t "${TMUX_SESSION}:${win}.2" "$karmaCmd" C-m
 }
 
-window1()
+window2()
 {
-    local win=1
+    local win=2
     local name="GRUNT-FINCH"
     local finch="finch"
+    local devToolsTerm="devtools-terminal --port=9090 --host=localhost"
     local grunt="$CD ; grunt --stack --proxy=${PROXY} server:proxy"
     local tasks="vim -c TW"
-    local agenda="gcalcli --calendar 'Travis Goldie' agenda today +2day 2>/dev/null | less -r"
+    local agenda="agenda"
 
     echo "Creating window $win"
     tmux new-window -n "$name"
 
+    # Top half
     tmux split-window -v -t "${TMUX_SESSION}:${win}.0"
+    tmux split-window -h -t "${TMUX_SESSION}:${win}.0"
+
+    # tasks and empty pane
     tmux split-window -h -t "${TMUX_SESSION}:${win}.1"
     tmux split-window -v -t "${TMUX_SESSION}:${win}.1"
-    tmux split-window -v -t "${TMUX_SESSION}:${win}.2"
+
+    # Agenda, finch, empty
+    tmux split-window -h -t "${TMUX_SESSION}:${win}.3"
+    tmux split-window -v -t "${TMUX_SESSION}:${win}.3"
 
     echo "Sending keys to window $win"
     tmux send-keys -t "${TMUX_SESSION}:${win}.0" "$grunt" C-m
     tmux send-keys -t "${TMUX_SESSION}:${win}.1" "$tasks" C-m
-    tmux send-keys -t "${TMUX_SESSION}:${win}.2" "$finch" C-m
-    tmux send-keys -t "${TMUX_SESSION}:${win}.3" "$agenda" C-m
+    tmux send-keys -t "${TMUX_SESSION}:${win}.2" "$devToolsTerm" C-m
+    tmux send-keys -t "${TMUX_SESSION}:${win}.3" "$finch" C-m
+    # ${win}.4 inactive
+    tmux send-keys -t "${TMUX_SESSION}:${win}.5" "$agenda" C-m
+    # ${win}.6 inactive
 }
 
-window2()
+window1()
 {
     local name="GIT"
-    local win=2
+    local win=1
 
     echo "Creating window $win"
     tmux new-window -n "$name"
@@ -84,19 +95,20 @@ window2()
 
 window3()
 {
-    local name="htop"
-    local htop="htop"
+    local name="HTOP"
+    local win=3
+    local htopCmd="htop"
 
-    echo "Creating window 3"
+    echo "Creating window $win"
     tmux new-window -n "$name"
 
-    echo "Sending keys to window 3"
-    tmux send-keys -t "${TMUX_SESSION}:3.0" "$htop" C-m
+    echo "Sending keys to window $win"
+    tmux send-keys -t "${TMUX_SESSION}:${win}.0" "$htopCmd" C-m
 }
 
 window4()
 {
-    local name="extras"
+    local name="EXTRAS"
 
     echo "Creating window 4"
     tmux new-window -n "$name"

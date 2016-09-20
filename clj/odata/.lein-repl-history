@@ -1,0 +1,4 @@
+ls
+(def hello (fn [] "Hello world"))
+#'user/hello
+(hello)

@@ -1,0 +1,2 @@
+#!/bin/bash
+~/Dropbox/repos/beeryardtech/scripts/bash/dbconflict.sh $@

@@ -12,6 +12,7 @@ SSH_KEY=$HOME/.sshkeys/beeryard_key
 
 add_key()
 {
+    eval "$( ssh-agent )"
     ssh-add $SSH_KEY
 }
 
